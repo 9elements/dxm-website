@@ -1,0 +1,112 @@
+/**
+  * SIZE SCALE
+  * This is a Perfect Fourth scale that powers all the utilities that
+  * it is relevant for (font-size, margin, padding). All items are
+  * calcuated off the base size, so change that and cascade across
+  * your whole project.
+  */
+
+/* https://utopia.fyi/type/calculator?c=320,16,1.2,1140,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
+$gorko-size-scale: (
+  "step--2": clamp(0.8rem, calc(0.65rem + 0.21vw), 0.69rem),
+  "step--1": clamp(1rem, calc(0.77rem + 0.33vw), 0.83rem),
+  "step-0": clamp(1rem, calc(0.9rem + 0.49vw), 1.25rem),
+  "step-1": clamp(1.2rem, calc(1.06rem + 0.71vw), 1.56rem),
+  "step-2": clamp(1.44rem, calc(1.24rem + 1vw), 1.95rem),
+  "step-3": clamp(1.73rem, calc(1.45rem + 1.39vw), 2.44rem),
+  "step-4": clamp(2.07rem, calc(1.69rem + 1.91vw), 3.05rem),
+  "step-5": clamp(2.49rem, calc(1.97rem + 2.59vw), 3.82rem),
+);
+
+/* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1140,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6, */
+$space-size-scale: (
+  // T-Shirt Sizes
+  "3xs": clamp(0.25rem, calc(0.23rem + 0.12vw), 0.31rem),
+  "2xs": clamp(0.5rem, calc(0.45rem + 0.24vw), 0.63rem),
+  "xs": clamp(0.75rem, calc(0.68rem + 0.37vw), 0.94rem),
+  "s": clamp(1rem, calc(0.9rem + 0.49vw), 1.25rem),
+  "m": clamp(1.5rem, calc(1.35rem + 0.73vw), 1.88rem),
+  "l": clamp(2rem, calc(1.8rem + 0.98vw), 2.5rem),
+  "xl": clamp(3rem, calc(2.71rem + 1.46vw), 3.75rem),
+  "2xl": clamp(4rem, calc(3.61rem + 1.95vw), 5rem),
+  "3xl": clamp(6rem, calc(5.41rem + 2.93vw), 7.5rem),
+  // One-up pairs
+  "3xs-2xs": clamp(0.25rem, calc(0.1rem + 0.73vw), 0.63rem),
+  "2xs-xs": clamp(0.5rem, calc(0.33rem + 0.85vw), 0.94rem),
+  "xs-s": clamp(0.75rem, calc(0.55rem + 0.98vw), 1.25rem),
+  "s-m": clamp(1rem, calc(0.66rem + 1.71vw), 1.88rem),
+  "m-l": clamp(1.5rem, calc(1.11rem + 1.95vw), 2.5rem),
+  "l-xl": clamp(2rem, calc(1.32rem + 3.41vw), 3.75rem),
+  "xl-2xl": clamp(3rem, calc(2.22rem + 3.9vw), 5rem),
+  "2xl-3xl": clamp(4rem, calc(2.63rem + 6.83vw), 7.5rem)
+);
+
+/**
+  * COLORS
+  * Colors are shared between backgrounds and text by default.
+  * You can also use them to power borders, fills or shadows, for example.
+  */
+$gorko-colors: (
+  "black": #000,
+  "white": #fff,
+);
+
+/**
+  * CORE CONFIG
+  * This powers everything from utility class generation to breakpoints
+  * to enabling/disabling pre-built components/utilities.
+  */
+$gorko-config: (
+  "css-vars": (
+    "color": $gorko-colors,
+    "space": $space-size-scale,
+  ),
+  "bg": (
+    "items": "color",
+    "css-vars": true,
+    "output": "standard",
+    "property": "background-color",
+  ),
+  "color": (
+    "items": "color",
+    "css-vars": true,
+    "output": "standard",
+    "property": "color",
+  ),
+  "font": (
+    "items": (
+      "head": '"Bebas Neue", Impact, "Franklin Gothic Bold", sans-serif;',
+      "base": '"Roboto", sans-serif',
+    ),
+    "output": "standard",
+    "property": "font-family",
+  ),
+  "leading": (
+    "items": (
+      "loose": 1.7,
+      "tight": 1.25,
+      "flat": 1.1,
+    ),
+    "output": "standard",
+    "property": "line-height",
+  ),
+  "text": (
+    "items": $gorko-size-scale,
+    "output": "standard",
+    "property": "font-size",
+  ),
+  "weight": (
+    "items": (
+      "regular": 400,
+      "medium": 500,
+      "bold": 700,
+    ),
+    "output": "standard",
+    "property": "font-weight",
+  ),
+  "breakpoints": (
+    /* 680px  */ "md": "(min-width: 42.5em)",
+    /* 1024px */ "lg": "(min-width: 64em)",
+    /* 1440px */ "xl": "(min-width: 90em)",
+  ),
+);

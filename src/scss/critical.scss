@@ -6,6 +6,8 @@
 
 body {
   @include apply-utility("font", "base");
+  background: var(--color-black);
+  color: var(--color-white);
 }
 
 h1,
@@ -17,11 +19,15 @@ h4 {
 
 //Utilities
 @import "utilities/sr-only";
+@import "utilities/uppercase";
 
 //Layout
 @import "layout/cluster";
+@import "layout/grid-switcher";
 @import "layout/stack";
 @import "layout/wrapper";
 
 //Blocks
+@import "blocks/acc-list";
+@import "blocks/main-nav";
 @import "blocks/plain-html";

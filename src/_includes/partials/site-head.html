@@ -1,11 +1,11 @@
 <header class="site-head">
 
   <div class="wrapper">
-    <nav aria-label="Main">
-      <ul class="cluster">
+    <nav class="main-nav" aria-label="Main">
+      <ul class="main-nav__list | cluster" role="list" style="--cluster-gap: var(--space-s);">
         {% for item in navigation.items %}
-        <li>
-          <a href="{{ item.url }}" {{ helpers.getLinkActiveState(item.url, page.url) | safe }}>
+        <li class="main-nav__list-item">
+          <a class="main-nav__link" href="{{ item.url }}" {{ helpers.getLinkActiveState(item.url, page.url) | safe }}>
             {{ item.text }}
           </a>
         </li>

@@ -1,0 +1,47 @@
+/*
+Example Syntax
+--------------
+<details class="acc-list">
+  <summary class="uppercase text-step-2 leading-flat">Headline</summary>
+  <ul class="bg-blue-200 color-black" role="list">
+    <li>…</li>
+    <li>…</li>
+  </ul>
+</details>
+*/
+
+.acc-list {
+  summary {
+    list-style: none;
+    border: 1px solid var(--color-blue-200);
+    padding: var(--space-s);
+    min-height: 4em;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--color-blue-200);
+      color: var(--color-black);
+    }
+
+    &:focus-visible {
+      outline: 2px dashed var(--color-red);
+      outline-offset: 5px;
+    }
+  }
+
+  ul {
+    padding: var(--space-s);
+
+    li {
+      padding-block: var(--space-3xs);
+      border-block-start: 2px solid currentColor;
+    }
+  }
+
+  &[open] {
+    summary {
+      color: var(--color-black);
+      background: var(--color-blue-200);
+    }
+  }
+}

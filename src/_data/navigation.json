@@ -1,20 +1,52 @@
 {
   "items": [
     {
-      "text": "item-01",
-      "url": "/item-01/"
+      "text": "Home",
+      "url": "/"
     },
     {
-      "text": "item-02",
-      "url": "/item-02/"
+      "text": "Speaker",
+      "url": "/speaker/"
     },
     {
-      "text": "item-03",
-      "url": "/item-03/"
+      "text": "Publikationen",
+      "url": "/publikationen/",
+      "children": [
+        {
+          "text": "Newsletter",
+          "url": "/newsletter/"
+        },
+        {
+          "text": "Publikationsliste",
+          "url": "/publikationsliste/"
+        }
+      ]
     },
     {
-      "text": "item-04",
-      "url": "/item-04/"
+      "text": "Media",
+      "url": "/media/",
+      "children": [
+        {
+          "text": "Videos",
+          "url": "/videos/"
+        },
+        {
+          "text": "Bilder",
+          "url": "/bilder/"
+        },
+        {
+          "text": "Presse",
+          "url": "/presse/"
+        }
+      ]
+    },
+    {
+      "text": "Leistungen",
+      "url": "/leistungen/"
+    },
+    {
+      "text": "Kontakt",
+      "url": "/kontakt/"
     }
   ]
 }

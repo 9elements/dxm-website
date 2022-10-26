@@ -38,25 +38,7 @@ $space-size-scale: (
   "l-xl": clamp(2rem, calc(0.71rem + 5.5vw), 5rem),
   "xl-2xl": clamp(4rem, calc(2.5rem + 6.41vw), 7.5rem),
   "2xl-3xl": clamp(6rem, calc(4.28rem + 7.33vw), 10rem),
-  "3xl-4xl": clamp(8rem, calc(6.07rem + 8.25vw), 12.5rem) "3xs":
-    clamp(0.25rem, calc(0.22rem + 0.11vw), 0.31rem),
-  "2xs": clamp(0.5rem, calc(0.45rem + 0.22vw), 0.63rem),
-  "xs": clamp(0.75rem, calc(0.67rem + 0.33vw), 0.94rem),
-  "s": clamp(1rem, calc(0.9rem + 0.44vw), 1.25rem),
-  "m": clamp(1.5rem, calc(1.34rem + 0.66vw), 1.88rem),
-  "l": clamp(2rem, calc(1.79rem + 0.88vw), 2.5rem),
-  "xl": clamp(3rem, calc(2.69rem + 1.33vw), 3.75rem),
-  "2xl": clamp(6rem, calc(5.38rem + 2.65vw), 7.5rem),
-  "3xl": clamp(11rem, calc(9.86rem + 4.86vw), 13.75rem),
-  // One-up pairs
-  "3xs-2xs": clamp(0.25rem, calc(0.09rem + 0.66vw), 0.63rem),
-  "2xs-xs": clamp(0.5rem, calc(0.32rem + 0.77vw), 0.94rem),
-  "xs-s": clamp(0.75rem, calc(0.54rem + 0.88vw), 1.25rem),
-  "s-m": clamp(1rem, calc(0.64rem + 1.55vw), 1.88rem),
-  "m-l": clamp(1.5rem, calc(1.09rem + 1.77vw), 2.5rem),
-  "l-xl": clamp(2rem, calc(1.27rem + 3.09vw), 3.75rem),
-  "xl-2xl": clamp(3rem, calc(1.14rem + 7.96vw), 7.5rem),
-  "2xl-3xl": clamp(6rem, calc(2.79rem + 13.7vw), 13.75rem)
+  "3xl-4xl": clamp(8rem, calc(6.07rem + 8.25vw), 12.5rem)
 );
 
 /**

@@ -1,0 +1,33 @@
+footer {
+  margin-top: var(--space-xl-2xl);
+
+  ul {
+    --cluster-justification: center;
+    --cluster-gap: var(--space-m-l);
+    flex-direction: column;
+    align-items: center;
+
+    @include media-query("md") {
+      flex-direction: row;
+    }
+
+    li {
+      a {
+        text-decoration: none;
+        padding: var(--space-xs);
+      }
+    }
+
+    & * + * {
+      &::before {
+        content: "|";
+        margin-right: var(--space-m-l);
+        display: none;
+
+        @include media-query("md") {
+          display: inline;
+        }
+      }
+    }
+  }
+}

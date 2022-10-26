@@ -13,10 +13,6 @@
       "url": "/publikationen/",
       "children": [
         {
-          "text": "Newsletter",
-          "url": "/newsletter/"
-        },
-        {
           "text": "Publikationsliste",
           "url": "/publikationsliste/"
         }
@@ -43,6 +39,10 @@
     {
       "text": "Leistungen",
       "url": "/leistungen/"
+    },
+    {
+      "text": "Newsletter",
+      "url": "/newsletter/"
     },
     {
       "text": "Kontakt",

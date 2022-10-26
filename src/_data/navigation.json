@@ -1,8 +1,20 @@
 {
   "items": [
     {
-      "text": "item-01",
-      "url": "/item-01/"
+      "text": "Home",
+      "url": "/"
+    },
+    {
+      "text": "Voträge und Moderation",
+      "url": "/vortraege-moderation/",
+      "children": [{
+        "text": "Sub1",
+        "url": "/vortraege-moderation/"
+      },{
+        "text": "Sub1",
+        "url": "/vortraege-moderation/"
+      }
+    ]
     },
     {
       "text": "item-02",

@@ -1,0 +1,14 @@
+.button{
+    display: inline-block;
+    text-decoration: none;
+    padding: var(--space-xs);
+    border: 1px solid currentColor;
+    font-size: var(--text-step-1);
+    text-transform: uppercase;
+    font-weight: bold;
+
+    &:hover{
+        background-color: currentColor;
+        color: var(--color-black);
+    }
+}

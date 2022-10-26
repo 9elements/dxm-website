@@ -1,17 +1,24 @@
 <header class="site-head">
 
-  <div class="wrapper">
-    <nav aria-label="Main">
-      <ul class="cluster">
+  <div class=" wrapper">
+    <nav class="main-nav stack-2xs" id="mainnav" aria-label="Main">
+      <ul role="list" class="main-nav__list | cluster">
         {% for item in navigation.items %}
-        <li>
-          <a href="{{ item.url }}" {{ helpers.getLinkActiveState(item.url, page.url) | safe }}>
-            {{ item.text }}
-          </a>
-        </li>
+          <li>
+            <a class="main-nav__link" href="{{ item.url }}" {{ helpers.getLinkActiveState(item.url, page.url) | safe }}>
+              {{ item.text }}
+            </a>
+          </li>
         {% endfor %}
       </ul>
     </nav>
-  </div>
 
-</header>
+    <template id="burger-template">
+      <button type="button" aria-expanded="false" aria-label="Menu" aria-controls="mainnav">
+        <svg width="24" height="24" aria-hidden="true">
+          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></svg>
+        </button>
+      </template>
+    </div>
+
+  </header>

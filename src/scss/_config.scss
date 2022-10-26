@@ -47,8 +47,12 @@ $space-size-scale: (
   * You can also use them to power borders, fills or shadows, for example.
   */
 $gorko-colors: (
-  "black": #000,
+  "black": #0A101C,
   "white": #fff,
+  "blue-200": #0699FF,
+  "blue-600": #005C9A,
+  "blue-400": #093960,
+  "red": #FF334B,
 );
 
 /**
@@ -60,6 +64,7 @@ $gorko-config: (
   "css-vars": (
     "color": $gorko-colors,
     "space": $space-size-scale,
+    "text": $gorko-size-scale,
   ),
   "bg": (
     "items": "color",

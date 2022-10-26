@@ -1,0 +1,74 @@
+/*
+ <div class=" wrapper">
+    <nav class="main-nav" aria-label="Main">
+        <ul class="main-nav__list" class="cluster">
+            {% for item in navigation.items %}
+            <li class="main-nav__list-item">
+                <a class="main-nav__link" href="{{ item.url }}" {{ helpers.getLinkActiveState(item.url, page.url) | safe }}>
+                {{ item.text }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </nav>
+  </div>
+*/
+
+.main-nav{
+    position: fixed;
+    z-index: 1;
+    inset-inline-start: 1rem;
+    inset-block-start: 1rem;
+    font-size: var(--text-step-0);
+
+    &__list{
+        border: 2px dashed var(--color-red);
+    }
+
+    &__link{
+        display: inline-block;
+        padding: .5rem;
+        text-decoration: none;
+        background-color: var(--bg-color, #3b3b3b);
+    }
+
+    [aria-current="page"] {
+        --bg-color: var(--color-blue-200);
+    }
+
+    ul {
+        visibility: var(--nav-list-visibility, visible);
+      }
+      
+      /* Hide the list on narrow viewports, if it comes after an element with
+         aria-expanded set to "false". */
+      [aria-expanded="false"] + ul {
+        visibility: var(--nav-list-visibility, hidden);
+      }
+
+    button{
+        display: var(--nav-button-display, flex);
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+        padding: 0;
+
+        svg{
+            fill: var(--color-white);
+        }
+    }
+
+    *:focus-visible {
+        outline: 2px dashed var(--color-red);
+        outline-offset: 4px;
+    }
+}
+
+@media (min-width: 48em) {   
+    .main-nav{           
+    --nav-button-display: none;
+    --nav-list-visibility:
+    --nav-list-visibility: visible;
+
+}
+}

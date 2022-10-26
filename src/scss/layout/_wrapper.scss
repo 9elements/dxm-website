@@ -4,8 +4,12 @@
  * centers the contents
  */
 .wrapper {
-  max-width: 70rem;
-  padding: 0 var(--space-m);
+  max-width: var(--wrapper-max, 90rem);
+  padding-inline: var(--space-m);
   margin-inline: auto;
   position: relative;
+
+  // width: min(100% - (var(--space-m) * 2), var(--wrapper-max, 60ch));
 }
+
+

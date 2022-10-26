@@ -2,17 +2,23 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     {% include "partials/meta-info.html" %}
 
     <script>
-      document.documentElement.classList.remove("no-js");
-      document.documentElement.classList.add("js-active");
+      document
+        .documentElement
+        .classList
+        .remove("no-js");
+      document
+        .documentElement
+        .classList
+        .add("js-active");
     </script>
 
-    <link rel="stylesheet" media="all" href="/fonts/fonts.css?{{ assetHash }}" />
+    <link rel="stylesheet" media="all" href="/fonts/fonts.css?{{ assetHash }}"/>
 
     {% if env.nodeenv !== 'production' %}
       <!-- We're not in production mode -->
@@ -30,5 +36,7 @@
     </main>
 
     {% include "partials/site-foot.html" %}
+
+    <script src="/js/nav.js"></script>
   </body>
 </html>

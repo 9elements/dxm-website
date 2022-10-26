@@ -1,0 +1,48 @@
+/*
+EXAMPLE
+----------
+<form class="event-form">
+    <div class="event-form__inputgroup">
+        <label for="eventText">...</label>
+        <input type="text" name="eventText" value="...">
+    </div>
+    <input type="submit" value="...">
+</form>
+*/
+
+.event-form{
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+    margin-inline: auto;
+
+    &__inputgroup{
+        display: flex;
+        align-items: center;
+        flex-grow: 999
+    }
+
+    label{
+        padding: var(--space-2xs) var(--space-xs);
+        background-color: var(--color-red);
+        color: var(--color-black);
+    }
+}
+
+input[type="text"]{
+    flex-grow: 999;
+    padding: var(--space-2xs) var(--space-xs);
+    border: none;
+
+    &:focus{
+        outline: 2px solid var(--color-blue);
+        outline-offset: 2px;
+    }
+}
+
+input[type="submit"]{
+    border: 1px solid var(--color-red);
+    color: var(--color-red);
+    padding: var(--space-2xs) var(--space-xs);
+    background-color: transparent;
+}

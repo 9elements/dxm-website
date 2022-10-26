@@ -8,37 +8,55 @@
 
 /* https://utopia.fyi/type/calculator?c=320,16,1.2,1140,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
 $gorko-size-scale: (
-  "step--2": clamp(0.8rem, calc(0.65rem + 0.21vw), 0.69rem),
-  "step--1": clamp(1rem, calc(0.77rem + 0.33vw), 0.83rem),
-  "step-0": clamp(1rem, calc(0.9rem + 0.49vw), 1.25rem),
-  "step-1": clamp(1.2rem, calc(1.06rem + 0.71vw), 1.56rem),
-  "step-2": clamp(1.44rem, calc(1.24rem + 1vw), 1.95rem),
-  "step-3": clamp(1.73rem, calc(1.45rem + 1.39vw), 2.44rem),
-  "step-4": clamp(2.07rem, calc(1.69rem + 1.91vw), 3.05rem),
-  "step-5": clamp(2.49rem, calc(1.97rem + 2.59vw), 3.82rem),
+  "step-0": clamp(1rem, calc(0.89rem + 0.46vw), 1.25rem),
+  "step-1": clamp(1.2rem, calc(1rem + 0.85vw), 1.67rem),
+  "step-2": clamp(1.44rem, calc(1.1rem + 1.43vw), 2.22rem),
+  "step-3": clamp(1.73rem, calc(1.2rem + 2.26vw), 2.96rem),
+  "step-4": clamp(2.07rem, calc(1.27rem + 3.43vw), 3.95rem),
+  "step-5": clamp(2.49rem, calc(1.3rem + 5.08vw), 5.26rem),
 );
 
 /* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1140,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6, */
 $space-size-scale: (
   // T-Shirt Sizes
-  "3xs": clamp(0.25rem, calc(0.23rem + 0.12vw), 0.31rem),
-  "2xs": clamp(0.5rem, calc(0.45rem + 0.24vw), 0.63rem),
-  "xs": clamp(0.75rem, calc(0.68rem + 0.37vw), 0.94rem),
-  "s": clamp(1rem, calc(0.9rem + 0.49vw), 1.25rem),
-  "m": clamp(1.5rem, calc(1.35rem + 0.73vw), 1.88rem),
-  "l": clamp(2rem, calc(1.8rem + 0.98vw), 2.5rem),
-  "xl": clamp(3rem, calc(2.71rem + 1.46vw), 3.75rem),
-  "2xl": clamp(4rem, calc(3.61rem + 1.95vw), 5rem),
-  "3xl": clamp(6rem, calc(5.41rem + 2.93vw), 7.5rem),
+  "3xs": clamp(0.25rem, calc(0.22rem + 0.11vw), 0.31rem),
+  "2xs": clamp(0.5rem, calc(0.45rem + 0.23vw), 0.63rem),
+  "xs": clamp(0.75rem, calc(0.67rem + 0.34vw), 0.94rem),
+  "s": clamp(1rem, calc(0.89rem + 0.46vw), 1.25rem),
+  "m": clamp(1.5rem, calc(1.34rem + 0.69vw), 1.88rem),
+  "l": clamp(2rem, calc(1.79rem + 0.92vw), 2.5rem),
+  "xl": clamp(4rem, calc(3.57rem + 1.83vw), 5rem),
+  "2xl": clamp(6rem, calc(5.36rem + 2.75vw), 7.5rem),
+  "3xl": clamp(8rem, calc(7.14rem + 3.67vw), 10rem),
+  "4xl": clamp(10rem, calc(8.93rem + 4.58vw), 12.5rem),
   // One-up pairs
-  "3xs-2xs": clamp(0.25rem, calc(0.1rem + 0.73vw), 0.63rem),
-  "2xs-xs": clamp(0.5rem, calc(0.33rem + 0.85vw), 0.94rem),
-  "xs-s": clamp(0.75rem, calc(0.55rem + 0.98vw), 1.25rem),
-  "s-m": clamp(1rem, calc(0.66rem + 1.71vw), 1.88rem),
-  "m-l": clamp(1.5rem, calc(1.11rem + 1.95vw), 2.5rem),
-  "l-xl": clamp(2rem, calc(1.32rem + 3.41vw), 3.75rem),
-  "xl-2xl": clamp(3rem, calc(2.22rem + 3.9vw), 5rem),
-  "2xl-3xl": clamp(4rem, calc(2.63rem + 6.83vw), 7.5rem)
+  "3xs-2xs": clamp(0.25rem, calc(0.09rem + 0.69vw), 0.63rem),
+  "2xs-xs": clamp(0.5rem, calc(0.31rem + 0.8vw), 0.94rem),
+  "xs-s": clamp(0.75rem, calc(0.54rem + 0.92vw), 1.25rem),
+  "s-m": clamp(1rem, calc(0.62rem + 1.6vw), 1.88rem),
+  "m-l": clamp(1.5rem, calc(1.07rem + 1.83vw), 2.5rem),
+  "l-xl": clamp(2rem, calc(0.71rem + 5.5vw), 5rem),
+  "xl-2xl": clamp(4rem, calc(2.5rem + 6.41vw), 7.5rem),
+  "2xl-3xl": clamp(6rem, calc(4.28rem + 7.33vw), 10rem),
+  "3xl-4xl": clamp(8rem, calc(6.07rem + 8.25vw), 12.5rem) "3xs":
+    clamp(0.25rem, calc(0.22rem + 0.11vw), 0.31rem),
+  "2xs": clamp(0.5rem, calc(0.45rem + 0.22vw), 0.63rem),
+  "xs": clamp(0.75rem, calc(0.67rem + 0.33vw), 0.94rem),
+  "s": clamp(1rem, calc(0.9rem + 0.44vw), 1.25rem),
+  "m": clamp(1.5rem, calc(1.34rem + 0.66vw), 1.88rem),
+  "l": clamp(2rem, calc(1.79rem + 0.88vw), 2.5rem),
+  "xl": clamp(3rem, calc(2.69rem + 1.33vw), 3.75rem),
+  "2xl": clamp(6rem, calc(5.38rem + 2.65vw), 7.5rem),
+  "3xl": clamp(11rem, calc(9.86rem + 4.86vw), 13.75rem),
+  // One-up pairs
+  "3xs-2xs": clamp(0.25rem, calc(0.09rem + 0.66vw), 0.63rem),
+  "2xs-xs": clamp(0.5rem, calc(0.32rem + 0.77vw), 0.94rem),
+  "xs-s": clamp(0.75rem, calc(0.54rem + 0.88vw), 1.25rem),
+  "s-m": clamp(1rem, calc(0.64rem + 1.55vw), 1.88rem),
+  "m-l": clamp(1.5rem, calc(1.09rem + 1.77vw), 2.5rem),
+  "l-xl": clamp(2rem, calc(1.27rem + 3.09vw), 3.75rem),
+  "xl-2xl": clamp(3rem, calc(1.14rem + 7.96vw), 7.5rem),
+  "2xl-3xl": clamp(6rem, calc(2.79rem + 13.7vw), 13.75rem)
 );
 
 /**
@@ -49,10 +67,10 @@ $space-size-scale: (
 $gorko-colors: (
   "white": #fff,
   "black": #0a101c,
-  "blue-200": #0699ff,
+  "blue-200": #2b1ce5,
   "blue-400": #005c9a,
-  "blue-600": #093960,
-  "red": #ff334b,
+  "blue-600": #0b1835,
+  "red": #ff3350,
 );
 
 /**
@@ -81,8 +99,7 @@ $gorko-config: (
   ),
   "font": (
     "items": (
-      "head": '"Bebas Neue", Impact, "Franklin Gothic Bold", sans-serif;',
-      "base": '"Roboto", sans-serif',
+      "base": '"Montserrat", sans-serif',
     ),
     "output": "standard",
     "property": "font-family",
@@ -103,7 +120,6 @@ $gorko-config: (
   ),
   "weight": (
     "items": (
-      "light": 300,
       "regular": 400,
       "medium": 500,
       "bold": 700,

@@ -1,0 +1,19 @@
+.button {
+  @include apply-utility("weight", "bold");
+  @include apply-utility("leading", "flat");
+  text-decoration: none;
+  display: inline-block;
+  font-size: var(--step-1);
+  color: var(--color-white);
+  background: var(--color-black);
+  border: 1px solid;
+  border-image: linear-gradient(var(--color-red), var(--color-blue-200)) 1;
+  padding-inline: var(--space-m);
+  padding-block: var(--space-xs);
+  text-transform: uppercase;
+
+  &:hover {
+    background: var(--color-white);
+    color: var(--color-black);
+  }
+}

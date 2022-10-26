@@ -15,10 +15,15 @@ h2,
 h3,
 h4 {
   @include apply-utility("leading", "flat");
+  @include apply-utility("weight", "medium");
+  text-transform: uppercase;
 }
 
 //Utilities
+@import "utilities/center-text";
 @import "utilities/sr-only";
+@import "utilities/opaque";
+@import "utilities/spaced-out";
 @import "utilities/uppercase";
 
 //Layout
@@ -29,5 +34,6 @@ h4 {
 
 //Blocks
 @import "blocks/acc-list";
+@import "blocks/button";
 @import "blocks/main-nav";
 @import "blocks/plain-html";

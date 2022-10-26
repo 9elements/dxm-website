@@ -28,7 +28,7 @@ class Point {
     } else {
       this.speed = {
         x: speed * -0.5 + Math.random() * speed,
-        y: speed * -0.5 + Math.random() * 0.6,
+        y: speed * -0.5 + Math.random() * speed,
       };
       this.isMousePoint = false;
     }

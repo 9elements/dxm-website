@@ -1,28 +1,36 @@
-nav.main-nav {
+.main-nav {
   width: 100vw;
-  height: 100vh;
-  background-color: var(--color-blue-200);
   top: 0;
   left: 0;
-  position: fixed;
+  position: relative;
+  margin-block-end: var(--space-l);
   z-index: 900;
   text-align: left;
   color: var(--color-white);
   overflow: auto;
   overflow-x: hidden;
-  display: none;
+
+  .js-active & {
+    position: fixed;
+    margin-block-end: 0;
+    min-height: 7.5rem;
+  }
 
   a {
     text-decoration: none;
   }
 
   .first-level {
-    width: 90%;
+    background-color: var(--color-blue-200);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
     min-height: 100vh;
-    min-height: 100dhv;
-    max-width: 60em;
+    min-height: 100dvh;
     margin: 0 auto;
-    padding: 6em 0;
+    padding-block: 6rem;
+    padding-inline: max(var(--space-m), (100% - 60rem) / 2);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -98,5 +106,19 @@ nav.main-nav {
         }
       }
     }
+  }
+
+  [aria-expanded="false"] + .first-level {
+    display: none;
+  }
+
+  button {
+    position: absolute;
+    z-index: 2;
+    right: var(--space-m);
+    top: var(--space-m);
+    background: none;
+    border: none;
+    color: var(--color-white);
   }
 }

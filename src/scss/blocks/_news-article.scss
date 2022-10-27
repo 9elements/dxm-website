@@ -31,7 +31,7 @@
             inset: 0;
             border: 2px solid transparent;
             background-image: linear-gradient(var(--color-black), var(--color-black)),
-            linear-gradient(var(--color-red),var(--color-red));
+            linear-gradient(180deg, var(--color-blue-200), var(--color-red));
             background-origin: padding-box, border-box;
             background-repeat: no-repeat, no-repeat;
             background-size: 0 100%;

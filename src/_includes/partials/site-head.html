@@ -1,5 +1,7 @@
 <header class="site-head">
-  <div class="logo"></div>
+  <a href="/" aria-label="Startseite" class="site-head__brand">
+        {% include "partials/brand.svg" %}
+  </a>
   <nav id="mainnav" class="main-nav" aria-label="Main">
     <ul class="cluster | first-level" role="list">
       {% for item in navigation.items %}
@@ -23,9 +25,9 @@
 
   <template id="burger-template">
     <button type="button" aria-expanded="false" aria-label="Menu" aria-controls="mainnav">
-      <svg width="24" height="24" aria-hidden="true">
-        <path fill="#fff" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z">
-      </svg>
+      <span class="stripe first"></span>
+      <span class="stripe second"></span>
+      <span class="text weight-bold uppercase"></span>
     </button>
   </template>
 </header>

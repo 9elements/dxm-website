@@ -19,13 +19,14 @@ h4 {
 }
 
 #main-content {
-  margin-block-start: var(--space-3xl-4xl);
+  margin-block-start: var(--space-xl-2xl);
 }
 
 //Utilities
 @import "utilities/center-text";
-@import "utilities/sr-only";
+@import "utilities/gradient-line-vertical";
 @import "utilities/opaque";
+@import "utilities/sr-only";
 @import "utilities/spaced-out";
 @import "utilities/uppercase";
 

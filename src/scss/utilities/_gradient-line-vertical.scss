@@ -12,5 +12,6 @@
     height: max(calc(var(--stack-space, 5rem) - 4rem), 1rem);
     width: 2px;
     background: linear-gradient(180deg, #ff006a 0%, #291ad8 100%);
+    left: 50%;
   }
 }

@@ -1,13 +1,12 @@
 .button {
-  @include apply-utility("weight", "bold");
+  @include apply-utility("weight", "light");
   @include apply-utility("leading", "flat");
   text-decoration: none;
   display: inline-block;
-  font-size: var(--step-1);
-  color: var(--color-white);
+  font-size: var(--text-step-0);
+  color: var(--color-blue);
   background: var(--color-black);
-  border: 1px solid;
-  border-image: linear-gradient(var(--color-red), var(--color-blue-200)) 1;
+  border: 1px solid var(--color-blue);
   padding-inline: var(--space-m);
   padding-block: var(--space-xs);
   text-transform: uppercase;
@@ -15,5 +14,10 @@
   &:hover {
     background: var(--color-white);
     color: var(--color-black);
+  }
+
+  &--small {
+    padding-inline: var(--space-2xs);
+    padding-block: var(--space-3xs);
   }
 }

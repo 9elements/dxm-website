@@ -19,13 +19,19 @@ h4 {
 }
 
 #main-content {
-  margin-block-start: var(--space-3xl-4xl);
+  margin-block-start: var(--space-xl-2xl);
+}
+
+*:focus-visible {
+  outline: 1px solid #ff006a;
+  outline-offset: 4px;
 }
 
 //Utilities
 @import "utilities/center-text";
-@import "utilities/sr-only";
+@import "utilities/gradient-line-vertical";
 @import "utilities/opaque";
+@import "utilities/sr-only";
 @import "utilities/spaced-out";
 @import "utilities/uppercase";
 
@@ -41,5 +47,6 @@ h4 {
 @import "blocks/nav";
 @import "blocks/news-article";
 @import "blocks/plain-html";
+@import "blocks/publikationen";
 @import "blocks/site-foot";
 @import "blocks/site-head";

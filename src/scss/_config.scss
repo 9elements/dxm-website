@@ -16,7 +16,7 @@ $gorko-size-scale: (
   "step-5": clamp(2.49rem, calc(1.3rem + 5.08vw), 5.26rem),
 );
 
-/* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1140,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6, */
+/* https://utopia.fyi/space/calculator?c=320,16,1.2,1140,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6|10|20,*/
 $space-size-scale: (
   // T-Shirt Sizes
   "3xs": clamp(0.25rem, calc(0.22rem + 0.11vw), 0.31rem),
@@ -29,6 +29,7 @@ $space-size-scale: (
   "2xl": clamp(6rem, calc(5.36rem + 2.75vw), 7.5rem),
   "3xl": clamp(8rem, calc(7.14rem + 3.67vw), 10rem),
   "4xl": clamp(10rem, calc(8.93rem + 4.58vw), 12.5rem),
+  "5xl": clamp(20rem, calc(18.05rem + 9.76vw), 25rem),
   // One-up pairs
   "3xs-2xs": clamp(0.25rem, calc(0.09rem + 0.69vw), 0.63rem),
   "2xs-xs": clamp(0.5rem, calc(0.31rem + 0.8vw), 0.94rem),
@@ -38,7 +39,8 @@ $space-size-scale: (
   "l-xl": clamp(2rem, calc(0.71rem + 5.5vw), 5rem),
   "xl-2xl": clamp(4rem, calc(2.5rem + 6.41vw), 7.5rem),
   "2xl-3xl": clamp(6rem, calc(4.28rem + 7.33vw), 10rem),
-  "3xl-4xl": clamp(8rem, calc(6.07rem + 8.25vw), 12.5rem)
+  "3xl-4xl": clamp(8rem, calc(6.07rem + 8.25vw), 12.5rem),
+  "4xl-5xl": clamp(10rem, calc(4.15rem + 29.27vw), 25rem)
 );
 
 /**
@@ -49,10 +51,8 @@ $space-size-scale: (
 $gorko-colors: (
   "white": #fff,
   "black": #0a101c,
-  "blue-200": #2b1ce5,
-  "blue-400": #005c9a,
-  "blue-600": #0b1835,
-  "red": #ff3350,
+  "blue": #0092ff,
+  "gradient": linear-gradient(180deg, #ff006a 0%, #291ad8 100%),
 );
 
 /**

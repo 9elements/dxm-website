@@ -3,17 +3,44 @@
   @include apply-utility("leading", "flat");
   text-decoration: none;
   display: inline-block;
-  font-size: var(--step-1);
-  color: var(--color-white);
-  background: var(--color-black);
-  border: 1px solid;
-  border-image: linear-gradient(var(--color-red), var(--color-blue-200)) 1;
+  font-size: var(--text-step-0);
+  color: var(--color-blue);
+  border: 1px solid var(--color-blue);
   padding-inline: var(--space-m);
   padding-block: var(--space-xs);
   text-transform: uppercase;
+  position: relative;
+  transition: 0.2s ease;
+  background-color: var(--color-black);
+
+  &--small {
+    @include apply-utility("weight", "regular");
+    padding-inline: var(--space-2xs);
+    padding-block: var(--space-3xs);
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: 2px solid transparent;
+    background: var(--color-blue);
+    opacity: 0;
+    transition: 0.2s ease-out;
+    z-index: -1;
+  }
 
   &:hover {
-    background: var(--color-white);
     color: var(--color-black);
+    background-color: transparent;
+
+    &::before {
+      transition: 0.2s ease-out;
+      width: 100%;
+      opacity: 1;
+    }
   }
 }

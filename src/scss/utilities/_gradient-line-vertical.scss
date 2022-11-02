@@ -1,0 +1,17 @@
+// wrapper to set a vertical gradient line between two sections
+// for best case, use a minimum of stack-xl
+
+.gradient-line-vertical {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    top: calc(100% + (5rem / 2));
+    height: max(calc(var(--stack-space, 5rem) - 5rem), 1rem);
+    width: 2px;
+    background: linear-gradient(180deg, #ff006a 0%, #291ad8 100%);
+    left: 50%;
+  }
+}

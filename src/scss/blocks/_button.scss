@@ -4,8 +4,8 @@
   text-decoration: none;
   display: inline-block;
   font-size: var(--text-step-0);
-  color: var(--color-blue);
-  border: 1px solid var(--color-blue);
+  color: var(--color-blue-600);
+  border: 1px solid var(--color-blue-600);
   padding-inline: var(--space-m);
   padding-block: var(--space-xs);
   text-transform: uppercase;
@@ -27,7 +27,7 @@
     top: 0;
     left: 0;
     border: 2px solid transparent;
-    background: var(--color-blue);
+    background: var(--color-blue-600);
     opacity: 0;
     transition: 0.2s ease-out;
     z-index: -1;

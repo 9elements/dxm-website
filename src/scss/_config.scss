@@ -51,8 +51,11 @@ $space-size-scale: (
 $gorko-colors: (
   "white": #fff,
   "black": #0a101c,
-  "blue": #0092ff,
-  "gradient": linear-gradient(180deg, #ff006a 0%, #291ad8 100%),
+  "blue-600": #0092ff,
+  "blue-700": #291ad8,
+  "blue-800": #002298,
+  "pink": #ff006a,
+  "gradient": linear-gradient(var(--color-pink), var(--blue-700)),
 );
 
 /**

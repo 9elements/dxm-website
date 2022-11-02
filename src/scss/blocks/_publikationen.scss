@@ -14,7 +14,6 @@
   }
 
   &__item {
-    transform-style: preserve-3d;
     position: relative;
     padding: var(--space-m);
 
@@ -47,8 +46,8 @@
     // ersetzen durch &--open wenn ready
     &:hover {
       .flip {
-        transform: translateX(35px) rotateY(90deg);
-        transform: rotateY(90deg);
+        transform: translateX(var(--space-l)) rotateY(90deg);
+        //transform: rotateY(90deg);
       }
 
       .publikationen__description {
@@ -80,20 +79,26 @@
     z-index: 2;
     aspect-ratio: 3/4;
     position: absolute;
-    display: flex;
+    width: 100%;
     border: 1px solid red;
     transform-origin: left top;
     transition: transform 0.3s ease-out;
+    transform-style: preserve-3d;
   }
 
   &__spine {
-    padding: var(--space-s);
     writing-mode: vertical-lr;
     transform-origin: right top;
     transform: rotateY(-90deg);
     width: var(--space-l);
-    margin-left: var(--space-l);
+    margin-left: calc(var(--space-l) * -1);
     background: linear-gradient(240deg, #ff006a 0%, #291ad8 100%);
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    height: 100%;
+    font-size: 12px;
 
     span {
       display: block;
@@ -113,6 +118,7 @@
     aspect-ratio: 3/4;
     transform-origin: left top;
     transition: transform 0.3s ease-out;
+    width: 100%;
 
     img {
       width: 100%;

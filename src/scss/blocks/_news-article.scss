@@ -44,9 +44,16 @@
       }
   }
 
-  &__title {
-    position: relative;
-    line-height: 1;
+  &__headline {
+
+    & > * + * {
+      margin-top: var(--space-xs);
+    }
+
+    &__title {
+      position: relative;
+      line-height: 1;
+    }
   }
 
   &__link {

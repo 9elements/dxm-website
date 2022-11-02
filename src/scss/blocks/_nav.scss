@@ -6,7 +6,7 @@
   margin-block-end: var(--space-l);
   z-index: 900;
   text-align: left;
-  color: var(--color-white);
+  color: var(--color-black);
   overflow: auto;
   overflow-x: hidden;
 
@@ -54,7 +54,7 @@
     }
 
     & > * + * {
-      border-top: 2px solid rgba(0, 0, 0, 0.2);
+      border-top: 2px solid rgba(0, 0, 0, 0.15);
     }
 
     .second-level {
@@ -84,7 +84,7 @@
         height: 100%;
         position: absolute;
         left: 2px;
-        background-color: var(--color-white);
+        background-color: var(--color-black);
 
         @include media-query("md") {
           position: unset;

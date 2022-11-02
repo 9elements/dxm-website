@@ -8,14 +8,41 @@ permalink: /publikationen/
   <div class="section" style="padding-block: var(--space-3xl);">
     <div class="wrapper | stack-3xl-4xl">
       <div class="gradient-line-vertical">
-        <h1 class="text-step-5 color-white cxt uppercase center-text">Publikationen</h1>
+        <h1 class="text-step-5 color-white cxt uppercase center-text leading-flat">Publika&shy;tionen</h1>
       </div>
 
-      <div class="grid-switcher">
-        <div class="publikation">
-          <img src="">
-          <p class="text-step-0">Digitale Gesundheitsan-wendungen (DiGA)</p>
-          <a href="#" alt="Mehr zu Digitale Gesundheitsanwendungen (DIGA)" class="button button--small">Details</a>
+      <div class="publikationen stack-xl">
+        <div class="publikationen__filter" style="max-width: 60rem;">
+          <a href="#" class="button" alt="filter">Hogrefe</a>
+          <a href="#" class="button" alt="filter">MWV Berlin</a>
+          <a href="#" class="button" alt="filter">Medhochzwei</a>
+          <a href="#" class="button" alt="filter">Springer</a>
+          <a href="#" class="button" alt="filter">Wiley</a>
+          <a href="#" class="button" alt="filter">UTB</a>
+          <a href="#" class="button" alt="filter">Duncker & Humblot</a>
+          <a href="#" class="button" alt="filter">Haufe</a>
+        </div>
+        <div class="grid-switcher" style="
+              --gs-columns-small: 1;
+              --gs-bp-medium: 50rem;
+              --gs-columns-medium: 2;
+              --gs-bp-large: 70rem;
+              --gs-columns-large: 3;
+              --gs-gap: 0.5rem;
+              --gs-gap: var(--space-l-xl);
+        ">
+          {% set pubopen = "publikationen__item--open" %}
+          {% include "partials/publikation.html" %}
+          {% set pubopen = "" %}
+          {% include "partials/publikation.html" %}
+          {% include "partials/publikation.html" %}
+          {% include "partials/publikation.html" %}
+          {% include "partials/publikation.html" %}
+          {% include "partials/publikation.html" %}
+          {% include "partials/publikation.html" %}
+          {% include "partials/publikation.html" %}
+          {% include "partials/publikation.html" %}
+          {% include "partials/publikation.html" %}
         </div>
       </div>
     </div>

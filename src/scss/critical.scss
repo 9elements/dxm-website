@@ -22,6 +22,11 @@ h4 {
   margin-block-start: var(--space-xl-2xl);
 }
 
+*:focus-visible {
+  outline: 1px solid #ff006a;
+  outline-offset: 4px;
+}
+
 //Utilities
 @import "utilities/center-text";
 @import "utilities/gradient-line-vertical";
@@ -42,6 +47,6 @@ h4 {
 @import "blocks/nav";
 @import "blocks/news-article";
 @import "blocks/plain-html";
-@import "blocks/publikation";
+@import "blocks/publikationen";
 @import "blocks/site-foot";
 @import "blocks/site-head";

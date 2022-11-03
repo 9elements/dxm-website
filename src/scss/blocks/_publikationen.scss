@@ -43,8 +43,7 @@
       }
     }
 
-    // ersetzen durch &--open wenn ready
-    &:hover {
+    &--open {
       .flip {
         transform: translateX(var(--space-l)) rotateY(90deg);
         //transform: rotateY(90deg);
@@ -58,6 +57,16 @@
       &::before {
         background-size: 100% 100%, 180% 100%;
         opacity: 1;
+      }
+
+      .publikationen__actions {
+        & > div:first-child {
+          display: none;
+        }
+
+        & > div:last-child {
+          display: flex;
+        }
       }
     }
   }
@@ -80,7 +89,6 @@
     aspect-ratio: 3/4;
     position: absolute;
     width: 100%;
-    border: 1px solid red;
     transform-origin: left top;
     transition: transform 0.3s ease-out;
     transform-style: preserve-3d;
@@ -98,18 +106,38 @@
     top: 0;
     white-space: nowrap;
     height: 100%;
-    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
 
     span {
       display: block;
       transform: rotate(180deg);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 51, 75, 0.2684) 0%,
+        rgba(0, 0, 0, 0) 11.98%,
+        rgba(0, 0, 0, 0) 88.54%,
+        rgba(0, 0, 0, 0.2684) 100%,
+        rgba(0, 0, 0, 0.2684) 100%
+      );
     }
   }
 
   &__description {
     opacity: 0;
     transition: 0.2s ease;
-    padding-left: var(--space-l);
+    padding-left: calc(var(--space-l) + var(--space-m));
   }
 
   &__cover {
@@ -125,6 +153,32 @@
       display: block;
       object-fit: cover;
       aspect-ratio: 3/4;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.37) 0%,
+        rgba(0, 0, 0, 0) 2.03%,
+        rgba(0, 0, 0, 0.19) 2.94%,
+        rgba(0, 0, 0, 0) 3.81%
+      );
+    }
+  }
+
+  &__actions {
+    & > div {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-3xs);
+    }
+
+    & > div:last-child {
+      display: none;
     }
   }
 

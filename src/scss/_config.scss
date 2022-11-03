@@ -8,6 +8,7 @@
 
 /* https://utopia.fyi/type/calculator?c=320,16,1.2,1140,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
 $gorko-size-scale: (
+  "step---1": clamp(0.83rem, calc(0.77rem + 0.33vw), 1rem),
   "step-0": clamp(1rem, calc(0.89rem + 0.46vw), 1.25rem),
   "step-1": clamp(1.2rem, calc(1rem + 0.85vw), 1.67rem),
   "step-2": clamp(1.44rem, calc(1.1rem + 1.43vw), 2.22rem),

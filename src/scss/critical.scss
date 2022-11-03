@@ -23,7 +23,7 @@ h4 {
 }
 
 *:focus-visible {
-  outline: 1px solid #ff006a;
+  outline: 2px dashed #ff006a;
   outline-offset: 4px;
 }
 
@@ -53,5 +53,6 @@ h4 {
 @import "blocks/news-article";
 @import "blocks/plain-html";
 @import "blocks/publikationen";
+@import "blocks/second-visual";
 @import "blocks/site-foot";
 @import "blocks/site-head";

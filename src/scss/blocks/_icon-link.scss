@@ -1,52 +1,87 @@
 .icon-link{
+    $block: &;
     position: relative;
-    border: 2px solid;
-    border-image-source: var(--color-gradient);
-    border-image-slice: 1;
-    aspect-ratio: 1 / 1;
-    padding: var(--space-s);
-    max-width: 24rem;
+    width: min(24rem, 100%);
     margin-inline: auto;
     
-    svg {
+    
+    &__icon {
         position: relative;
-        margin-inline: auto;
-        height: 100%;
+        border: 2px solid;
+        border-image-source: var(--color-gradient);
+        border-image-slice: 1;
+        aspect-ratio: 1 / 1;
+        padding: var(--space-s);
+
+        svg {
+            position: relative;
+            margin-inline: auto;
+            height: 100%;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(var(--color-black), var(--color-black)),
+              var(--color-gradient);
+            background-origin: padding-box, border-box;
+            background-repeat: no-repeat, no-repeat;
+            background-size: 0 100%;
+            opacity: 0;
+            transition: opacity 0.3s ease-out, background-size 0.1s 0.4s ease-out;
+          }
+
+        &::after{
+            content: "";
+            position: absolute;
+            background-color: var(--color-blue-600);
+            opacity: 0.2;
+            filter: blur(40px);
+            inset: 20%;
+        }
+    }
+
+    &__text{
+        padding-block: var(--space-s);
+        position: relative;
+        width: 100%;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(var(--color-blue-700), var(--color-blue-800)),
+            linear-gradient(var(--color-blue-700), var(--color-blue-800));
+            background-origin: padding-box, border-box;
+            background-repeat: no-repeat, no-repeat;
+            background-size: 0 100%;
+            opacity: 0;
+            transition: opacity 0.3s ease-out, background-size 0.1s 0.4s ease-out;
+            z-index: -1;
+          }
     }
 
     a {
+        margin: 0;
         position: absolute;
         inset: 0;
     }
-
-    &::after{
-        content: "";
-        position: absolute;
-        background-color: var(--color-blue-600);
-        opacity: 0.2;
-        filter: blur(40px);
-        inset: 20%;
-    }
-
-    &::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image: linear-gradient(var(--color-black), var(--color-black)),
-          var(--color-gradient);
-        background-origin: padding-box, border-box;
-        background-repeat: no-repeat, no-repeat;
-        background-size: 0 100%;
-        opacity: 0;
-        transition: opacity 0.3s ease-out, background-size 0.1s 0.4s ease-out;
-      }
 
     &:hover {
 
-        &::before {
-            transition: background-size 0.3s ease-out;
-            background-size: 100% 100%, 180% 100%;
-            opacity: 1;
+        .icon-link{
+            &__icon::before {
+                transition: background-size 0.3s ease-out;
+                background-size: 100% 100%, 180% 100%;
+                opacity: 1;
+            }
+
+            &__text::before{
+                transition: background-size 0.3s ease-out;
+                background-size: 100% 100%, 180% 100%;
+                opacity: 1;
+            }
         }
     }
 }

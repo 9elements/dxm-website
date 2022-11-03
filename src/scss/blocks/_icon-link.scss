@@ -4,14 +4,14 @@
     width: min(24rem, 100%);
     margin-inline: auto;
     
-    
     &__icon {
+        padding: 1rem;
         position: relative;
         border: 2px solid;
         border-image-source: var(--color-gradient);
         border-image-slice: 1;
         aspect-ratio: 1 / 1;
-        padding: var(--space-s);
+        padding: var(--space-m);
 
         svg {
             position: relative;
@@ -71,10 +71,6 @@
     &:hover {
 
         .icon-link{            
-            &__icon{
-                --color-blue-600: var(--color-pink);
-
-            }
 
             &__icon::before {
                 transition: background-size 0.3s ease-out;

@@ -70,7 +70,12 @@
 
     &:hover {
 
-        .icon-link{
+        .icon-link{            
+            &__icon{
+                --color-blue-600: var(--color-pink);
+
+            }
+
             &__icon::before {
                 transition: background-size 0.3s ease-out;
                 background-size: 100% 100%, 180% 100%;

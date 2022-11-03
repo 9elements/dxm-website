@@ -1,0 +1,14 @@
+.icon-link{
+    border: 2px solid;
+    border-image-source: var(--color-gradient);
+    border-image-slice: 1;
+    aspect-ratio: 1 / 1;
+    padding: var(--space-s);
+    max-width: 24rem;
+    margin-inline: auto;
+    
+    svg {
+        margin-inline: auto;
+        height: 100%;
+    }
+}

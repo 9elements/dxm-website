@@ -31,16 +31,20 @@ permalink: /publikationen/
               --gs-gap: 0.5rem;
               --gs-gap: var(--space-l-xl);
         ">
-          {% include "partials/publikation.html" %}
-          {% include "partials/publikation.html" %}
-          {% include "partials/publikation.html" %}
-          {% include "partials/publikation.html" %}
-          {% include "partials/publikation.html" %}
-          {% include "partials/publikation.html" %}
-          {% include "partials/publikation.html" %}
-          {% include "partials/publikation.html" %}
-          {% include "partials/publikation.html" %}
-          {% include "partials/publikation.html" %}
+          {% for item in range(0, 2) %}
+            {% set cover = "/images/books/digitale-medizin.jpg" %}
+            {% set bookTitle = "Digitale Medizin" %}
+            {% include "partials/publikation.html" %}
+            {% set cover = "/images/books/digitale-transformation.jpg" %}
+            {% set bookTitle = "Digitale Transformation im Gesundheitswesen" %}
+            {% include "partials/publikation.html" %}
+            {% set cover = "/images/books/future-skills.jpg" %}
+            {% set bookTitle = "Future Skills in Medizin und Gesundheit" %}
+            {% include "partials/publikation.html" %}
+            {% set cover = "/images/books/rethink-healthcare.jpg" %}
+            {% set bookTitle = "Reth!nk Healthcare" %}
+            {% include "partials/publikation.html" %}
+          {% endfor %}
         </div>
       </div>
     </div>

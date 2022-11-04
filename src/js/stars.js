@@ -9,11 +9,11 @@ let linesToDraw = [];
 let mousePoint = {};
 let stars;
 
-const speed = 2;
+const speed = 0.7;
 const initDelay = 10;
 const maxPoints = 100;
 const pointRatio = 0.06;
-const maxAlpha = 0.2;
+let maxAlpha = 1;
 
 class Point {
   constructor(x, y, isMousePoint) {
@@ -130,7 +130,7 @@ function drawPoints() {
   points.forEach((p) => {
     ctx.fillStyle = `hsla(227, 100%, 51%, ${maxAlpha})`;
     ctx.beginPath();
-    ctx.arc(p.x, p.y, 6, 0, 2 * Math.PI);
+    ctx.arc(p.x, p.y, 4, 0, 2 * Math.PI);
     ctx.fill();
   });
   if (mousePoint.isMousePoint) {

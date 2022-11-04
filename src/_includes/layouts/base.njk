@@ -39,7 +39,7 @@
   </head>
 
   <body>
-    <div id="canvas-container">
+    <div id="canvas-container" class="stars">
       <canvas id="canvas"></canvas>
     </div>
     {% include "partials/site-head.html" %}
@@ -49,56 +49,28 @@
     </main>
 
     {% include "partials/site-foot.html" %}
+
+    <script src="/js/gsap.min.js"></script>
+    <script src="/js/ScrollTrigger.min.js"></script>
     <script src="/js/stars.js"></script>
+    <script src="/js/nav.js"></script>
     <script>
-    const nav = document.querySelector('#mainnav')
-    const list = nav.querySelector('ul');
-    const burgerClone = document.querySelector('#burger-template').content.cloneNode(true);
-    const button = burgerClone.querySelector('button');
-    const navLogo = document.querySelector('.site-head__brand');
-    const menuLabel = document.querySelector('.site-head__menu-label');
-    const navListItem = Array.from(
-      document.querySelectorAll("#mainnav ul.first-level > li")
-    );
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.set(".stars", {
+        opacity: 0.6
+      })
 
-
-    // Toggle aria-expanded attribute
-    button.addEventListener('click', e => {
-      // Get the aria-expanded attribute and check if the value is "false"
-      // If it's "false", isOpen is true
-      // If it's "true", isOpen is false
-      const isOpen = button.getAttribute('aria-expanded') === "false"
-      // Change the aria-expanded value accordingly
-      button.setAttribute('aria-expanded', isOpen);
-      // if menu is open, hide logo & show menu label
-      navLogo.classList.toggle("hide");
-      menuLabel.classList.toggle("show");
-    });
-
-    // Hide list on keydown Escape
-    nav.addEventListener('keyup', e => {
-      if (e.code === 'Escape') {
-        button.setAttribute('aria-expanded', false);
-      }
-    });
-
-    // Add the button to the page
-    nav.insertBefore(burgerClone, list);
-
-    // while hovering a list item, change the background of navigation
-    navListItem.forEach((item) => {
-
-      item.addEventListener("mouseover", (e) => {
-        list.classList.add("item-hovered");
+      gsap.to(".stars", {
+        scrollTrigger: {
+          trigger: "body",
+          start: "top top",
+          end: "top -75%",
+          toggleActions: "restart pause reverse pause",
+          scrub: true
+        },
+        opacity: 0.15,
       });
+    </script>
 
-      item.addEventListener("mouseleave", (e) => {
-        list.classList.remove("item-hovered");
-      });
-    });
-
-</script>
-
-    
   </body>
 </html>

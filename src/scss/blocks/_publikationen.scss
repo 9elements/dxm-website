@@ -1,15 +1,47 @@
 .publikationen {
   &__filter {
     display: flex;
-    flex-wrap: wrap;
-    margin-inline: auto;
+    flex-wrap: nowrap;
     gap: var(--space-2xs-xs);
-    justify-content: center;
+    justify-content: flex-start;
+    margin-left: calc(var(--space-m) * -1);
+    width: 100vw;
+    overflow-x: auto;
+    padding: var(--space-m);
 
     a {
       flex-shrink: 0;
-      width: 100%;
       text-align: center;
+    }
+
+    &::-webkit-scrollbar-track {
+      outline: 1px solid var(--color-pink);
+      background: transparent;
+      border-radius: 10px;
+      height: 60px;
+    }
+
+    &::-webkit-scrollbar {
+      height: 12px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 20px;
+      background-image: var(--color-gradient-horizontal);
+    }
+  }
+
+  @include media-query("md") {
+    &__filter {
+      justify-content: center;
+      width: unset;
+      flex-wrap: wrap;
+      margin-inline: auto;
+      padding: 0;
+
+      a {
+        width: auto;
+      }
     }
   }
 
@@ -179,14 +211,6 @@
 
     & > div:last-child {
       display: none;
-    }
-  }
-
-  @include media-query("md") {
-    &__filter {
-      a {
-        width: auto;
-      }
     }
   }
 }

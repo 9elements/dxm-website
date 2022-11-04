@@ -13,22 +13,6 @@
       flex-shrink: 0;
       text-align: center;
     }
-
-    &::-webkit-scrollbar-track {
-      outline: 1px solid var(--color-pink);
-      background: transparent;
-      border-radius: 10px;
-      height: 60px;
-    }
-
-    &::-webkit-scrollbar {
-      height: 12px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      border-radius: 20px;
-      background-image: var(--color-gradient-horizontal);
-    }
   }
 
   @include media-query("md") {

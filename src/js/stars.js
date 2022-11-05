@@ -11,8 +11,10 @@ let stars;
 
 const speed = 0.7;
 const initDelay = 10;
-const maxPoints = 100;
-const pointRatio = 0.06;
+//const maxPoints = 100;
+//const pointRatio = 0.06;
+const maxPoints = 150;
+const pointRatio = 0.07;
 let maxAlpha = 1;
 
 class Point {
@@ -196,6 +198,7 @@ function movePoints() {
     p.y = p.y + p.speed.y;
     //checkPointPosition(p, i);
     closeXY(p);
+    closeToCenter(p);
   });
 }
 
@@ -209,6 +212,29 @@ function closeXY(p) {
   ) {
     p.speed.y = p.speed.y * -1;
   }
+}
+
+function closeToCenter(p) {
+  const random = Math.random() * 1000;
+  if (
+    p.speed.x > 0 &&
+    p.x > canvas.width / 2 - canvas.width / 8 &&
+    p.x < canvas.width / 2 &&
+    random > 999.4
+  ) {
+    p.speed.x = p.speed.x * -1;
+  }
+
+  if (
+    p.speed.x < 0 &&
+    p.x < canvas.width / 2 + canvas.width / 8 &&
+    p.x > canvas.width / 2 &&
+    random > 999.4
+  ) {
+    p.speed.x = p.speed.x * -1;
+  }
+
+  //console.log(random);
 }
 
 window.addEventListener("resize", (e) => {

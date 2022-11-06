@@ -9,12 +9,12 @@ let linesToDraw = [];
 let mousePoint = {};
 let stars;
 
-const speed = 0.7;
+const speed = 0.2;
 const initDelay = 10;
 //const maxPoints = 100;
 //const pointRatio = 0.06;
 const maxPoints = 150;
-const pointRatio = 0.07;
+const pointRatio = 0.06;
 let maxAlpha = 1;
 
 class Point {

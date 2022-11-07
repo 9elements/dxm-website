@@ -19,6 +19,16 @@
       ]
     },
     {
+      "text": "Media",
+      "url": "/media/",
+      "children": [
+        {
+          "text": "test",
+          "url": "/test/"
+        }
+      ]
+    },
+    {
       "text": "Leistungen",
       "url": "/leistungen/"
     },

@@ -1,0 +1,30 @@
+.logo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-l-xl);
+  align-items: center;
+  justify-content: center;
+
+  @include media-query("lg") {
+    justify-content: space-between;
+  }
+
+  img {
+    flex-shrink: 0;
+    width: 100%;
+    height: auto;
+    max-width: 10rem;
+    max-height: 10rem;
+    object-fit: contain;
+
+    @include media-query("md") {
+      max-width: 20rem;
+      max-height: 20rem;
+    }
+
+    @include media-query("lg") {
+      max-width: 30rem;
+      max-height: 30rem;
+    }
+  }
+}

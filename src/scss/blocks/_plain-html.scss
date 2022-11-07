@@ -16,16 +16,6 @@
     text-transform: uppercase;
   }
 
-  h5 {
-    @include apply-utility("text", "step-0");
-    @include apply-utility("weight", "bold");
-    color: var(--color-blue-600);
-
-    & + p {
-      margin-top: 0.2em;
-    }
-  }
-
   > * + * {
     margin-top: 2em;
     margin-bottom: 0;
@@ -44,6 +34,11 @@
 
     & + p {
       margin-top: 1em;
+    }
+
+    strong {
+      @include apply-utility("weight", "bold");
+      color: var(--color-blue-600);
     }
   }
 

@@ -1,0 +1,36 @@
+.image-text-teaser {
+  display: flex;
+  align-items: center;
+  gap: var(--space-l-xl);
+  flex-wrap: wrap;
+  text-align: center;
+
+  @include media-query("md") {
+    text-align: left;
+  }
+
+  &:nth-child(odd) {
+    flex-direction: row-reverse;
+  }
+
+  .image {
+    flex-basis: 24rem;
+    flex-grow: 1;
+
+    img {
+      width: 100%;
+      height: auto;
+      max-width: clamp(10rem, 40vw, 40rem);
+      margin-inline: auto;
+
+      @include media-query("md") {
+        margin-inline: unset;
+      }
+    }
+  }
+
+  .content {
+    flex-basis: 24rem;
+    flex-grow: 1;
+  }
+}

@@ -11,13 +11,35 @@ Example Syntax
 */
 
 .acc-list {
-  border: 1px solid var(--color-blue-600);
+  border: 2px solid var(--color-blue-600);
   //border-image: linear-gradient(var(--color-white), var(--color-blue-600)) 1;
   background: var(--color-black);
+  position: relative;
+
+  &::before,
+  &::after {
+    content: "";
+    background-color: var(--color-blue-600);
+    position: absolute;
+  }
+
+  &::before {
+    width: var(--space-l-xl);
+    height: 2px;
+    bottom: calc(100% + var(--space-l-xl) / 2 + 1.5rem);
+  }
+
+  &::after {
+    height: var(--space-l-xl);
+    width: 2px;
+    bottom: calc(100% + 1.5rem);
+    left: calc(var(--space-l-xl) / 2);
+  }
 
   summary {
     list-style: none;
-    padding: var(--space-s);
+    padding-inline: var(--space-m-l);
+    padding-block-start: var(--space-s-m);
     min-height: 4em;
     cursor: pointer;
 
@@ -31,12 +53,36 @@ Example Syntax
     }
   }
 
-  ul {
-    padding: var(--space-s);
+  dl {
+    padding-inline: var(--space-m-l);
+    padding-block-end: var(--space-xs);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    position: relative;
 
-    li {
-      padding-block: var(--space-3xs);
-      border-block-start: 2px solid currentColor;
+    dt,
+    dd {
+      p {
+        padding-block: var(--space-s);
+        max-width: 50ch;
+      }
+    }
+
+    dt {
+      flex-basis: 14rem;
+
+      &::before {
+        content: "";
+        width: calc(100% - var(--space-m-l) * 2);
+        height: 2px;
+        background-color: var(--color-black);
+        position: absolute;
+      }
+    }
+
+    dd {
+      flex-basis: 70%;
     }
   }
 

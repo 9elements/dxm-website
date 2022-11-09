@@ -4,10 +4,11 @@ layout: "layouts/home.njk"
 permalink: /newsletter/
 ---
 
+{% set fields = ctfl.pageNewsletter %}
 <div class="section" style="padding-block: var(--space-3xl);">
     <div class="wrapper | stack-3xl-4xl">
       <div class="gradient-line-vertical center-text">
-        <h1 class="text-step-5 color-white cxt uppercase center-text leading-flat">Newsletter</h1>
+        <h1 class="text-step-5 color-white cxt uppercase center-text leading-flat">{{fields.title}}</h1>
       </div>
           
             <div class="grid-switcher" role="list" style="
@@ -21,20 +22,61 @@ permalink: /newsletter/
             --sidebar-threshold: 20rem;
             --sidebar-width: 25rem;
             ">
+            {% for article in ctfl.newsletterArticle %}
                 <article class="news-article sidebar-right">
                     <div class="news-article__img">
-                        <img src="/images/newsletter-01.jpg" alt="Ein süßer Hund">
+                        <img src="{{article.fields.image.fields.file.url}}" alt="Ein süßer Hund">
                     </div>
                     <div class="news-article__headline text-step-2">
-                        <p class="news-article__headline__title weight-bold">No. 6</p>
+                        <p class="news-article__headline__title weight-bold">No. {{article.fields.articleNumber}}</p>
                         <div class="gradient-line-horizontal"></div>
                         <h2 class="news-article__headline__title weight-regular text-step-2">
-                            Bürokratiemonster im Gesundheitswesen
+                            {{article.fields.title}}
                         </h2>
-                        <a class="news-article__link" href="#"><span class="sr-only">Bürokratiemonster im Gesundheitswesen</span></a>
+                        <a class="news-article__link" href="{{article.fields.link}}"><span class="sr-only">{{article.fields.title}}</span></a>
+                    </div>
+                </article>
+                                <article class="news-article sidebar-right">
+                    <div class="news-article__img">
+                        <img src="{{article.fields.image.fields.file.url}}" alt="Ein süßer Hund">
+                    </div>
+                    <div class="news-article__headline text-step-2">
+                        <p class="news-article__headline__title weight-bold">No. {{article.fields.articleNumber}}</p>
+                        <div class="gradient-line-horizontal"></div>
+                        <h2 class="news-article__headline__title weight-regular text-step-2">
+                            {{article.fields.title}}
+                        </h2>
+                        <a class="news-article__link" href="{{article.fields.link}}"><span class="sr-only">{{article.fields.title}}</span></a>
                     </div>
                 </article> 
-                <article class="news-article sidebar-right">
+                                <article class="news-article sidebar-right">
+                    <div class="news-article__img">
+                        <img src="{{article.fields.image.fields.file.url}}" alt="Ein süßer Hund">
+                    </div>
+                    <div class="news-article__headline text-step-2">
+                        <p class="news-article__headline__title weight-bold">No. {{article.fields.articleNumber}}</p>
+                        <div class="gradient-line-horizontal"></div>
+                        <h2 class="news-article__headline__title weight-regular text-step-2">
+                            {{article.fields.title}}
+                        </h2>
+                        <a class="news-article__link" href="{{article.fields.link}}"><span class="sr-only">{{article.fields.title}}</span></a>
+                    </div>
+                </article> 
+                                <article class="news-article sidebar-right">
+                    <div class="news-article__img">
+                        <img src="{{article.fields.image.fields.file.url}}" alt="Ein süßer Hund">
+                    </div>
+                    <div class="news-article__headline text-step-2">
+                        <p class="news-article__headline__title weight-bold">No. {{article.fields.articleNumber}}</p>
+                        <div class="gradient-line-horizontal"></div>
+                        <h2 class="news-article__headline__title weight-regular text-step-2">
+                            {{article.fields.title}}
+                        </h2>
+                        <a class="news-article__link" href="{{article.fields.link}}"><span class="sr-only">{{article.fields.title}}</span></a>
+                    </div>
+                </article> 
+                {% endfor %}
+                {# <article class="news-article sidebar-right">
                     <div class="news-article__img">
                         <img src="/images/newsletter-03.jpg" alt="Ein süßer Hund">
                     </div>
@@ -72,7 +114,7 @@ permalink: /newsletter/
                         </h2>
                         <a class="news-article__link" href="#"><span class="sr-only">Bürokratiemonster im Gesundheitswesen</span></a>
                     </div>
-                </article> 
+                </article>  #}
             </div>
             
     </div>

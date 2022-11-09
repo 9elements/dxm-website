@@ -14,17 +14,6 @@
   background-color: var(--color-black);
   cursor: pointer;
 
-  &--small {
-    @include apply-utility("weight", "regular");
-    padding-inline: var(--space-2xs);
-    padding-block: var(--space-3xs);
-  }
-
-  &--filled {
-    background-color: var(--color-blue-600);
-    color: var(--color-black);
-  }
-
   &::before {
     content: "";
     position: absolute;
@@ -47,6 +36,22 @@
       transition: 0.2s ease-out;
       width: 100%;
       opacity: 1;
+    }
+  }
+
+  &--small {
+    @include apply-utility("weight", "regular");
+    padding-inline: var(--space-2xs);
+    padding-block: var(--space-3xs);
+  }
+
+  &--filled {
+    background-color: var(--color-blue-600);
+    color: var(--color-black);
+
+    &:hover {
+      background-color: var(--color-blue-600);
+      color: var(--color-black);
     }
   }
 }

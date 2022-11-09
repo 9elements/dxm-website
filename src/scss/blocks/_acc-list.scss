@@ -47,6 +47,7 @@ Example Syntax
 
     &:hover {
       background: var(--color-blue-600);
+      color: var(--color-black);
     }
 
     &:focus-visible {
@@ -57,34 +58,31 @@ Example Syntax
 
   dl {
     padding-inline: var(--space-m-l);
-    padding-block-end: var(--space-xs);
+    padding-block-end: var(--space-s-m);
+  }
+
+  &__item{
+    padding-block: var(--space-s);
+    border-block-start: 1px solid var(--color-black);
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
+    gap: var(--space-s);
     justify-content: space-between;
     position: relative;
 
-    dt,
-    dd {
-      p {
-        padding-block: var(--space-s);
-        max-width: 50ch;
-      }
-    }
-
     dt {
       flex-basis: 14rem;
-
-      &::before {
-        content: "";
-        width: calc(100% - var(--space-m-l) * 2);
-        height: 2px;
-        background-color: var(--color-black);
-        position: absolute;
-      }
     }
 
     dd {
-      flex-basis: 70%;
+      flex-basis: 100%;
+    }
+
+    @media only screen and (min-width: 59.5em) {
+      dd {
+        flex-basis: 70%;
+      }
     }
   }
 

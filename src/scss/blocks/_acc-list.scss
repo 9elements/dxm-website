@@ -20,7 +20,7 @@ Example Syntax
     list-style: none;
     padding-inline: var(--space-m-l);
     padding-block-start: var(--space-s-m);
-    min-height: 4em;
+    height: min(12rem, 25vw);
     cursor: pointer;
     background: linear-gradient(var(--color-blue-600),var(--color-blue-600));
     background-size: 0 100%;

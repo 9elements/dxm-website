@@ -87,3 +87,8 @@ ol:where([role="list"]) {
     scroll-behavior: auto !important;
   }
 }
+
+/* for fixing layout issues */
+details-utils{
+  display: block;
+}

@@ -16,43 +16,39 @@ Example Syntax
   background: var(--color-black);
   position: relative;
 
-  &::before,
-  &::after {
-    content: "";
-    background-color: var(--color-blue-600);
-    position: absolute;
-  }
-
-  &::before {
-    width: var(--space-l-xl);
-    height: 2px;
-    bottom: calc(100% + var(--space-l-xl) / 2 + 1.5rem);
-    transition: all 0.2s;
-  }
-
-  &::after {
-    height: var(--space-l-xl);
-    width: 2px;
-    bottom: calc(100% + 1.5rem);
-    left: calc(var(--space-l-xl) / 2);
-    transition: all 0.2s;
-  }
-
   summary {
     list-style: none;
     padding-inline: var(--space-m-l);
     padding-block-start: var(--space-s-m);
     min-height: 4em;
     cursor: pointer;
+    background: linear-gradient(var(--color-blue-600),var(--color-blue-600));
+    background-size: 0 100%;
+    background-repeat: no-repeat;
+    transition: 0.3s ease-out;
 
     &:hover {
-      background: var(--color-blue-600);
+      background-size: 100% 100%;
       color: var(--color-black);
     }
 
     &:focus-visible {
       outline: 2px dashed var(--color-white);
       outline-offset: 5px;
+    }
+
+    &::before{
+      --icon-size: clamp(2.5rem, 1.818rem + 3.41vw, 4.375rem);
+      content: "";
+      position: absolute;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 71 71'%3E%3Cpath stroke='%230092FF' stroke-width='2' d='M36.5 0v71M71 36.5H0'/%3E%3C/svg%3E");
+      width: var(--icon-size);
+      height: var(--icon-size);
+      background-size: 71px 71px;
+      background-position: center center;
+      left: 0;
+      top: calc((var(--icon-size) + var(--space-s)) * -1);
+      transition: 0.2s;
     }
   }
 
@@ -87,16 +83,14 @@ Example Syntax
   }
 
   &[open] {
-    //border: 1px solid var(--color-blue);
     color: var(--color-black);
 
     summary {
-      background: var(--color-blue-600);
-    }
+      background-size: 100% 100%;
 
-    &::before,
-    &::after{
-      rotate: 45deg;
+      &::before{
+        rotate: 45deg;
+      }
     }
   }
 }

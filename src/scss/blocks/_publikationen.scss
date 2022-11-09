@@ -1,13 +1,25 @@
 .publikationen {
   &__filter {
     display: flex;
-    flex-wrap: nowrap;
     gap: var(--space-2xs-xs);
-    justify-content: flex-start;
-    margin-left: calc(var(--space-m) * -1);
-    width: 100vw;
+    width: 100%;
     overflow-x: auto;
-    padding: var(--space-m);
+    padding-block-end: var(--space-s);
+    scrollbar-color: var(--color-blue-600) rgba(255, 255, 255, 0.1);
+
+    &::-webkit-scrollbar {
+      height: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--color-blue-600);
+    }
+  
 
     a {
       flex-shrink: 0;

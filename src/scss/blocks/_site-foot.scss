@@ -15,6 +15,11 @@ footer {
       a {
         text-decoration: none;
         padding: var(--space-xs);
+        transition: 0.25s ease;
+
+        &:hover {
+          color: var(--color-blue-600);
+        }
       }
     }
 

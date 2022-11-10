@@ -1,10 +1,9 @@
-// import the client
 const client = require("../src/utils/contentfulClient.js");
 
 module.exports = async () => {
-  const pageNewsletter = await client
+  const contactPerson = await client
     .getEntries({
-      content_type: "pageNewsletter",
+      content_type: "contactPerson",
     })
     .then(function (response) {
       const items = response.items.map(function (item) {
@@ -14,5 +13,5 @@ module.exports = async () => {
     })
     .catch(console.error);
 
-  return pageNewsletter[0].fields;
+  return contactPerson;
 };

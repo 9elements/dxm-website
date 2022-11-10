@@ -139,4 +139,13 @@ permalink: /media/
   panels[0].hidden = false;
 })();
 
+let url = location.href;
+let tabFromUrl = url.split('#')[1];
+let tabElement = document.querySelector(`#${tabFromUrl}`)
+
+if (tabElement) {
+  tabElement.click();
+}
+
+
 </script>

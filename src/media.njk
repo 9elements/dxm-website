@@ -11,7 +11,7 @@ permalink: /media/
         <h1 class="text-step-5 color-white cxt uppercase center-text leading-flat">Media</h1>
       </div>
 
-      <div class="media-tabs">
+      <div class="media-tabs stack-l-xl">
         <ul>
           <li>
             <a class="button" href="#section1" id="fotos">Fotos</a>
@@ -23,17 +23,42 @@ permalink: /media/
             <a class="button" href="#section3" id="presse">presse</a>
           </li>
         </ul>
-        <section id="section1">
-          <h2>Section 1</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam euismod, tortor nec pharetra ultricies, ante erat imperdiet velit, nec laoreet enim lacus a velit. <a href="#">Nam luctus</a>, enim in interdum condimentum, nisl diam iaculis lorem, vel volutpat mi leo sit amet lectus. Praesent non odio bibendum magna bibendum accumsan.</p>
+        <section id="section1" class="media-tabs__fotos">
+          <div class="grid" data-masonry='{ 
+            "itemSelector": ".grid-item", 
+            "columnWidth": 100 
+            }'>
+            <div class="grid-item"><img src="/images/logo-02.png"></div>
+            <div class="grid-item"><img src="/images/portrait_visual.png"></div>
+            <div class="grid-item"><img src="/images/newsletter-03.jpg"></div>
+            <div class="grid-item"><img src="/images/newsletter-01.jpg"></div>
+            <div class="grid-item"><img src="/images/logo-02.png"></div>
+            <div class="grid-item"><img src="/images/portrait_visual.png"></div>
+            <div class="grid-item"><img src="/images/newsletter-03.jpg"></div>
+          </div>
         </section>
-        <section id="section2">
-          <h2>Section 2</h2>
-          <p>Nullam at diam nec arcu suscipit auctor non a erat. Sed et magna semper, eleifend magna non, facilisis nisl. Proin et est et lorem dictum finibus ut nec turpis. Aenean nisi tortor, euismod a mauris a, mattis scelerisque tortor. Sed dolor risus, varius a nibh id, condimentum lacinia est. In lacinia cursus odio a aliquam. Curabitur tortor magna, laoreet ut rhoncus at, sodales consequat tellus.</p>
+        <section id="section2 media-tabs__videos">
+          <div class="grid-switcher" style="
+                --gs-columns-small: 1;
+                --gs-bp-medium: 35rem;
+                --gs-columns-medium: 2;
+                --gs-bp-large: 65rem;
+                --gs-columns-large: 3;
+                --gs-gap: 2rem;
+                --gs-gap-vertical: 2rem;
+                ">
+            {% include "partials/youtube.html" %}
+            {% include "partials/youtube.html" %}
+            {% include "partials/youtube.html" %}
+            {% include "partials/youtube.html" %}
+            {% include "partials/youtube.html" %}
+            {% include "partials/youtube.html" %}
+        
+          </div>
         </section>
-        <section id="section3">
-          <h2>Section 3</h2>
-          <p>Phasellus ac tristique orci. Nulla maximus <a href="">justo nec dignissim consequat</a>. Sed vehicula diam sit amet mi efficitur vehicula in in nisl. Aliquam erat volutpat. Suspendisse lorem turpis, accumsan consequat consectetur gravida, <a href="#">pellentesque ac ante</a>. Aliquam in commodo ligula, sit amet mollis neque. Vestibulum at facilisis massa.</p>
+        <section id="section3 media-tabs__presse">
+          <p class="text-step-0 center-text">Die nachfolgenden Pressebilder können ungefragt für Veröffentlichungen unter Angabe der Quelle genutzt werden. Weitere Bilder können auf Anfrage zugestellt werden.</p>
+
         </section>
       </div>
 
@@ -63,8 +88,9 @@ permalink: /media/
     </div>
   </div>
 
-<script>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 
+<script>
 (function() {
   // Get relevant elements and collections
   const tabbed = document.querySelector('.media-tabs');
@@ -137,15 +163,18 @@ permalink: /media/
   tabs[0].removeAttribute('tabindex');
   tabs[0].setAttribute('aria-selected', 'true');
   panels[0].hidden = false;
+
+    let url = location.href;
+  let tabFromUrl = url.split('#')[1];
+  let tabElement = document.querySelector(`#${tabFromUrl}`)
+
+  if (tabElement) {
+    let currentTab = tabs[0];
+    if (tabElement !== currentTab) {
+      switchTab(currentTab, tabElement);
+    }
+  }
 })();
-
-let url = location.href;
-let tabFromUrl = url.split('#')[1];
-let tabElement = document.querySelector(`#${tabFromUrl}`)
-
-if (tabElement) {
-  tabElement.click();
-}
-
-
 </script>
+
+

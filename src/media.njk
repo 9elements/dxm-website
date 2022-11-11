@@ -14,13 +14,13 @@ permalink: /media/
       <div class="media-tabs">
         <ul>
           <li>
-            <a class="button" href="#section1">Fotos</a>
+            <a class="button" href="#section1" id="fotos">Fotos</a>
           </li>
           <li>
-            <a class="button" href="#section2">Videos</a>
+            <a class="button" href="#section2" id="videos">Videos</a>
           </li>
           <li>
-            <a class="button" href="#section3">presse</a>
+            <a class="button" href="#section3" id="presse">presse</a>
           </li>
         </ul>
         <section id="section1">
@@ -95,7 +95,7 @@ permalink: /media/
   // Add semantics are remove user focusability for each tab
   Array.prototype.forEach.call(tabs, (tab, i) => {
     tab.setAttribute('role', 'tab');
-    tab.setAttribute('id', 'tab' + (i + 1));
+    //tab.setAttribute('id', 'tab' + (i + 1));
     tab.setAttribute('tabindex', '-1');
     tab.parentNode.setAttribute('role', 'presentation');
     

@@ -23,8 +23,16 @@
       "url": "/media/",
       "children": [
         {
-          "text": "test",
-          "url": "/test/"
+          "text": "Fotos",
+          "url": "/media#fotos"
+        },
+        {
+          "text": "Videos",
+          "url": "/media#videos"
+        },
+        {
+          "text": "Presse",
+          "url": "/media#presse"
         }
       ]
     },

@@ -9,23 +9,18 @@ let linesToDraw = [];
 let mousePoint = {};
 let stars;
 
-const speed = 0.2;
+const speed = 0.7;
 const initDelay = 10;
-//const maxPoints = 100;
-//const pointRatio = 0.06;
-const maxPoints = 150;
-const pointRatio = 0.06;
-let maxAlpha = 1;
+const maxPoints = 160;
+const pointRatio = 0.05;
+const maxAlpha = 1;
 
 class Point {
   constructor(x, y, isMousePoint) {
     this.x = x;
     this.y = y;
     if (isMousePoint) {
-      this.speed = {
-        x: 0,
-        y: 0,
-      };
+      this.speed = { x: 0, y: 0 };
       this.isMousePoint = true;
     } else {
       this.speed = {
@@ -130,7 +125,7 @@ function draw() {
 
 function drawPoints() {
   points.forEach((p) => {
-    ctx.fillStyle = `hsla(227, 100%, 51%, ${maxAlpha})`;
+    ctx.fillStyle = "hsla(227, 100%, 51%, 30%)";
     ctx.beginPath();
     ctx.arc(p.x, p.y, 4, 0, 2 * Math.PI);
     ctx.fill();
@@ -141,11 +136,11 @@ function drawPoints() {
 }
 
 function drawMousePoint(mP) {
-  ctx.fillStyle = `hsla(344, 100%, 37%, ${maxAlpha})`;
+  ctx.fillStyle = "hsla(344, 100%, 37%, 50%)";
   ctx.beginPath();
   ctx.arc(mP.x, mP.y, 4, 0, 2 * Math.PI);
   ctx.fill();
-  ctx.fillStyle = `hsla(344, 100%, 37%, ${maxAlpha / 2})`;
+  ctx.fillStyle = "hsla(344, 100%, 37%, 20%)";
   ctx.beginPath();
   ctx.arc(mP.x, mP.y, 12, 0, 2 * Math.PI);
   ctx.fill();
@@ -198,8 +193,49 @@ function movePoints() {
     p.y = p.y + p.speed.y;
     //checkPointPosition(p, i);
     closeXY(p);
-    closeToCenter(p);
+    if (i % 3 !== 0) {
+      closeMid(p);
+      changeSite(p);
+    }
   });
+}
+
+function closeMid(p) {
+  if (
+    p.x > 0.5 * canvas.width - 0.1 * canvas.width &&
+    p.x < canvas.width * 0.5 + 0.1 * canvas.width
+  ) {
+    p.speed.x = p.speed.x * -1;
+  }
+}
+
+function changeSite(p) {
+  if (
+    p.x > 0.5 * canvas.width - 0.099 * canvas.width &&
+    p.x < canvas.width * 0.5 + 0.099 * canvas.width
+  ) {
+    if (Math.floor(Math.random() * 2) == 0)
+      p.x = 0.5 * canvas.width - 0.1 * canvas.width;
+    else p.x = canvas.width * 0.5 + 0.1 * canvas.width;
+  }
+}
+
+function checkPointPosition(point, index) {
+  if (outOfView(point)) {
+    points.splice(index, 1);
+    setTimeout(() => {
+      createPoints(1);
+      createLines();
+    }, 500);
+  }
+}
+function outOfView(p) {
+  return (
+    p.x < -0.1 * canvas.width ||
+    p.x > canvas.width + 0.1 * canvas.width ||
+    p.y < -0.1 * canvas.width ||
+    p.y > canvas.hight + 0.1 * canvas.width
+  );
 }
 
 function closeXY(p) {
@@ -214,28 +250,7 @@ function closeXY(p) {
   }
 }
 
-function closeToCenter(p) {
-  const random = Math.random() * 1000;
-  if (
-    p.speed.x > 0 &&
-    p.x > canvas.width / 2 - canvas.width / 8 &&
-    p.x < canvas.width / 2 &&
-    random > 999.4
-  ) {
-    p.speed.x = p.speed.x * -1;
-  }
-
-  if (
-    p.speed.x < 0 &&
-    p.x < canvas.width / 2 + canvas.width / 8 &&
-    p.x > canvas.width / 2 &&
-    random > 999.4
-  ) {
-    p.speed.x = p.speed.x * -1;
-  }
-
-  //console.log(random);
-}
+//window.addEventListener('resize', initCanvas());
 
 window.addEventListener("resize", (e) => {
   initCanvas();

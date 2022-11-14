@@ -65,7 +65,39 @@
   }
 
   &__fotos {
+    .grid {
+      width: calc(100% + 2 * var(--space-xs));
+      margin-left: calc(var(--space-xs) * -1);
+    }
+
+    .grid-sizer,
     .grid-item {
+      width: 50%;
+    }
+
+    .grid-item {
+      padding: var(--space-xs);
+    }
+
+    @include media-query("md") {
+      .grid {
+        width: calc(100% + 2 * var(--space-s));
+        margin-left: calc(var(--space-s) * -1);
+      }
+  
+      .grid-sizer,
+      .grid-item {
+        width: 33.333%;
+      }
+  
+      .grid-item {
+        padding: var(--space-s);
+  
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
     }
   }
 }

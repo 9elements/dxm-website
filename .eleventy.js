@@ -29,6 +29,10 @@ module.exports = (config) => {
 
   // Add Shortcodes
   config.addShortcode("icon", require("./src/shortcodes/icon.js"));
+  config.addNunjucksAsyncShortcode(
+    "ctflPicture",
+    require("./src/shortcodes/ctflPicture.js")
+  );
 
   // Only minify HTML if we are in production because it slows builds _right_ down
   if (isProduction) {

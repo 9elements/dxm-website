@@ -4,11 +4,11 @@ layout: "layouts/home.njk"
 permalink: /media/
 ---
 
-
+  {% set fields = ctfl.pageMedia.fields %}
   <div class="section" style="padding-block: var(--space-3xl);">
     <div class="wrapper | stack-3xl-4xl">
       <div class="gradient-line-vertical">
-        <h1 class="text-step-5 color-white cxt uppercase center-text leading-flat">Media</h1>
+        <h1 class="text-step-5 color-white cxt uppercase center-text leading-flat">{{ fields.title }}</h1>
       </div>
 
       <div class="media-tabs stack-l-xl">
@@ -25,20 +25,33 @@ permalink: /media/
         </ul>
 
         <section id="section1" class="media-tabs__fotos">
-          <div class="grid" data-masonry='{ 
+          <div class="grid" data-xmasonry='{
             "itemSelector": ".grid-item",
             "columnWidth": ".grid-sizer",
             "gutter": 0,
             "percentPosition": true
             }'>
             <div class="grid-sizer"></div>
-            <div class="grid-item"><img src="/images/media/gallery_01.jpg"></div>
+            {% for photo in fields.photos %}
+              <div class="grid-item">
+                {% ctflPicture
+                  imgObj = photo,
+                  fit = "fill",
+                  imgWidth = "1720",
+                  alt = "",
+                  widths = [430, 860],
+                  sizes = "(min-width: 72.5em) 433px, 100vw",
+                  classes = "person__image"
+                %}
+              </div>
+            {% endfor %}
+            {# <div class="grid-item"><img src="/images/media/gallery_01.jpg"></div>
             <div class="grid-item"><img src="/images/media/gallery_08.jpg"></div>
             <div class="grid-item"><img src="/images/media/gallery_05.jpg"></div>
             <div class="grid-item"><img src="/images/media/gallery_09.jpg"></div>
             <div class="grid-item"><img src="/images/media/gallery_03.jpg"></div>
             <div class="grid-item"><img src="/images/media/gallery_06.jpg"></div>
-            <div class="grid-item"><img src="/images/media/gallery_07.jpg"></div>
+            <div class="grid-item"><img src="/images/media/gallery_07.jpg"></div> #}
           </div>
         </section>
 
@@ -58,7 +71,7 @@ permalink: /media/
             {% include "partials/youtube.html" %}
             {% include "partials/youtube.html" %}
             {% include "partials/youtube.html" %}
-        
+
           </div>
         </section>
 
@@ -94,93 +107,99 @@ permalink: /media/
     </div>
   </div>
 
-<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 
+
+<script src="/js/msonry.pkgd.min.js"></script>
 <script>
-(function() {
-  // Get relevant elements and collections
-  const tabbed = document.querySelector('.media-tabs');
-  const tablist = tabbed.querySelector('ul');
-  const tabs = tablist.querySelectorAll('a');
-  const panels = tabbed.querySelectorAll('[id^="section"]');
-  
-  // The tab switching function
-  const switchTab = (oldTab, newTab) => {
-    newTab.focus();
-    // Make the active tab focusable by the user (Tab key)
-    newTab.removeAttribute('tabindex');
-    // Set the selected state
-    newTab.setAttribute('aria-selected', 'true');
-    oldTab.removeAttribute('aria-selected');
-    oldTab.setAttribute('tabindex', '-1');
-    // Get the indices of the new and old tabs to find the correct
-    // tab panels to show and hide
-    let index = Array.prototype.indexOf.call(tabs, newTab);
-    let oldIndex = Array.prototype.indexOf.call(tabs, oldTab);
-    panels[oldIndex].hidden = true;
-    panels[index].hidden = false;
-  }
-  
-  // Add the tablist role to the first <ul> in the .tabbed container
-  tablist.setAttribute('role', 'tablist');
-  
-  // Add semantics are remove user focusability for each tab
-  Array.prototype.forEach.call(tabs, (tab, i) => {
-    tab.setAttribute('role', 'tab');
-    //tab.setAttribute('id', 'tab' + (i + 1));
-    tab.setAttribute('tabindex', '-1');
-    tab.parentNode.setAttribute('role', 'presentation');
-    
-    // Handle clicking of tabs for mouse users
-    tab.addEventListener('click', e => {
-      e.preventDefault();
-      let currentTab = tablist.querySelector('[aria-selected]');
-      if (e.currentTarget !== currentTab) {
-        switchTab(currentTab, e.currentTarget);
-      }
-    });
-    
-    // Handle keydown events for keyboard users
-    tab.addEventListener('keydown', e => {
-      // Get the index of the current tab in the tabs node list
-      let index = Array.prototype.indexOf.call(tabs, e.currentTarget);
-      // Work out which key the user is pressing and
-      // Calculate the new tab's index where appropriate
-      let dir = e.which === 37 ? index - 1 : e.which === 39 ? index + 1 : e.which === 40 ? 'down' : null;
-      if (dir !== null) {
+  (function() {
+    // Get relevant elements and collections
+    const tabbed = document.querySelector('.media-tabs');
+    const tablist = tabbed.querySelector('ul');
+    const tabs = tablist.querySelectorAll('a');
+    const panels = tabbed.querySelectorAll('[id^="section"]');
+
+    // The tab switching function
+    const switchTab = (oldTab, newTab) => {
+      newTab.focus();
+      // Make the active tab focusable by the user (Tab key)
+      newTab.removeAttribute('tabindex');
+      // Set the selected state
+      newTab.setAttribute('aria-selected', 'true');
+      oldTab.removeAttribute('aria-selected');
+      oldTab.setAttribute('tabindex', '-1');
+      // Get the indices of the new and old tabs to find the correct
+      // tab panels to show and hide
+      let index = Array.prototype.indexOf.call(tabs, newTab);
+      let oldIndex = Array.prototype.indexOf.call(tabs, oldTab);
+      panels[oldIndex].hidden = true;
+      panels[index].hidden = false;
+    }
+
+    // Add the tablist role to the first <ul> in the .tabbed container
+    tablist.setAttribute('role', 'tablist');
+
+    // Add semantics are remove user focusability for each tab
+    Array.prototype.forEach.call(tabs, (tab, i) => {
+      tab.setAttribute('role', 'tab');
+      //tab.setAttribute('id', 'tab' + (i + 1));
+      tab.setAttribute('tabindex', '-1');
+      tab.parentNode.setAttribute('role', 'presentation');
+
+      // Handle clicking of tabs for mouse users
+      tab.addEventListener('click', e => {
         e.preventDefault();
-        // If the down key is pressed, move focus to the open panel,
-        // otherwise switch to the adjacent tab
-        dir === 'down' ? panels[i].focus() : tabs[dir] ? switchTab(e.currentTarget, tabs[dir]) : void 0;
-      }
+        let currentTab = tablist.querySelector('[aria-selected]');
+        if (e.currentTarget !== currentTab) {
+          switchTab(currentTab, e.currentTarget);
+        }
+      });
+
+      // Handle keydown events for keyboard users
+      tab.addEventListener('keydown', e => {
+        // Get the index of the current tab in the tabs node list
+        let index = Array.prototype.indexOf.call(tabs, e.currentTarget);
+        // Work out which key the user is pressing and
+        // Calculate the new tab's index where appropriate
+        let dir = e.which === 37 ? index - 1 : e.which === 39 ? index + 1 : e.which === 40 ? 'down' : null;
+        if (dir !== null) {
+          e.preventDefault();
+          // If the down key is pressed, move focus to the open panel,
+          // otherwise switch to the adjacent tab
+          dir === 'down' ? panels[i].focus() : tabs[dir] ? switchTab(e.currentTarget, tabs[dir]) : void 0;
+        }
+      });
     });
-  });
-  
-  // Add tab panel semantics and hide them all
-  Array.prototype.forEach.call(panels, (panel, i) => {
-    panel.setAttribute('role', 'tabpanel');
-    panel.setAttribute('tabindex', '-1');
-    let id = panel.getAttribute('id');
-    panel.setAttribute('aria-labelledby', tabs[i].id);
-    panel.hidden = true; 
-  });
-  
-  // Initially activate the first tab and reveal the first tab panel
-  tabs[0].removeAttribute('tabindex');
-  tabs[0].setAttribute('aria-selected', 'true');
-  panels[0].hidden = false;
+
+    // Add tab panel semantics and hide them all
+    Array.prototype.forEach.call(panels, (panel, i) => {
+      panel.setAttribute('role', 'tabpanel');
+      panel.setAttribute('tabindex', '-1');
+      let id = panel.getAttribute('id');
+      panel.setAttribute('aria-labelledby', tabs[i].id);
+      panel.hidden = true;
+    });
+
+    // Initially activate the first tab and reveal the first tab panel
+    tabs[0].removeAttribute('tabindex');
+    tabs[0].setAttribute('aria-selected', 'true');
+    panels[0].hidden = false;
+
+    let grid = document.querySelector('.grid');
+    let msnry = new Masonry( grid, {
+      itemSelector: '.grid-item',
+      columnWidth: '.grid-sizer',
+      percentPosition: true
+    });
 
     let url = location.href;
-  let tabFromUrl = url.split('#')[1];
-  let tabElement = document.querySelector(`#${tabFromUrl}`)
+    let tabFromUrl = url.split('#')[1];
+    let tabElement = document.querySelector(`#${tabFromUrl}`)
 
-  if (tabElement) {
-    let currentTab = tabs[0];
-    if (tabElement !== currentTab) {
-      switchTab(currentTab, tabElement);
+    if (tabElement) {
+      let currentTab = tabs[0];
+      if (tabElement !== currentTab) {
+        switchTab(currentTab, tabElement);
+      }
     }
-  }
-})();
+  })();
 </script>
-
-

@@ -78,6 +78,10 @@
 
     .grid-item {
       padding: var(--space-xs);
+      img {
+        width: 100%;
+        height: auto;
+      }
     }
 
     @include media-query("md") {
@@ -93,11 +97,6 @@
 
       .grid-item {
         padding: var(--space-s);
-
-        img {
-          width: 100%;
-          height: auto;
-        }
       }
     }
   }

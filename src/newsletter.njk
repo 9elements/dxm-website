@@ -23,10 +23,20 @@ permalink: /newsletter/
             ">
 
             {% for article in ctfl.newsletterArticle | reverse %}
-
                 <article class="news-article sidebar-right">
                     <div class="news-article__img">
-                        <img src="{{ article.fields.image.fields.file.url}}" alt="">
+                      {% set photo = article.fields.image %}
+                        {% ctflPicture
+                          imgObj = photo,
+                          fit = "fill",
+                          focus = "faces",
+                          imgWidth = "1340",
+                          imgHeight = "574",
+                          alt = "",
+                          widths = [670, 1340],
+                          sizes = "(min-width: 72.5em) 433px, 100vw",
+                          classes = ""
+                        %}
                     </div>
                     <div class="news-article__headline text-step-2">
                         <p class="news-article__headline__title weight-bold">No. {{ article.fields.articleNumber}}</p>

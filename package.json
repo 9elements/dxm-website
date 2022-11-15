@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@11ty/eleventy": "^1.0.0",
+    "@11ty/eleventy-img": "^2.0.1",
     "@contentful/rich-text-html-renderer": "^15.13.1",
     "@contentful/rich-text-plain-text-renderer": "^15.12.1",
     "@contentful/rich-text-types": "^15.13.2",

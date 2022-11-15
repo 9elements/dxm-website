@@ -18,6 +18,7 @@ Optional properties:
   - sizes -> defines the sizes for the picture. Works with [none]. Defaults to "(min-width: 22em) 30vw, 100vw"
   - classes -> add some classes
   - fit -> if you resize the image this defines how it should be resized. Defaults to "fill"
+  - focus -> when the image is resized define where the focus is set (face, faces, top-left etc.). Defaults to "center"
 
 Basic usage:
 {% ctflPicture imgObj = myImage, alt="ctfl image", imgWidth="800", imgHeight="600" %}
@@ -66,6 +67,7 @@ async function ctflPictureShortcode(ctflImage) {
   const sizes = ctflImage.sizes || "(min-width: 22em) 30vw, 100vw";
   const classes = ctflImage.classes || "";
   const fit = ctflImage.fit ? ctflImage.fit : "fill";
+  const focus = ctflImage.focus ? ctflImage.focus : "center";
 
   let imgWidth = 800;
   let imgHeight = 600;
@@ -91,7 +93,16 @@ async function ctflPictureShortcode(ctflImage) {
     imgUrl = "https:" + imgUrl;
   }
 
-  imgUrl = imgUrl + "?fit=" + fit + "&w=" + imgWidth + "&h=" + imgHeight;
+  imgUrl =
+    imgUrl +
+    "?f=" +
+    focus +
+    "&fit=" +
+    fit +
+    "&w=" +
+    imgWidth +
+    "&h=" +
+    imgHeight;
 
   console.log(imgUrl);
 
@@ -103,7 +114,11 @@ async function ctflPictureShortcode(ctflImage) {
     urlPath: "/images/ctfl",
     outputDir: "dist/images/ctfl",
     filenameFormat: function (id, src, width, format, options) {
-      return `${imgId}-${imgWidth}x${imgHeight}-${width}w-${fit}.${format}`;
+      // Log files saved to dist
+      console.log(
+        `${imgId}-${imgWidth}x${imgHeight}-${width}w-${fit}-${focus}.${format}`
+      );
+      return `${imgId}-${imgWidth}x${imgHeight}-${width}w-${fit}-${focus}.${format}`;
     },
   };
 

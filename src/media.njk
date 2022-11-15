@@ -25,12 +25,7 @@ permalink: /media/
         </ul>
 
         <section id="section1" class="media-tabs__fotos">
-          <div class="grid" data-xmasonry='{
-            "itemSelector": ".grid-item",
-            "columnWidth": ".grid-sizer",
-            "gutter": 0,
-            "percentPosition": true
-            }'>
+          <div class="grid">
             <div class="grid-sizer"></div>
             {% for photo in fields.photos %}
               <div class="grid-item">
@@ -45,13 +40,6 @@ permalink: /media/
                 %}
               </div>
             {% endfor %}
-            {# <div class="grid-item"><img src="/images/media/gallery_01.jpg"></div>
-            <div class="grid-item"><img src="/images/media/gallery_08.jpg"></div>
-            <div class="grid-item"><img src="/images/media/gallery_05.jpg"></div>
-            <div class="grid-item"><img src="/images/media/gallery_09.jpg"></div>
-            <div class="grid-item"><img src="/images/media/gallery_03.jpg"></div>
-            <div class="grid-item"><img src="/images/media/gallery_06.jpg"></div>
-            <div class="grid-item"><img src="/images/media/gallery_07.jpg"></div> #}
           </div>
         </section>
 
@@ -65,12 +53,15 @@ permalink: /media/
                 --gs-gap: 2rem;
                 --gs-gap-vertical: 2rem;
                 ">
+            {% for id in fields.videoIds %}
+              {% set videoId = id %}
+              {% include "partials/youtube.html" %}
+            {% endfor %}
+            {# {% include "partials/youtube.html" %}
             {% include "partials/youtube.html" %}
             {% include "partials/youtube.html" %}
             {% include "partials/youtube.html" %}
-            {% include "partials/youtube.html" %}
-            {% include "partials/youtube.html" %}
-            {% include "partials/youtube.html" %}
+            {% include "partials/youtube.html" %} #}
 
           </div>
         </section>
@@ -110,6 +101,7 @@ permalink: /media/
 
 
 <script src="/js/msonry.pkgd.min.js"></script>
+<script src="/js/youtube.js"></script>
 <script>
   (function() {
     // Get relevant elements and collections

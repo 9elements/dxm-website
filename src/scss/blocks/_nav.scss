@@ -48,6 +48,10 @@
     gap: 0;
     transition: 0.3s ease;
 
+    @media screen and (min-height: 54em) and (min-width: 64em) and (min-aspect-ratio: 1/1) {
+      justify-content: center;
+    }
+
     &.item-hovered {
       background-color: var(--color-black);
 

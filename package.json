@@ -5,7 +5,8 @@
   "main": ".eleventy.js",
   "scripts": {
     "start": "node contentful.js && npx gulp && concurrently 'npx gulp watch' 'npx eleventy --serve'",
-    "production": "node contentful.js && NODE_ENV=production npx gulp production && NODE_ENV=production npx eleventy"
+    "production": "node contentful.js && NODE_ENV=production npx gulp production && NODE_ENV=production npx eleventy",
+    "start-production": "node contentful.js && NODE_ENV=production npx gulp production && NODE_ENV=production concurrently 'npx gulp watch' 'npx eleventy --serve'"
   },
   "keywords": [],
   "author": "",

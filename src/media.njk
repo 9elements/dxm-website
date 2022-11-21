@@ -60,25 +60,47 @@ permalink: /media/
           </div>
         </section>
 
-        <section id="section3 media-tabs__presse">
-          <p class="text-step-0 center-text">Die nachfolgenden Pressebilder können ungefragt für Veröffentlichungen unter Angabe der Quelle genutzt werden. Weitere Bilder können auf Anfrage zugestellt werden.</p>
-          <div class="download-grid | grid-switcher">
-
-            {% for photo in fields.photos %}
-              {% ctflPictureDownload imgObj = photo %}
-                {% ctflPicture
-                  imgObj = photo,
-                  fit = "fill",
-                  imgWidth = "1320",
-                  alt = "",
-                  widths = [330, 660],
-                  sizes = "(min-width: 72.5em) 433px, 100vw",
-                  classes = "download-grid__image"
-                %}
-              {% endctflPictureDownload %}
-              {{ photo.fields | log }}
-            {% endfor %}
+        <section id="section3 media-tabs__presse" class="stack-xl">
+          {% if fields.pressRelease.length > 0 %}
+            <div class="stack-m">
+              <h2 class="text-step-2 uppercase">Pressemitteilungen</h2>
+              <ul>
+                {% for download in fields.pressRelease %}
+                  <li>
+                  {% ctflDownload downloadObj = download %}
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+          <div class="stack-m">
+          <h2 class="text-step-2 uppercase">Pressefotos</h2>
+            <p class="text-step-0">
+              Die nachfolgenden Pressebilder können ungefragt für Veröffentlichungen unter Angabe der Quelle genutzt werden. Weitere Bilder können auf Anfrage zugestellt werden.
+            </p>
+            <div class="download-grid | grid-switcher" style="
+              --gs-gap: var(--space-s-m);
+              --gs-bp-large: 60rem;
+              --gs-columns-medium: 3;
+              --gs-bp-medium: 48rem;
+              --gs-columns-small: 2;
+              ">
+              {% for photo in fields.photos %}
+                {% ctflPictureDownload imgObj = photo %}
+                  {% ctflPicture
+                    imgObj = photo,
+                    fit = "fill",
+                    imgWidth = "1320",
+                    alt = "",
+                    widths = [330, 660],
+                    sizes = "(min-width: 72.5em) 433px, 100vw",
+                    classes = "download-grid__image"
+                  %}
+                {% endctflPictureDownload %}
+              {% endfor %}
+            </div>
           </div>
+
         </section>
       </div>
 

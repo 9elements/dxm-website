@@ -62,7 +62,23 @@ permalink: /media/
 
         <section id="section3 media-tabs__presse">
           <p class="text-step-0 center-text">Die nachfolgenden Pressebilder können ungefragt für Veröffentlichungen unter Angabe der Quelle genutzt werden. Weitere Bilder können auf Anfrage zugestellt werden.</p>
+          <div class="download-grid | grid-switcher">
 
+            {% for photo in fields.photos %}
+              {% ctflPictureDownload imgObj = photo %}
+                {% ctflPicture
+                  imgObj = photo,
+                  fit = "fill",
+                  imgWidth = "1320",
+                  alt = "",
+                  widths = [330, 660],
+                  sizes = "(min-width: 72.5em) 433px, 100vw",
+                  classes = "download-grid__image"
+                %}
+              {% endctflPictureDownload %}
+              {{ photo.fields | log }}
+            {% endfor %}
+          </div>
         </section>
       </div>
 

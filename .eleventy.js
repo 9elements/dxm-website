@@ -33,6 +33,10 @@ module.exports = (config) => {
     "ctflPicture",
     require("./src/shortcodes/ctflPicture.js")
   );
+  config.addPairedNunjucksAsyncShortcode(
+    "ctflPictureDownload",
+    require("./src/shortcodes/ctflPictureDownload.js")
+  );
 
   // Only minify HTML if we are in production because it slows builds _right_ down
   if (isProduction) {

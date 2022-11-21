@@ -1,3 +1,7 @@
+// This takes a file from a contentful media-input field and caches it locally.
+// The file is then written to dist/downloads using the file's title as filename.
+// A link to the file is returned.
+
 const EleventyFetch = require("@11ty/eleventy-fetch");
 const fs = require("fs");
 

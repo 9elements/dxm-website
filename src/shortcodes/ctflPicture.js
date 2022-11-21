@@ -115,9 +115,9 @@ async function ctflPictureShortcode(ctflImage) {
     outputDir: "dist/images/ctfl",
     filenameFormat: function (id, src, width, format, options) {
       // Log files saved to dist
-      console.log(
-        `${imgId}-${imgWidth}x${imgHeight}-${width}w-${fit}-${focus}.${format}`
-      );
+      // console.log(
+      //   `${imgId}-${imgWidth}x${imgHeight}-${width}w-${fit}-${focus}.${format}`
+      // );
       return `${imgId}-${imgWidth}x${imgHeight}-${width}w-${fit}-${focus}.${format}`;
     },
   };

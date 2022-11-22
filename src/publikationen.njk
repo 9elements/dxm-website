@@ -11,18 +11,16 @@ permalink: /publikationen/
         <h1 class="text-step-5 color-white cxt uppercase center-text leading-flat">Publika&shy;tionen</h1>
       </div>
 
-      <div class="publication stack-xl">
+      <section class="publication stack-xl">
         <div class="publication__filter" style="max-width: 60rem;">
-          <a href="#" class="button" alt="filter">Hogrefe</a>
-          <a href="#" class="button" alt="filter">MWV Berlin</a>
-          <a href="#" class="button" alt="filter">Medhochzwei</a>
-          <a href="#" class="button" alt="filter">Springer</a>
-          <a href="#" class="button" alt="filter">Wiley</a>
-          <a href="#" class="button" alt="filter">UTB</a>
-          <a href="#" class="button" alt="filter">Duncker & Humblot</a>
-          <a href="#" class="button" alt="filter">Haufe</a>
+          
+          {% for publisher in ctfl.publishers %}
+            <button class="button publication__filter-button" data-publisher="{{ publisher }}">
+              {{ publisher }}
+            </button>
+          {% endfor %}
         </div>
-        <div class="grid-switcher" style="
+        <div class="grid-switcher" id="books" style="
               --gs-columns-small: 1;
               --gs-bp-medium: 42rem;
               --gs-columns-medium: 2;
@@ -33,7 +31,7 @@ permalink: /publikationen/
         ">
           {% for book in ctfl.publikation %}
 
-            <article class="publication__item stack-s-m">
+            <article data-publisher="{{ book.fields.publisher }}" class="publication__item stack-s-m">
               <div class="publication__info">
                   <div class="flip">
                     <div class="publication__spine">
@@ -79,8 +77,9 @@ permalink: /publikationen/
 
           {% endfor %}
         </div>
-      </div>
+      </section>
     </div>
   </div>
 
 <script defer="defer" src="/js/book-flip.js"></script>
+<script defer="defer" src="/js/publisher-filter.js"></script>

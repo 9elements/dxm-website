@@ -8,7 +8,9 @@ const fs = require("fs");
 async function ctflDownloadShortcode(ctflDownload) {
   let url = "https:" + ctflDownload.downloadObj.fields.file.url;
   let filetype = url.split(".").pop();
-  let filename = ctflDownload.downloadObj.fields.title;
+  let filename = ctflDownload.title
+    ? ctflDownload.title
+    : ctflDownload.downloadObj.fields.title;
   let data = await EleventyFetch(url, {
     duration: "1d",
     directory: ".cache",

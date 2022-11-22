@@ -67,7 +67,12 @@ permalink: /media/
               <ul>
                 {% for download in fields.pressRelease %}
                   <li>
-                  {% ctflDownload downloadObj = download %}
+                  {{ download.fields.date | log }}
+                  <span>{{ download.fields.date | readableDate({month: "numeric", day: "numeric"}) }}</span>
+                  {% ctflDownload
+                    downloadObj = download.fields.file,
+                    title = download.fields.title
+                  %}
                   </li>
                 {% endfor %}
               </ul>

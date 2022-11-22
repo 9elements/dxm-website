@@ -1,0 +1,73 @@
+---
+title: "Kontakt"
+layout: "layouts/home.njk"
+permalink: /kontakt/
+---
+
+<div class="section" style="padding-block: var(--space-3xl);">
+  <div class="wrapper | stack-3xl-4xl">
+    <div class="gradient-line-vertical">
+      <h1 class="text-step-5 color-white cxt uppercase center-text leading-flat">Kontakt</h1>
+    </div>
+
+    <h2 class="text-step-1 center-text wrapper leading-loose" style="--wrapper-max-width: 48rem;">
+      <span class="text-highlight">Geschwindigkeit</span> liegt in der <span class="text-highlight">DNA der DXM Group</span>. Wir werden Deine Anfrage asap beantworten.
+      </h2>
+
+    <!-- CHANGE COLUMNS LARGE TO 2 AS SOON AS NEXT CONTACT PERSON APPEARS -->
+    <div class="grid-switcher" style="
+            --gs-columns-small: 1;
+            --gs-bp-medium: 50rem;
+            --gs-columns-large: 1;
+            --gs-gap: 0.5rem;
+            --gs-gap: var(--space-xl);
+        ">
+      <!-- REMOVE INLINE STYLES AS SOON AS NEXT CONTACT PERSON APPEARS -->
+      {% for person in ctfl.contactPerson %}
+
+        <div class="contact-person stack-m" style="max-width: 40rem; margin-inline: auto;">
+          <img alt="" src="{{ person.fields.image.fields.file.url }}" style="
+                  width: 100%;
+                  height: auto;
+              ">
+          <div class="content stack-2xs">
+            <h3 class="text-step-2 weight-bold">
+              {{ person.fields.name }}
+            </h3>
+            <h4 class="text-step-1 weight-light">
+              {{ person.fields.jobTitle }}
+            </h4>
+          </div>
+          <a href=" {{ person.fields.linkedin }} " class="button" style="text-transform: none;">LinkedIn</a>
+        </div>
+
+      {% endfor %}
+
+      <!--
+            <div class="contact-person stack-m">
+              <img alt="" src="/images/contact-02.png" style="
+                  width: 100%;
+                  height: auto;
+              ">
+              <div class="content stack-2xs">
+                  <h3 class="text-step-2 weight-bold">Alexandra Schilcher</h3>
+                  <h4 class="text-step-1 weight-light">Marketing & Kommunikation</h4>
+              </div>
+              <a href="#" class="button" style="text-transform: none;">LinkedIn</a>
+          </div>
+          -->
+    </div>
+
+    <div class="contact-info | center-text">
+      <p class="text-step-1 uppercase">
+              DXM Group GmbH<br>
+              c/o BRYCK GmbH & Co. KG<br>
+              Jakob-Funke-Platz 2<br>
+              45127 Essen<br>
+        <a href="mailto:{{ site.authorEmail }}">{{ site.authorEmail }}</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<script defer="defer" src="/js/book-flip.js"></script>

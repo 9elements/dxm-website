@@ -3,7 +3,7 @@
 
   position: relative;
   hyphens: auto;
-  padding: var(--space-s);;
+  padding: var(--space-s);
 
   @media screen and (min-width: 37.5em) {
     hyphens: none;
@@ -28,25 +28,33 @@
   }
 
   &__img {
-      position: relative;
-      z-index: -1;
+    position: relative;
+    z-index: -1;
 
-      img {
-        width: 100%;
-        object-fit: cover;
-      }
+    img {
+      width: 100%;
+      object-fit: cover;
+      aspect-ratio: 21/9;
+      height: auto;
+    }
 
-      &::before {
-        content: "";
-        position: absolute;
-        background: linear-gradient(180deg, rgba(14, 19, 27, 0) 0%, #0e131b 100%);
-        inset: 0;
-      }
+    &::before {
+      content: "";
+      position: absolute;
+      background: linear-gradient(180deg, rgba(14, 19, 27, 0) 0%, #0e131b 100%);
+      inset: 0;
+    }
   }
 
-  &__title {
-    position: relative;
-    line-height: 1;
+  &__headline {
+    & > * + * {
+      margin-top: var(--space-xs);
+    }
+
+    &__title {
+      position: relative;
+      line-height: 1;
+    }
   }
 
   &__link {
@@ -62,8 +70,8 @@
       opacity: 1;
     }
 
-    .gradient-line-horizontal{
-        background: linear-gradient(white, white);
+    .gradient-line-horizontal {
+      background: linear-gradient(white, white);
     }
   }
 }

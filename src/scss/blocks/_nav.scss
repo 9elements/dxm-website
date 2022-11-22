@@ -2,7 +2,7 @@
   width: 100vw;
   top: 0;
   left: 0;
-  position: absolute;
+  position: relative;
   margin-block-end: var(--space-l);
   z-index: 900;
   text-align: left;
@@ -10,9 +10,19 @@
   overflow: auto;
   overflow-x: hidden;
 
+  // fixed position when JS is active
   .js-active & {
     margin-block-end: 0;
     min-height: 7.5rem;
+    position: absolute;
+
+    & [aria-expanded="false"] + .first-level {
+      display: none;
+    }
+
+    .first-level {
+      position: fixed;
+    }
   }
 
   a {
@@ -20,20 +30,42 @@
   }
 
   .first-level {
+    position: unset;
     background-color: var(--color-blue-600);
-    position: fixed;
     left: 0;
     top: 0;
     width: 100%;
-    min-height: 100vh;
-    min-height: 100dvh;
+    height: 100vh;
+    height: 100dvh;
+    overflow-y: auto;
+    flex-wrap: nowrap;
     margin: 0 auto;
-    padding-block: 6rem;
+    padding-block: var(--space-xl-2xl);
     padding-inline: max(var(--space-m), (100% - 60rem) / 2);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 0;
+    transition: 0.3s ease;
+
+    @media screen and (min-height: 54em) and (min-width: 64em) and (min-aspect-ratio: 1/1) {
+      justify-content: center;
+    }
+
+    &.item-hovered {
+      background-color: var(--color-black);
+
+      li {
+        color: rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .second-level {
+        &::before {
+          background-color: rgba(255, 255, 255, 0.12);
+        }
+      }
+    }
 
     & > li {
       @include apply-utility("text", "step-4");
@@ -42,14 +74,37 @@
       align-items: baseline;
       flex-direction: column;
       padding-block: var(--space-xs);
+      cursor: pointer;
+      transition: 0.3s ease;
+      position: relative;
 
       @include media-query("lg") {
         flex-direction: row;
         padding-block: 0;
+        font-size: max(1rem, min(7vh, 4rem));
       }
 
       & > a {
         margin-right: var(--space-xs);
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        height: 2px;
+        width: 0;
+        background: var(--color-gradient-horizontal);
+        transition: 0.5s ease;
+      }
+
+      &:hover {
+        color: var(--color-white);
+
+        &::before {
+          width: 100%;
+        }
       }
     }
 
@@ -67,6 +122,7 @@
       position: relative;
       padding-inline: var(--space-s);
       margin-block: 0 var(--space-xs);
+      transition: 0.3s ease;
 
       @include media-query("md") {
         flex-direction: row;
@@ -85,6 +141,7 @@
         position: absolute;
         left: 2px;
         background-color: var(--color-black);
+        transition: 0.3s ease;
 
         @include media-query("md") {
           position: unset;
@@ -93,22 +150,33 @@
         }
       }
 
+      &:hover {
+        &::before {
+          background-color: var(--color-white);
+        }
+      }
+
       & > * + * {
         &::before {
           content: "|";
           padding-inline: var(--space-2xs);
           display: none;
+          transition: 0.3s ease;
 
           @include media-query("md") {
             display: inline-block;
           }
         }
       }
-    }
-  }
 
-  [aria-expanded="false"] + .first-level {
-    display: none;
+      li a {
+        transition: 0.3s ease;
+
+        &:hover {
+          color: var(--color-white);
+        }
+      }
+    }
   }
 
   button {
@@ -161,8 +229,19 @@
     }
   }
 
+  [aria-expanded="false"] {
+    &:hover {
+      .stripe {
+        transform: scale(1.3, 1);
+        background-color: var(--color-blue-600);
+      }
+    }
+  }
+
   [aria-expanded="true"] {
     .stripe {
+      background-color: var(--color-white);
+
       &.first {
         transform: rotate(45deg);
       }

@@ -2,11 +2,21 @@
   position: relative;
   padding-block: var(--space-m);
   z-index: 999;
-  position: fixed;
+  position: unset;
   display: flex;
   justify-content: flex-start;
+  flex-direction: column;
   width: 100%;
   top: 0;
+
+  .js-active & {
+    position: fixed;
+    flex-direction: row;
+
+    &__brand {
+      margin-bottom: 0;
+    }
+  }
 
   @include media-query("md") {
     justify-content: center;
@@ -28,14 +38,100 @@
     z-index: 1000;
     padding-inline: var(--space-m);
     position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    transform-origin: left center;
+    transform: scale(0.7);
+    transition: 0.5s ease;
+    margin-bottom: var(--space-s-m);
 
-    svg {
-      width: 70%;
-      height: auto;
+    @include media-query("md") {
+      transform: scale(1);
+    }
+
+    .diamond {
+      width: 54px;
+      height: 63px;
+    }
+
+    .wordmark svg {
+      transition: 1s ease;
+    }
+
+    &:hover {
+      .diamond svg {
+        animation: rotateDiamond 1s ease-out;
+      }
+
+      .wordmark svg {
+        animation: shinyWordmark 1s ease-out;
+      }
+    }
+
+    @keyframes rotateDiamond {
+      0% {
+        transform: none;
+      }
+      60% {
+        transform: scale(0.5) rotate(90deg);
+      }
+      70% {
+        transform: scale(0.5) rotate(90deg);
+      }
+      100% {
+        transform: scale(1) rotate(360deg);
+      }
+    }
+
+    @keyframes shinyWordmark {
+      0% {
+        transform: none;
+      }
+      60% {
+        transform: scale(1.25);
+      }
+      70% {
+        transform: scale(1.25);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    &.hide {
+      opacity: 0;
+      transform: translateY(-80%);
+      transition: 0.3s ease;
+      transform: translateY(-80%) scale(0.7);
 
       @include media-query("md") {
-        width: 100%;
+        transform: translateY(-80%) scale(1);
       }
+    }
+  }
+
+  &__menu-label {
+    z-index: 1000;
+    opacity: 0;
+    position: absolute;
+    background-color: var(--color-black);
+    padding: var(--space-2xs) var(--space-m);
+    top: 0;
+    transform: translateY(-80%);
+    transition: 0.3s ease;
+    left: max(var(--space-m), (100% - 60rem) / 2);
+
+    @include media-query("md") {
+      left: unset;
+    }
+
+    &.show {
+      opacity: 1;
+      transform: translateY(0);
+      transition: 0.3s ease 0.2s;
     }
   }
 }

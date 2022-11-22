@@ -2,6 +2,8 @@
 const readableDate = require("./src/filters/readableDate.js");
 const w3DateFilter = require("./src/filters/w3-date-filter.js");
 const markdownFilter = require("./src/filters/markdown-filter.js");
+const renderRichTextAsHtml = require("./src/filters/render-rich-text-as-html.js");
+const renderRichTextAsString = require("./src/filters/render-rich-text-as-string.js ");
 
 // Transforms
 const htmlMinTransform = require("./src/transforms/html-min-transform.js");
@@ -18,6 +20,8 @@ module.exports = (config) => {
   // Add filters
   config.addFilter("readableDate", readableDate);
   config.addFilter("w3DateFilter", w3DateFilter);
+  config.addFilter("renderRichTextAsHtml", renderRichTextAsHtml);
+  config.addFilter("renderRichTextAsString", renderRichTextAsString);
   config.addFilter("limit", function (arr, limit) {
     return arr.slice(0, limit);
   });
@@ -25,6 +29,18 @@ module.exports = (config) => {
 
   // Add Shortcodes
   config.addShortcode("icon", require("./src/shortcodes/icon.js"));
+  config.addNunjucksAsyncShortcode(
+    "ctflPicture",
+    require("./src/shortcodes/ctflPicture.js")
+  );
+  config.addNunjucksAsyncShortcode(
+    "ctflDownload",
+    require("./src/shortcodes/ctflDownload.js")
+  );
+  config.addPairedNunjucksAsyncShortcode(
+    "ctflPictureDownload",
+    require("./src/shortcodes/ctflPictureDownload.js")
+  );
 
   // Only minify HTML if we are in production because it slows builds _right_ down
   if (isProduction) {

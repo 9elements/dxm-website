@@ -2,6 +2,8 @@
   <a href="/" aria-label="Startseite" class="site-head__brand">
         {% include "partials/brand.svg" %}
   </a>
+
+  <div class="site-head__menu-label text-step-1 weight-bold">Menu</div>
   <nav id="mainnav" class="main-nav" aria-label="Main">
     <ul class="cluster | first-level" role="list">
       {% for item in navigation.items %}
@@ -25,9 +27,9 @@
 
   <template id="burger-template">
     <button type="button" aria-expanded="false" aria-label="Menu" aria-controls="mainnav">
-      <span class="stripe first"></span>
-      <span class="stripe second"></span>
-      <span class="text weight-bold uppercase"></span>
+      <span class="stripe first" aria-hidden="true"></span>
+      <span class="stripe second" aria-hidden="true"></span>
+      <span class="text weight-bold uppercase" aria-hidden="true"></span>
     </button>
   </template>
 </header>

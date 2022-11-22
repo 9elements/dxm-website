@@ -11,8 +11,8 @@ permalink: /publikationen/
         <h1 class="text-step-5 color-white cxt uppercase center-text leading-flat">Publika&shy;tionen</h1>
       </div>
 
-      <div class="publikationen stack-xl">
-        <div class="publikationen__filter" style="max-width: 60rem;">
+      <div class="publication stack-xl">
+        <div class="publication__filter" style="max-width: 60rem;">
           <a href="#" class="button" alt="filter">Hogrefe</a>
           <a href="#" class="button" alt="filter">MWV Berlin</a>
           <a href="#" class="button" alt="filter">Medhochzwei</a>
@@ -31,18 +31,53 @@ permalink: /publikationen/
               --gs-gap: 0.5rem;
               --gs-gap: var(--space-l-xl);
         ">
-          {% set pubopen = "publikationen__item--open" %}
-          {% include "partials/publikation.html" %}
-          {% set pubopen = "" %}
-          {% include "partials/publikation.html" %}
-          {% include "partials/publikation.html" %}
-          {% include "partials/publikation.html" %}
-          {% include "partials/publikation.html" %}
-          {% include "partials/publikation.html" %}
-          {% include "partials/publikation.html" %}
-          {% include "partials/publikation.html" %}
-          {% include "partials/publikation.html" %}
-          {% include "partials/publikation.html" %}
+          {% for book in ctfl.publikation %}
+
+            <article class="publication__item stack-s-m">
+              <div class="publication__info">
+                  <div class="flip">
+                    <div class="publication__spine">
+                        <span class="weight-bold">{{ book.fields.bookTitle }}</span>
+                    </div>
+
+                    <div class="publication__cover">
+                      {% ctflPicture
+                        imgObj = book.fields.bookCover,
+                        fit = "fill",
+                        imgWidth = "720",
+                        imgHeight = "1000",
+                        alt = "",
+                        widths = [360, 720],
+                        sizes = "(min-width: 72.5em) 433px, 100vw"
+                      %}
+                    </div>
+                  </div>
+
+                <div class="publication__description stack-xs">
+                  <p class="step--1">{{ book.fields.bookDescription }}</p>
+                  <h4 class="weight-bold leading-loose">{{ book.fields.numberOfPages }} Seiten <br> {{ book.fields.releaseYear }}</h4>
+                </div>
+              </div>
+
+              <p class="text-step-0 leading-tight" style="position: relative">{{ book.fields.bookTitle }}</p>
+
+              <div class="publication__actions">
+                <div>
+                  <button aria-label="Mehr zu Digitale Gesundheitsanwendungen (DIGA)" class="publication__open-button">
+                    </button>
+                    <span class="button button--small details" aria-hidden="true">Details</span>
+                </div>
+                <div>
+                  <button aria-label="Mehr zu Digitale Gesundheitsanwendungen (DIGA)" class="button button--small publication__close-button">Schließen</button>
+                  
+                  {% if book.fields.shopLink %}
+                    <a href="{{ book.fields.shopLink }}" aria-label="" class="button button--small button--filled" target="_blank">Kaufen</a>
+                  {% endif %}
+                </div>
+              </div>
+            </article>
+
+          {% endfor %}
         </div>
       </div>
     </div>

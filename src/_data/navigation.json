@@ -5,8 +5,8 @@
       "url": "/"
     },
     {
-      "text": "Speaker",
-      "url": "/speaker/"
+      "text": "Über David",
+      "url": "/ueber-david/"
     },
     {
       "text": "Publikationen",
@@ -23,16 +23,16 @@
       "url": "/media/",
       "children": [
         {
-          "text": "Videos",
-          "url": "/videos/"
+          "text": "Fotos",
+          "url": "/media#fotos"
         },
         {
-          "text": "Bilder",
-          "url": "/bilder/"
+          "text": "Videos",
+          "url": "/media#videos"
         },
         {
           "text": "Presse",
-          "url": "/presse/"
+          "url": "/media#presse"
         }
       ]
     },

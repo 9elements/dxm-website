@@ -61,25 +61,31 @@ permalink: /media/
         </section>
 
         <section id="section3 media-tabs__presse" class="stack-xl">
+
+          <div class="stack-m">
+            <h2 class="text-step-3">Logo-Kit</h2>
+          </div>
           {% if fields.pressRelease.length > 0 %}
             <div class="stack-m">
-              <h2 class="text-step-2 uppercase">Pressemitteilungen</h2>
-              <ul>
+              <h2 class="text-step-3">Pressemitteilungen</h2>
+              <ul class="press-list | text-step-0" role="list">
                 {% for download in fields.pressRelease %}
                   <li>
-                  {{ download.fields.date | log }}
-                  <span>{{ download.fields.date | readableDate({month: "numeric", day: "numeric"}) }}</span>
-                  {% ctflDownload
-                    downloadObj = download.fields.file,
-                    title = download.fields.title
-                  %}
+                    <span class="press-list__date">{{ download.fields.date | readableDate({month: "numeric", day: "numeric", year: "numeric"}) }}</span>
+                    {% ctflDownload
+                      downloadObj = download.fields.file,
+                      title = download.fields.title
+                    %}
                   </li>
                 {% endfor %}
               </ul>
             </div>
           {% endif %}
+
+
+
           <div class="stack-m">
-          <h2 class="text-step-2 uppercase">Pressefotos</h2>
+          <h2 class="text-step-3">Pressefotos</h2>
             <p class="text-step-0">
               Die nachfolgenden Pressebilder können ungefragt für Veröffentlichungen unter Angabe der Quelle genutzt werden. Weitere Bilder können auf Anfrage zugestellt werden.
             </p>

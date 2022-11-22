@@ -47,7 +47,7 @@ async function ctflPictureShortcode(content, ctflImage) {
       <span class="download-grid__link-body">
         <span>${imgObj.fields.title}</span>
         <span>${imgWidth}px x ${imgHeight}px</span>
-        <span class="button">Download</span>
+        <span class="button button--small" aria-hidden="true">Download</span>
       </span>
     </a>`;
 }

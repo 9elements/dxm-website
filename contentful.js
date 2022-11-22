@@ -5,6 +5,7 @@ const ctflContactPerson = require("./ctfl/contactPerson.js");
 const ctflNewsletterArticle = require("./ctfl/newsletterArticle.js");
 const ctflPageMedia = require("./ctfl/pageMedia.js");
 const ctflTextPages = require("./ctfl/textPages.js");
+const ctflPublikationen = require("./ctfl/publikation.js");
 
 // Create an Object to write the json files
 // Object key will be the filename and the value will be the file's content
@@ -13,6 +14,7 @@ const ctflData = {
   newsletterArticle: ctflNewsletterArticle,
   pageMedia: ctflPageMedia,
   textPages: ctflTextPages,
+  publikation: ctflPublikationen,
 };
 
 // directory path

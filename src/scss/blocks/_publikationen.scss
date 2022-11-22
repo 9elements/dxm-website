@@ -20,9 +20,41 @@
       background-color: var(--color-blue-600);
     }
 
-    a {
+    button.active {
+      background-color: var(--color-blue-600);
+      color: var(--color-black);
+      padding-right: 4rem;
+
+      &::after {
+        opacity: 1;
+        transition: 0.25s ease 0.2s;
+      }
+    }
+
+    button {
       flex-shrink: 0;
       text-align: center;
+      white-space: nowrap;
+
+      &::after {
+        content: "x";
+        @include apply-utility("weight", "bold");
+        font-size: 0.8rem;
+        margin-left: 1rem;
+        border: 2px solid var(--color-black);
+        border-radius: 4rem;
+        width: 1.4rem;
+        height: 1.4rem;
+        position: absolute;
+        opacity: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 1rem;
+        transition: 0.15s ease;
+      }
     }
   }
 

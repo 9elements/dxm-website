@@ -19,7 +19,6 @@
     &::-webkit-scrollbar-thumb {
       background-color: var(--color-blue-600);
     }
-  
 
     a {
       flex-shrink: 0;
@@ -44,6 +43,12 @@
   &__item {
     position: relative;
     padding: var(--space-m);
+    max-width: 20rem;
+    margin-inline: auto;
+
+    @include media-query("lg") {
+      max-width: 26rem;
+    }
 
     &::before {
       content: "";
@@ -176,11 +181,16 @@
     transition: transform 0.3s ease-out;
     width: 100%;
 
-    img {
+    picture {
       width: 100%;
       display: block;
       object-fit: cover;
       aspect-ratio: 36/50;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
     }
 
     &:after {

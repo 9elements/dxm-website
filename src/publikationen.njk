@@ -31,19 +31,52 @@ permalink: /publikationen/
               --gs-gap: 0.5rem;
               --gs-gap: var(--space-l-xl);
         ">
-          {% for item in range(0, 2) %}
-            {% set cover = "/images/books/digitale-medizin.jpg" %}
-            {% set bookTitle = "Digitale Medizin" %}
-            {% include "partials/publikation.html" %}
-            {% set cover = "/images/books/digitale-transformation.jpg" %}
-            {% set bookTitle = "Digitale Transformation im Gesundheitswesen" %}
-            {% include "partials/publikation.html" %}
-            {% set cover = "/images/books/future-skills.jpg" %}
-            {% set bookTitle = "Future Skills in Medizin und Gesundheit" %}
-            {% include "partials/publikation.html" %}
-            {% set cover = "/images/books/rethink-healthcare.jpg" %}
-            {% set bookTitle = "Reth!nk Healthcare" %}
-            {% include "partials/publikation.html" %}
+          {% for book in ctfl.publikation %}
+
+            <article class="publikationen__item stack-s-m">
+              <div class="publikationen__info">
+                  <div class="flip">
+                    <div class="publikationen__spine">
+                        <span class="weight-bold">{{ book.fields.bookTitle }}</span>
+                    </div>
+
+                    <div class="publikationen__cover">
+                      {% ctflPicture
+                        imgObj = book.fields.bookCover,
+                        fit = "fill",
+                        imgWidth = "720",
+                        imgHeight = "1000",
+                        alt = "",
+                        widths = [360, 720],
+                        sizes = "(min-width: 72.5em) 433px, 100vw"
+                      %}
+                    </div>
+                  </div>
+
+                <div class="publikationen__description stack-xs">
+                  <p class="step--1">{{ book.fields.bookDescription }}</p>
+                  <h4 class="weight-bold leading-loose">{{ book.fields.numberOfPages }} Seiten <br> {{ book.fields.releaseYear }}</h4>
+                </div>
+              </div>
+
+              <p class="text-step-0 leading-tight" style="position: relative">{{ book.fields.bookTitle }}</p>
+
+              <div class="publikationen__actions">
+                <div>
+                  <button aria-label="Mehr zu Digitale Gesundheitsanwendungen (DIGA)" class="publikationen__open-button">
+                    </button>
+                    <span class="button button--small details" aria-hidden="true">Details</span>
+                </div>
+                <div>
+                  <button aria-label="Mehr zu Digitale Gesundheitsanwendungen (DIGA)" class="button button--small publikationen__close-button">Schließen</button>
+                  
+                  {% if book.fields.shopLink %}
+                    <a href="{{ book.fields.shopLink }}" aria-label="" class="button button--small button--filled" target="_blank">Kaufen</a>
+                  {% endif %}
+                </div>
+              </div>
+            </article>
+
           {% endfor %}
         </div>
       </div>

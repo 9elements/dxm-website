@@ -37,9 +37,11 @@
       white-space: nowrap;
 
       &::after {
-        content: "x";
-        @include apply-utility("weight", "bold");
-        font-size: 0.8rem;
+        content: "";
+        background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='12.728' width='4' height='18' transform='rotate(45 12.728 0)' fill='%230A101C'/%3E%3Crect y='2.82837' width='4' height='18' transform='rotate(-45 0 2.82837)' fill='%230A101C'/%3E%3C/svg%3E%0A");
+        background-size: 50%;
+        background-repeat: no-repeat;
+        background-position: center;
         margin-left: 1rem;
         border: 2px solid var(--color-black);
         border-radius: 4rem;
@@ -47,9 +49,6 @@
         height: 1.4rem;
         position: absolute;
         opacity: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         top: 50%;
         transform: translateY(-50%);
         right: 1rem;

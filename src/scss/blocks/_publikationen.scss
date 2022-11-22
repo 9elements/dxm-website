@@ -1,4 +1,4 @@
-.publikationen {
+.publication {
   &__filter {
     display: flex;
     gap: var(--space-2xs-xs);
@@ -82,7 +82,7 @@
         //transform: rotateY(90deg);
       }
 
-      .publikationen__description {
+      .publication__description {
         opacity: 1;
         transition: 0.2s ease 0.2s;
       }
@@ -92,7 +92,7 @@
         opacity: 1;
       }
 
-      .publikationen__actions {
+      .publication__actions {
         & > div:first-child {
           display: none;
         }

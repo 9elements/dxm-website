@@ -1,18 +1,18 @@
 (() => {
   const publicationItems = Array.from(
-    document.querySelectorAll(".publikationen__item")
+    document.querySelectorAll(".publication__item")
   );
 
   publicationItems.forEach((item) => {
-    const openButton = item.querySelector(".publikationen__open-button");
-    const closeButton = item.querySelector(".publikationen__close-button");
+    const openButton = item.querySelector(".publication__open-button");
+    const closeButton = item.querySelector(".publication__close-button");
 
     openButton.addEventListener("click", (e) => {
-      item.classList.add("publikationen__item--open");
+      item.classList.add("publication__item--open");
     });
 
     closeButton.addEventListener("click", (e) => {
-      item.classList.remove("publikationen__item--open");
+      item.classList.remove("publication__item--open");
     });
   });
 })();

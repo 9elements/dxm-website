@@ -1,32 +1,41 @@
 .icon-link {
   $block: &;
   position: relative;
-  width: min(24rem, 50%);
+  width: min(40rem, 80%);
   margin-inline: auto;
-  left: -6%;
-
-  &:nth-child(even) {
-    left: unset;
-    right: -6%;
-  }
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  border: 2px solid;
+  border-image-source: var(--color-gradient);
+  border-image-slice: 1;
 
   @include media-query("md") {
-    width: min(24rem, 100%);
-    left: unset;
+    display: unset;
+    width: min(18rem, 80%);
+    border: none;
+  }
 
-    &:nth-child(even) {
-      right: unset;
-    }
+  @include media-query("lg") {
+    width: min(24rem, 100%);
+    display: unset;
   }
 
   &__icon {
-    padding: 1rem;
     position: relative;
-    border: 2px solid;
-    border-image-source: var(--color-gradient);
-    border-image-slice: 1;
     aspect-ratio: 1 / 1;
-    padding: var(--space-m);
+    padding: var(--space-s);
+    border: none;
+    width: 6rem;
+    height: auto;
+
+    @include media-query("md") {
+      padding: var(--space-m);
+      border: 2px solid;
+      border-image-source: var(--color-gradient);
+      border-image-slice: 1;
+      width: unset;
+    }
 
     svg {
       position: relative;
@@ -59,8 +68,14 @@
 
   &__text {
     padding-block: var(--space-s);
+    padding-right: var(--space-xs);
     position: relative;
     width: 100%;
+    text-align: left;
+
+    @include media-query("md") {
+      text-align: center;
+    }
 
     &::before {
       content: "";

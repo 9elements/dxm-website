@@ -80,23 +80,23 @@ permalink: /media/
                 </div>
               </div>
             </div>
-          {% if fields.pressRelease.length > 0 %}
-            <div class="stack-m">
-              <h2 class="text-step-3">Pressemitteilungen</h2>
-              <div class="gradient-line-horizontal" style="--gradient-width: 11.5rem"></div>
-              <ul class="press-list | text-step-0" role="list">
-                {% for download in fields.pressRelease %}
-                  <li>
-                    <span class="press-list__date">{{ download.fields.date | readableDate({month: "numeric", day: "numeric", year: "numeric"}) }}</span>
-                    {% ctflDownload
-                      downloadObj = download.fields.file,
-                      title = download.fields.title
-                    %}
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
-          {% endif %}
+            {% if fields.pressRelease.length > 0 %}
+              <div class="stack-m">
+                <h2 class="text-step-3">Pressemitteilungen</h2>
+                <div class="gradient-line-horizontal" style="--gradient-width: 11.5rem"></div>
+                <ul class="press-list | text-step-0" role="list">
+                  {% for download in fields.pressRelease %}
+                    <li>
+                      <span class="press-list__date">{{ download.fields.date | readableDate({month: "numeric", day: "numeric", year: "numeric"}) }}</span>
+                      {% set downloadTitle = download.fields.date | readableDate({month: "numeric", day: "numeric", year: "numeric"}) + "-DXM-Pressemitteilung" %}
+                      {% ctflDownload downloadObj = download.fields.file, title = downloadTitle | slugify %}
+                        {{ download.fields.title }}
+                      {% endctflDownload %}
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
           </div>
 
           <div class="stack-m">
@@ -113,7 +113,8 @@ permalink: /media/
               --gs-columns-small: 2;
               ">
               {% for photo in fields.photos %}
-                {% ctflPictureDownload imgObj = photo %}
+                {% set downloadTitle = photo.fields.title %}
+                {% ctflDownload downloadObj = photo, classes="download-grid__link", title = downloadTitle | slugify %}
                   {% ctflPicture
                     imgObj = photo,
                     fit = "fill",
@@ -123,7 +124,12 @@ permalink: /media/
                     sizes = "(min-width: 72.5em) 433px, 100vw",
                     classes = "download-grid__image"
                   %}
-                {% endctflPictureDownload %}
+                  <span class="download-grid__link-body">
+                    <span>{{ photo.fields.title }}</span>
+                    <span>{{ photo.fields.file.details.image }}px x 999px</span>
+                    <span class="button button--small" aria-hidden="true">Download</span>
+                  </span>
+                {% endctflDownload %}
               {% endfor %}
             </div>
           </div>
@@ -254,3 +260,4 @@ permalink: /media/
     }
   })();
 </script>
+

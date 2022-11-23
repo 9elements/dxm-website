@@ -33,7 +33,7 @@ module.exports = (config) => {
     "ctflPicture",
     require("./src/shortcodes/ctflPicture.js")
   );
-  config.addNunjucksAsyncShortcode(
+  config.addPairedNunjucksAsyncShortcode(
     "ctflDownload",
     require("./src/shortcodes/ctflDownload.js")
   );

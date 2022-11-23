@@ -7,6 +7,8 @@ const ctflPageMedia = require("./ctfl/pageMedia.js");
 const ctflTextPages = require("./ctfl/textPages.js");
 const ctflPublikationen = require("./ctfl/publikation.js");
 const ctflPublishers = require("./ctfl/publishers.js");
+const ctflFunktion = require("./ctfl/funktion.js");
+const ctflStartup = require("./ctfl/startup.js");
 const ctflpageUeberDavid = require("./ctfl/pageUeberDavid.js");
 
 // Create an Object to write the json files
@@ -18,6 +20,8 @@ const ctflData = {
   textPages: ctflTextPages,
   publikation: ctflPublikationen,
   publishers: ctflPublishers,
+  funktion: ctflFunktion,
+  startup: ctflStartup,
   pageUeberDavid: ctflpageUeberDavid,
 };
 

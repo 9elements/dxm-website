@@ -1,19 +1,17 @@
 (() => {
-  const filterButtons = document.querySelectorAll(
-    ".publication__filter-button"
-  );
-  const books = document.querySelectorAll(".publication__item");
+  const filterButtons = document.querySelectorAll(".filter-button");
+  const filterItem = document.querySelectorAll(".filter-item");
 
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
       button.classList.toggle("active");
 
-      const selectedPublisher = button.dataset.publisher;
+      const selectedFilter = button.dataset.filter;
 
-      books.forEach((book) => {
+      filterItem.forEach((item) => {
         if (button.classList.contains("active")) {
-          book.hidden = book.dataset.publisher !== selectedPublisher;
-        } else book.hidden = false;
+          item.hidden = item.dataset.filter !== selectedFilter;
+        } else item.hidden = false;
       });
 
       const otherButtons = Array.from(filterButtons).filter(

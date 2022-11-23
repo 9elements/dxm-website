@@ -105,13 +105,15 @@ permalink: /leistungen/
             <div class="gradient-line-horizontal leading-flat" style="--gradient-width: 45rem; margin-inline: auto;"></div>
             <p class="text-step-0 center-text">DXM GmbH begleitet, berät und investiert in Startups, Scaleups und kleine und mittelständische Unternehmen (KMU). Einige sind hier exemplarisch öffentlich aufgeführt.</p>
         </div>
-        <div class="publikationen__filter">
-            <a href="#" class="button" alt="filter">Beteiligungen</a>
-            <a href="#" class="button" alt="filter">Beiräte</a>
-            <a href="#" class="button" alt="filter">Aufsichtsrat</a>
-            <a href="#" class="button" alt="filter">Consulting</a>
-            <a href="#" class="button" alt="filter">Exit</a>
+
+        <div class="filter" style="max-width: 60rem;">
+            {% for filter in ctfl.funktion %}
+                <button class="button filter-button" data-filter="{{ filter }}">
+                {{ filter }}
+                </button>
+            {% endfor %}
         </div>
+
         <div class="grid-switcher wrapper"style="
         --gs-columns-large: 4;
         --gs-columns-medium: 3;
@@ -119,19 +121,23 @@ permalink: /leistungen/
         --gs-bp-medium: 35rem;
         --gs-gap: var(--space-l-xl);
         ">
-            <img class="logo-size" src="/images/logos/doob.png" alt="">
-            <img class="logo-size" src="/images/logos/medical-motion.png" alt="">
-            <img class="logo-size" src="/images/logos/dubidoc.png" alt="">
-            <img class="logo-size" src="/images/logos/wundex.webp" alt="">
-            <img class="logo-size" src="/images/logos/dr-jaeschke.png" alt="">
-            <img class="logo-size" src="/images/logos/dermanostic.png" alt="">
-            <img class="logo-size" src="/images/logos/probando.png" alt="">
-            <img class="logo-size" src="/images/logos/instahelp.png" alt="">
-            <img class="logo-size" src="/images/logos/alley.png" alt="">
-            <img class="logo-size" src="/images/logos/health-bank.png" alt="">
-            <img class="logo-size" src="/images/logos/10xd.png" alt="">
-            <img class="logo-size" src="/images/logos/es-fo-med.png" alt="">
-            <img class="logo-size" src="/images/logos/d-health.png" alt="">
+
+            {% for startup in ctfl.startup %}
+                <a class="filter-item" href="{{ startup.fields.externalLink }}" target="blank" data-filter="{{ startup.fields.funktionVonDxM }}">
+                {% ctflPicture
+                        imgObj = startup.fields.logo,
+                        fit = "fill",
+                        imgWidth = "720",
+                        imgHeight = "1000",
+                        alt = "",
+                        widths = [360, 720],
+                        sizes = "(min-width: 72.5em) 433px, 100vw",
+                        classes = "logo-size"
+                      %}
+            </a>
+            {% endfor %}
         </div>
     </div>
 </div>
+
+<script defer="defer" src="/js/filter.js"></script>

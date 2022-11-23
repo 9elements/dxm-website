@@ -18,8 +18,8 @@ async function ctflDownloadShortcode(content, ctflDownload) {
   const url = "https:" + ctflDownload.downloadObj.fields.file.url;
   const filetype = url.split(".").pop();
   const filename = ctflDownload.downloadObj.sys.id;
-  const title = ctflDownload.title ? ctflDownload.title : filename;
-  const classes = ctflDownload.classes ? ctflDownload.classes : "";
+  const title = ctflDownload.title || filename;
+  const classes = ctflDownload.classes || "";
 
   let data = await EleventyFetch(url, {
     duration: "1d",

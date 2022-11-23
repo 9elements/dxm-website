@@ -30,6 +30,7 @@ Thumbnail example:
   imgWidth="32",
   imgHeight="32",
   fit="thumb",
+  focus="face",
   widths=[32],
   sizes="2rem"
 %}
@@ -63,11 +64,11 @@ async function ctflPictureShortcode(ctflImage) {
     alt = ctflImage.alt;
   }
   const formats = ctflImage.formats || ["avif", "webp", "jpg"];
-  const widths = ctflImage.widths || [300, 600];
+  const widths = ctflImage.widths || [400, 800];
   const sizes = ctflImage.sizes || "(min-width: 22em) 30vw, 100vw";
   const classes = ctflImage.classes || "";
-  const fit = ctflImage.fit ? ctflImage.fit : "fill";
-  const focus = ctflImage.focus ? ctflImage.focus : "center";
+  const fit = ctflImage.fit || "fill";
+  const focus = ctflImage.focus || "center";
 
   let imgWidth = 800;
   let imgHeight = 600;

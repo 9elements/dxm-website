@@ -4,15 +4,14 @@ layout: "layouts/home.njk"
 permalink: /ueber-david/
 ---
 
+<div class="section" style="padding-block: var(--space-3xl);">
+  <div class="wrapper | stack-3xl-4xl">
+    <div class="gradient-line-vertical center-text">
+      <h1 class="text-step-5 color-white cxt uppercase center-text leading-flat">Über David</h1>
+    </div>
 
-  <div class="section" style="padding-block: var(--space-3xl);">
-    <div class="wrapper | stack-3xl-4xl">
-      <div class="gradient-line-vertical center-text">
-        <h1 class="text-step-5 color-white cxt uppercase center-text leading-flat">Über David</h1>
-      </div>
-
-      <div>
-        <div class="image-text-teaser">
+    <div>
+      <div class="image-text-teaser">
         <div class="image">
           <img src="/images/DXM_D_Visual.png">
         </div>
@@ -50,95 +49,71 @@ permalink: /ueber-david/
           <a href="mailto:{{ site.authorEmail }}" class="button">Buchen</a>
         </div>
       </div>
-      </div>
+    </div>
 
-      <div class="stack-3xl">
-        <h2 class="text-step-5 uppercase">Vita</h2>
-        <details-utils class="stack-3xl" close-esc animate>
+    <div class="stack-3xl">
+      <h2 class="text-step-5 uppercase">Vita</h2>
+      <details-utils class="stack-3xl" close-esc animate>
+
+        {% for section in ctfl.pageUeberDavid.fields.sections %}
+
           <details class="acc-list">
-            <summary class="text-step-2 leading-flat">Berufserfahrung</summary>
+            <summary class="text-step-2 leading-flat">{{ section.fields.sectionTitle }}</summary>
             <dl class="bg-blue-600 text-step-0">
-              <div class="acc-list__item">
-                <dt>10.2012 - 11.2012</dt>
-                <dd>Centre for Health Systems (CHS)
-                  University of Otago, New Zealand
-                  Forschungsaufenthalt</dd>
-              </div>
 
-              <div class="acc-list__item">
-                <dt>09.2008 - 06.2012</dt>
-                <dd>Medizinische Fakultät, Universität Duisburg-Essen
-                  Aus dem Alfried Krupp von Bohlen und Halbach
-                  Stiftungslehrstuhl für Medizinmanagement
-                  Promotion</dd>
-              </div>
+              {% for sectionItem in section.fields.vitaSection %}
 
-              <div class="acc-list__item">
-                <dt>09.2008 – 06.2012</dt>
-                <dd>Medizinische Fakultät, Universität Duisburg-Essen
-                  Aus dem Alfried Krupp von Bohlen und Halbach
-                  Stiftungslehrstuhl für Medizinmanagement
-                  Promotion</dd>
-              </div>
+                <div class="acc-list__item">
+                  {% if sectionItem.fields.periodStart %}
+                    <dt>{{ sectionItem.fields.periodStart | readableDate({month: "numeric", year: "numeric"}) }}
+
+                      {% if sectionItem.fields.periodEnd %}
+
+                       – {{ sectionItem.fields.periodEnd | readableDate({month: "numeric", year: "numeric"}) }}</dt>
+
+                    {% endif %}
+
+                  {% elif not sectionItem.fields.periodStart %}
+
+                    <dt>{{ sectionItem.fields.title }}</dt>
+
+                  {% endif %}
+                  <dd>{{ sectionItem.fields.description }}</dd>
+                </div>
+
+              {% endfor %}
+
             </dl>
           </details>
 
-          <details class="acc-list">
-            <summary class="text-step-2 leading-flat">Akademische Erfahrung</summary>
-            <dl class="bg-blue-600">
-              <div class="acc-list__item">
-                <dt>10.2012 - 11.2012</dt>
-                <dd>Centre for Health Systems (CHS)
-                  University of Otago, New Zealand
-                  Forschungsaufenthalt</dd>
-              </div>
+        {% endfor %}
 
-              <div class="acc-list__item">
-                <dt>09.2008 - 06.2012</dt>
-                <dd>Medizinische Fakultät, Universität Duisburg-Essen
-                  Aus dem Alfried Krupp von Bohlen und Halbach
-                  Stiftungslehrstuhl für Medizinmanagement
-                  Promotion</dd>
-              </div>
-
-              <div class="acc-list__item">
-                <dt>09.2008 - 06.2012</dt>
-                <dd>Medizinische Fakultät, Universität Duisburg-Essen
-                  Aus dem Alfried Krupp von Bohlen und Halbach
-                  Stiftungslehrstuhl für Medizinmanagement
-                  Promotion</dd>
-              </div>
-            </dl>
-          </details>
-        </details-utils>
-      </div>
-
-      <div class="wrapper">
-            <div class="grid-switcher" style="
+        <div class="wrapper">
+          <div class="grid-switcher" style="
             --gs-columns-medium: 3;
               --gs-columns-large: 3;
               --gs-bp-medium: 39rem;
               --gs-gap: var(--space-l);
             ">
-                <a href="/agb-fur-referentenvertrag/" class="icon-link">
-                    <div class="icon-link__icon">
-                        {% include "svg/agb.svg" %}
-                    </div>
-                    <h4 class="icon-link__text | center-text text-step-1">AGB</h4>
-                </a>
-                <a href="/kontakt/" class="icon-link">
-                    <div class="icon-link__icon">
-                        {% include "svg/buchung.svg" %}
-                    </div>
-                    <h4 class="icon-link__text | center-text text-step-1">Buchung</h4>
-                </a>
-                <a href="/media/#presse" class="icon-link">
-                    <div class="icon-link__icon">
-                        {% include "svg/presse.svg" %}
-                    </div>
-                    <h4 class="icon-link__text | center-text text-step-1">Presse</h4>
-                </a>
-            </div>
+            <a href="/agb-fur-referentenvertrag/" class="icon-link">
+              <div class="icon-link__icon">
+                {% include "svg/agb.svg" %}
+              </div>
+              <h4 class="icon-link__text | center-text text-step-1">AGB</h4>
+            </a>
+            <a href="/kontakt/" class="icon-link">
+              <div class="icon-link__icon">
+                {% include "svg/buchung.svg" %}
+              </div>
+              <h4 class="icon-link__text | center-text text-step-1">Buchung</h4>
+            </a>
+            <a href="/media/#presse" class="icon-link">
+              <div class="icon-link__icon">
+                {% include "svg/presse.svg" %}
+              </div>
+              <h4 class="icon-link__text | center-text text-step-1">Presse</h4>
+            </a>
+          </div>
         </div>
 
         <div class="stack-m center-text">
@@ -151,6 +126,5 @@ permalink: /ueber-david/
             <input type="submit" value="Slide anzeigen" class="button">
           </form>
         </div>
+      </div>
     </div>
-  </div>
-

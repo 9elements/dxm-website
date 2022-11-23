@@ -1,6 +1,15 @@
-// This takes a file from a contentful media-input field and caches it locally.
-// The file is then written to dist/downloads using the file's id as filename.
-// A link to the file is returned.
+/* ==========================================================
+This shortcode takes a file from a contentful media-input field and caches it locally.
+The file is then written to dist/downloads using the file's id as filename.
+It returns a link to the downloaded file.
+
+Required properties:
+  - downloadObj -> The whole file object from contentful (not just the URL!)
+
+Optional properties:
+  - title -> will be used as filename for the download HTML-attribute
+  - classes -> list of classes that is applied to the link
+========================================================== */
 
 const EleventyFetch = require("@11ty/eleventy-fetch");
 const fs = require("fs");

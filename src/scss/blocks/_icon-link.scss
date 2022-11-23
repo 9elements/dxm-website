@@ -28,6 +28,7 @@
     border: none;
     width: 6rem;
     height: auto;
+    display: block;
 
     @include media-query("md") {
       padding: var(--space-m);
@@ -72,6 +73,7 @@
     position: relative;
     width: 100%;
     text-align: left;
+    display: block;
 
     @include media-query("md") {
       text-align: center;

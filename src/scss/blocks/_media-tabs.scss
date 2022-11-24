@@ -22,7 +22,7 @@
       width: 100%;
       scroll-margin-top: var(--space-3xl);
       display: flex;
-      align-items: center;
+      justify-content: center;
 
       @include media-query("md") {
         justify-content: center;
@@ -37,14 +37,6 @@
   [role="tablist"] [aria-selected] {
     background-color: var(--color-blue-600);
     color: var(--color-black);
-
-    &::after {
-      content: "aktiv";
-      text-transform: none;
-      font-size: 12px;
-      @include apply-utility("weight", "regular");
-      margin-left: 1rem;
-    }
   }
 
   @include media-query("md") {

@@ -57,34 +57,38 @@ permalink: /ueber-david/
 
         {% for section in ctfl.pageUeberDavid.fields.sections %}
 
-          <details class="acc-list">
-            <summary class="text-step-2 leading-flat">{{ section.fields.sectionTitle }}</summary>
-            <dl class="bg-blue-600 text-step-0">
+          {% if section.fields.vitaSection %}
 
-              {% for sectionItem in section.fields.vitaSection %}
+            <details class="acc-list">
+              <summary class="text-step-2 leading-flat">{{ section.fields.sectionTitle }}</summary>
+              <dl class="bg-blue-600 text-step-0">
 
-                <div class="acc-list__item">
-                  {% if sectionItem.fields.periodStart %}
-                    <dt>{{ sectionItem.fields.periodStart | readableDate({month: "numeric", year: "numeric"}) }}
+                {% for sectionItem in section.fields.vitaSection %}
 
-                      {% if sectionItem.fields.periodEnd %}
+                  <div class="acc-list__item">
+                    {% if sectionItem.fields.periodStart %}
+                      <dt>{{ sectionItem.fields.periodStart | readableDate({month: "numeric", year: "numeric"}) }}
+
+                        {% if sectionItem.fields.periodEnd %}
 
                        – {{ sectionItem.fields.periodEnd | readableDate({month: "numeric", year: "numeric"}) }}</dt>
 
+                      {% endif %}
+
+                    {% elif not sectionItem.fields.periodStart %}
+
+                      <dt>{{ sectionItem.fields.title }}</dt>
+
                     {% endif %}
+                    <dd>{{ sectionItem.fields.description }}</dd>
+                  </div>
 
-                  {% elif not sectionItem.fields.periodStart %}
+                {% endfor %}
 
-                    <dt>{{ sectionItem.fields.title }}</dt>
+              </dl>
+            </details>
 
-                  {% endif %}
-                  <dd>{{ sectionItem.fields.description }}</dd>
-                </div>
-
-              {% endfor %}
-
-            </dl>
-          </details>
+          {% endif %}
 
         {% endfor %}
 

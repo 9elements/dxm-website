@@ -1,23 +1,19 @@
 #main-content{
     margin-block: auto;
+}
+
+.slides{
     min-height: 100dvh;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-
-.slides{
-    &__img{
-        margin-inline: auto;
-        max-width: 90rem;
-    }
+    align-items: center;
+    gap: 5vw;
 
     &__title{
-        margin-inline: auto;
-        margin-top: 3vw;
-        text-align: center; 
-        font-size: 5vmin;  
-        max-width: 40ch; 
+        text-align: center;
+        font-size: 6vmin;
+        max-width: 40ch;
     }
 }

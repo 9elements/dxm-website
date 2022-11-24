@@ -1,11 +1,14 @@
 ---
 title: "Slides"
 layout: "layouts/home.njk"
-permalink: /slides/
+permalink: 
+    serverless: /slides/
 hideChrome: "true"
 ---
 
-<div class="slides">
+<div class="slides | wrapper" style="
+    --wrapper-max-width: 80vw;
+    ">
     <div>
         <svg class="slides__img"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 1455 437">
             <g filter="url(#blur)" opacity=".3">
@@ -15,16 +18,16 @@ hideChrome: "true"
             <path fill="url(#grad)" d="M265.4 59H39.2v.6l52 51.6v-.5H265c73.1 0 132.9 59.2 132.9 131.8 0 72.6-59.8 131.9-133 131.9H91.3V244l-52-.5V427h226.2a185 185 0 0 0 185.4-184c0-101.7-82.9-184-185.4-184Zm438.4 123.2-79.9 79.2L457 427h73.7L678 280.8 825.4 427h74.2L715 244 901.6 59H828L703.8 182.2Zm-80.9-29.6L528.6 59H455l94.2 93.6H623Zm724.9 45.5 67.5-67v-73l-230.8 227.8L953.7 57v370h52V181.7L1184.5 359l163.3-161Zm16 59.2V427h52V308.4l-52-51Z" opacity=".35"/>
             <defs>
                 <linearGradient id="grad" x1="1" x2="1" y1="18" y2="388" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#f5104e"/>
-                <stop offset="1" stop-color="#291AD8"/>
+                    <stop stop-color="#f5104e"/>
+                    <stop offset="1" stop-color="#291AD8"/>
                 </linearGradient>
                 <filter id="blur" width="1383" height="386" x="57" y="10" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                <feGaussianBlur result="effect1_foregroundBlur_1068_1548" stdDeviation="4"/>
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                    <feGaussianBlur result="effect1_foregroundBlur_1068_1548" stdDeviation="4"/>
                 </filter>
             </defs>
         </svg>
     </div>
-    <h1 class="slides__title | weight-bold uppercase">Unser Anspruch ist höchste verfügbare Qualität</h1>
+    <h1 class="slides__title | weight-bold uppercase">{{ eleventy.serverless.query.eventText }}</h1>
 </div>

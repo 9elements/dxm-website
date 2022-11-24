@@ -1,3 +1,6 @@
+//Serverless
+const { EleventyServerlessBundlerPlugin } = require("@11ty/eleventy");
+
 // Filters
 const readableDate = require("./src/filters/readableDate.js");
 const w3DateFilter = require("./src/filters/w3-date-filter.js");
@@ -16,6 +19,13 @@ module.exports = (config) => {
   // Set directories to pass through to the dist folder
   config.addPassthroughCopy("./src/images/");
   config.addPassthroughCopy("./src/js/");
+
+  //Serverless
+  config.addPlugin(EleventyServerlessBundlerPlugin, {
+    name: "serverless", // The serverless function name from your permalink object
+    functionsDir: "./netlify/functions/",
+    copy: ["src/filters", "src/transforms", "src/shortcodes", "src/js"],
+  });
 
   // Add filters
   config.addFilter("readableDate", readableDate);

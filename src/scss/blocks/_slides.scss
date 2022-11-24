@@ -8,14 +8,16 @@
 }
 
 .slides{
-    margin-inline: auto;
-    width: 80vw;
+    &__img{
+        margin-inline: auto;
+        max-width: 90rem;
+    }
 
     &__title{
         margin-inline: auto;
         margin-top: 3vw;
         text-align: center; 
-        font-size: 7vmin;  
-        max-width: 26ch; 
+        font-size: 5vmin;  
+        max-width: 40ch; 
     }
 }

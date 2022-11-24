@@ -29,5 +29,14 @@
         content: " | ";
       }
     }
+
+    @media (max-width: 32em) {
+      font-size: 1rem;
+      margin-block: 2rem;
+
+      &::after {
+        top: calc(100% + 2rem / 2);
+      }
+    }
   }
 }

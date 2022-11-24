@@ -21,6 +21,12 @@
     a {
       width: 100%;
       scroll-margin-top: var(--space-3xl);
+      display: flex;
+      align-items: center;
+
+      @include media-query("md") {
+        justify-content: center;
+      }
     }
   }
 
@@ -33,7 +39,11 @@
     color: var(--color-black);
 
     &::after {
-      content: "\0020⬅";
+      content: "aktiv";
+      text-transform: none;
+      font-size: 12px;
+      @include apply-utility("weight", "regular");
+      margin-left: 1rem;
     }
   }
 

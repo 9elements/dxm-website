@@ -1,3 +1,6 @@
+//Serverless
+const { EleventyServerlessBundlerPlugin } = require("@11ty/eleventy");
+
 // Filters
 const readableDate = require("./src/filters/readableDate.js");
 const w3DateFilter = require("./src/filters/w3-date-filter.js");
@@ -17,6 +20,13 @@ module.exports = (config) => {
   config.addPassthroughCopy("./src/images/");
   config.addPassthroughCopy("./src/js/");
 
+  //Serverless
+  config.addPlugin(EleventyServerlessBundlerPlugin, {
+    name: "serverless", // The serverless function name from your permalink object
+    functionsDir: "./netlify/functions/",
+    copy: ["src/filters", "src/transforms", "src/shortcodes", "src/js"],
+  });
+
   // Add filters
   config.addFilter("readableDate", readableDate);
   config.addFilter("w3DateFilter", w3DateFilter);
@@ -29,6 +39,14 @@ module.exports = (config) => {
 
   // Add Shortcodes
   config.addShortcode("icon", require("./src/shortcodes/icon.js"));
+  config.addNunjucksAsyncShortcode(
+    "ctflPicture",
+    require("./src/shortcodes/ctflPicture.js")
+  );
+  config.addPairedNunjucksAsyncShortcode(
+    "ctflDownload",
+    require("./src/shortcodes/ctflDownload.js")
+  );
 
   // Only minify HTML if we are in production because it slows builds _right_ down
   if (isProduction) {

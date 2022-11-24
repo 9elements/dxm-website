@@ -1102,10 +1102,16 @@ Example Syntax
   }
 }
 .headline-svg {
+  display: flex;
+  gap: var(--space-m);
+  flex-wrap: wrap;
+  justify-content: center;
   margin-left: auto;
   margin-right: auto;
-  width: min(67rem, 75vw);
-  height: auto;
+  width: min(67rem, 90vw);
+}
+.headline-svg svg {
+  height: clamp(2.07rem, 1.27rem + 3.43vw, 3.95rem);
 }
 
 .icon-link {

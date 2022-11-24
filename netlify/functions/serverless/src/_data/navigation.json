@@ -1,0 +1,44 @@
+{
+  "items": [
+    {
+      "text": "Home",
+      "url": "/"
+    },
+    {
+      "text": "Über David",
+      "url": "/ueber-david/"
+    },
+    {
+      "text": "Publikationen",
+      "url": "/publikationen/",
+      "children": [
+        {
+          "text": "Publikationsliste",
+          "url": "/publikationsliste/"
+        }
+      ]
+    },
+    {
+      "text": "Media",
+      "url": "/media/",
+      "children": [
+        {
+          "text": "test",
+          "url": "/test/"
+        }
+      ]
+    },
+    {
+      "text": "Leistungen",
+      "url": "/leistungen/"
+    },
+    {
+      "text": "Newsletter",
+      "url": "/newsletter/"
+    },
+    {
+      "text": "Kontakt",
+      "url": "/kontakt/"
+    }
+  ]
+}

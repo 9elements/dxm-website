@@ -1,0 +1,13 @@
+require("@11ty/eleventy");
+require("@11ty/eleventy-fetch");
+require("@11ty/eleventy-img");
+require("@contentful/rich-text-html-renderer");
+require("@contentful/rich-text-plain-text-renderer");
+require("@contentful/rich-text-types");
+require("clean-css");
+require("dotenv");
+require("html-minifier");
+require("jsdom");
+require("luxon");
+require("markdown-it");
+require("purgecss");

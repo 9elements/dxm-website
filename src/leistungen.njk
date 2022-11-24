@@ -106,12 +106,14 @@ permalink: /leistungen/
             <p class="text-step-0 center-text">DXM GmbH begleitet, berät und investiert in Startups, Scaleups und kleine und mittelständische Unternehmen (KMU). Einige sind hier exemplarisch öffentlich aufgeführt.</p>
         </div>
 
-        <div class="filter" style="max-width: 60rem;">
+        <div class="wrapper">
+            <div class="filter" style="max-width: 60rem;">
             {% for filter in ctfl.funktion %}
                 <button class="button filter-button" data-filter="{{ filter }}">
                 {{ filter }}
                 </button>
             {% endfor %}
+            </div>
         </div>
 
         <div class="grid-switcher wrapper"style="

@@ -22,7 +22,7 @@ Example Syntax
     padding-block-start: var(--space-s-m);
     height: min(12rem, 25vw);
     cursor: pointer;
-    background: linear-gradient(var(--color-blue-600),var(--color-blue-600));
+    background: linear-gradient(var(--color-blue-600), var(--color-blue-600));
     background-size: 0 100%;
     background-repeat: no-repeat;
     transition: 0.3s ease-out;
@@ -37,7 +37,7 @@ Example Syntax
       outline-offset: 5px;
     }
 
-    &::before{
+    &::before {
       --icon-size: clamp(2.5rem, 1.818rem + 3.41vw, 4.375rem);
       content: "";
       position: absolute;
@@ -57,18 +57,28 @@ Example Syntax
     padding-block-end: var(--space-s-m);
   }
 
-  &__item{
-    padding-block: var(--space-s);
+  &__item {
+    padding-block: var(--space-m);
     border-block-start: 1px solid var(--color-black);
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-s);
+    gap: var(--space-2xs);
     justify-content: space-between;
     position: relative;
 
+    @media only screen and (min-width: 59.5em) {
+      gap: var(--space-s);
+      padding-block: var(--space-s);
+    }
+
     dt {
       flex-basis: 14rem;
+      @include apply-utility("weight", "bold");
+
+      @media only screen and (min-width: 59.5em) {
+        @include apply-utility("weight", "regular");
+      }
     }
 
     dd {
@@ -88,7 +98,7 @@ Example Syntax
     summary {
       background-size: 100% 100%;
 
-      &::before{
+      &::before {
         rotate: 45deg;
       }
     }

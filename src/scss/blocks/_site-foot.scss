@@ -3,12 +3,16 @@ footer {
 
   ul {
     --cluster-justification: center;
-    --cluster-gap: var(--space-m-l);
-    flex-direction: column;
+    --cluster-gap: var(--space-3xs-2xs);
+    flex-direction: row;
     align-items: center;
 
     @include media-query("md") {
-      flex-direction: row;
+      --cluster-gap: var(--space-m-l);
+    }
+
+    @media (max-width: 34em) {
+      --cluster-gap: 0;
     }
 
     li {
@@ -20,17 +24,29 @@ footer {
         &:hover {
           color: var(--color-blue-600);
         }
+
+        @media (max-width: 34em) {
+          font-size: 1rem;
+        }
+
+        @media (max-width: 28em) {
+          padding: var(--space-3xs);
+        }
       }
     }
 
     & * + * {
       &::before {
         content: "|";
-        margin-right: var(--space-m-l);
-        display: none;
+        margin-right: var(--space-3xs-2xs);
+        display: inline;
 
         @include media-query("md") {
-          display: inline;
+          margin-right: var(--space-m-l);
+        }
+
+        @media (max-width: 34em) {
+          margin-right: 0;
         }
       }
     }

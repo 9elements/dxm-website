@@ -9,13 +9,18 @@
     flex-shrink: 0;
     width: 100%;
     height: auto;
-    max-width: 10rem;
-    max-height: 10rem;
+    max-width: 8rem;
+    max-height: 8rem;
     object-fit: contain;
 
+    @media (min-width: 500px) {
+      max-width: 10rem;
+      max-height: 10rem;
+    }
+
     @include media-query("md") {
-      max-width: 20rem;
-      max-height: 20rem;
+      max-width: 18rem;
+      max-height: 18rem;
     }
 
     @include media-query("lg") {

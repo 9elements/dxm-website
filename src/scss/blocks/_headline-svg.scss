@@ -1,5 +1,12 @@
 .headline-svg {
+  display: flex;
+  gap: var(--space-m);
+  flex-wrap: wrap;
+  justify-content: center;
   margin-inline: auto;
-  width: min(67rem, 75vw);
-  height: auto;
+  width: min(67rem, 90vw);
+
+  svg{
+    height: clamp(2.07rem, calc(1.27rem + 3.43vw), 3.95rem);
+  }
 }

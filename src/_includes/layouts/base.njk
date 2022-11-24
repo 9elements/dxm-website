@@ -2,17 +2,23 @@
 <!DOCTYPE html>
 <html lang="de" class="no-js">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     {% include "partials/meta-info.html" %}
 
     <script>
-      document.documentElement.classList.remove("no-js");
-      document.documentElement.classList.add("js-active");
+      document
+        .documentElement
+        .classList
+        .remove("no-js");
+      document
+        .documentElement
+        .classList
+        .add("js-active");
     </script>
 
-    <link rel="stylesheet" media="all" href="/fonts/fonts.css?{{ assetHash }}" />
+    <link rel="stylesheet" media="all" href="/fonts/fonts.css?{{ assetHash }}"/>
 
     {% if env.nodeenv !== 'production' %}
       <!-- We're not in production mode -->
@@ -42,13 +48,15 @@
     <div id="canvas-container" class="stars">
       <canvas id="canvas"></canvas>
     </div>
-    {% include "partials/site-head.html" %}
-
+    {% if not(hideChrome == "true") %}
+      {% include "partials/site-head.html" %}
+    {% endif %}
     <main tabindex="-1" id="main-content">
       {% block content %}{% endblock %}
     </main>
-
-    {% include "partials/site-foot.html" %}
+    {% if not(hideChrome == "true") %}
+      {% include "partials/site-foot.html" %}
+    {% endif %}
 
     <script src="/js/gsap.min.js"></script>
     <script src="/js/ScrollTrigger.min.js"></script>
@@ -56,9 +64,7 @@
     <script src="/js/nav.js"></script>
     <script>
       gsap.registerPlugin(ScrollTrigger);
-      gsap.set(".stars", {
-        opacity: 0.6
-      })
+      gsap.set(".stars", {opacity: 0.6})
 
       gsap.to(".stars", {
         scrollTrigger: {
@@ -68,7 +74,7 @@
           toggleActions: "restart pause reverse pause",
           scrub: true
         },
-        opacity: 0.3,
+        opacity: 0.3
       });
     </script>
     <script src="/js/details-utils.min.js"></script>

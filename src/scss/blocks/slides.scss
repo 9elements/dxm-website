@@ -1,0 +1,21 @@
+#main-content{
+    margin-block: auto;
+    min-height: 100dvh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.slides{
+    margin-inline: auto;
+    width: 80vw;
+
+    &__title{
+        margin-inline: auto;
+        margin-top: 3vw;
+        text-align: center; 
+        font-size: 7vmin;  
+        max-width: 26ch; 
+    }
+}

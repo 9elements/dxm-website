@@ -1,10 +1,10 @@
 ---
 title: "DXM Newsletter weekly"
-layout: "layouts/home.njk"
+layout: "layouts/content.njk"
 permalink: /newsletter/
 ---
 
-<div class="section" style="padding-block: var(--space-3xl);">
+<div class="section">
     <div class="wrapper | stack-3xl-4xl">
         <div class="gradient-line-vertical center-text">
             <h1 class="text-step-5 color-white cxt uppercase center-text leading-flat">Newsletter</h1>
@@ -25,7 +25,7 @@ permalink: /newsletter/
             {% for article in ctfl.newsletterArticle | reverse %}
                 <article class="news-article sidebar-right">
                     <div class="news-article__img">
-                      {% set photo = article.fields.image %}
+                        {% set photo = article.fields.image %}
                         {% ctflPicture
                           imgObj = photo,
                           fit = "fill",

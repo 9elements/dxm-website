@@ -6,18 +6,18 @@ pagination:
 eleventyComputed:
   title: "{{ data.fields.title }}"
   content: data.fields.content
-layout: "layouts/home.njk"
+layout: "layouts/content.njk"
 permalink: "{{ data.fields.title | slug }}/index.html"
 ---
 
-<div class="section" style="padding-block: var(--space-3xl);">
-    <div class="wrapper | stack-3xl-4xl">
-        <div class="gradient-line-vertical">
-        <h1 class="text-step-5 color-white cxt uppercase center-text leading-flat">{{data.fields.title}}</h1>
-        </div>
-
-        <div class="plain-html">
-        {{data.fields.description | renderRichTextAsHtml | safe }}
-        </div>
+<div class="section">
+  <div class="wrapper | stack-3xl-4xl">
+    <div class="gradient-line-vertical">
+      <h1 class="text-step-5 color-white cxt uppercase center-text leading-flat">{{data.fields.title}}</h1>
     </div>
+
+    <div class="plain-html">
+      {{data.fields.description | renderRichTextAsHtml | safe }}
+    </div>
+  </div>
 </div>

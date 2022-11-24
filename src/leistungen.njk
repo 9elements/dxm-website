@@ -1,10 +1,10 @@
 ---
 title: "Leistungen"
-layout: "layouts/home.njk"
+layout: "layouts/content.njk"
 permalink: /leistungen/
 ---
 
-<div class="section stack-3xl-4xl" style="padding-block: var(--space-3xl);">
+<div class="section stack-3xl-4xl">
 
     <div class="wrapper | stack-3xl-4xl">
         <div class="gradient-line-vertical">
@@ -108,11 +108,11 @@ permalink: /leistungen/
 
         <div class="wrapper">
             <div class="filter" style="max-width: 60rem;">
-            {% for filter in ctfl.funktion %}
-                <button class="button filter-button" data-filter="{{ filter }}">
-                {{ filter }}
-                </button>
-            {% endfor %}
+                {% for filter in ctfl.funktion %}
+                    <button class="button filter-button" data-filter="{{ filter }}">
+                        {{ filter }}
+                    </button>
+                {% endfor %}
             </div>
         </div>
 
@@ -126,7 +126,7 @@ permalink: /leistungen/
 
             {% for startup in ctfl.startup %}
                 <a class="filter-item" href="{{ startup.fields.externalLink }}" target="blank" data-filter="{{ startup.fields.funktionVonDxM }}">
-                {% ctflPicture
+                    {% ctflPicture
                         imgObj = startup.fields.logo,
                         fit = "fill",
                         imgWidth = "720",
@@ -136,7 +136,7 @@ permalink: /leistungen/
                         sizes = "(min-width: 72.5em) 433px, 100vw",
                         classes = "logo-size"
                       %}
-            </a>
+                </a>
             {% endfor %}
         </div>
     </div>

@@ -1,35 +1,35 @@
 ---
 title: "Media"
-layout: "layouts/home.njk"
+layout: "layouts/content.njk"
 permalink: /media/
 ---
 
-  {% set fields = ctfl.pageMedia.fields %}
-  <div class="section" style="padding-block: var(--space-3xl);">
-    <div class="wrapper | stack-3xl-4xl">
-      <div class="gradient-line-vertical">
-        <h1 class="text-step-5 color-white cxt uppercase center-text leading-flat">{{ fields.title }}</h1>
-      </div>
+{% set fields = ctfl.pageMedia.fields %}
+<div class="section">
+  <div class="wrapper | stack-3xl-4xl">
+    <div class="gradient-line-vertical">
+      <h1 class="text-step-5 color-white cxt uppercase center-text leading-flat">{{ fields.title }}</h1>
+    </div>
 
-      <div class="media-tabs stack-l-xl">
-        <ul>
-          <li>
-            <a class="button" href="#section1" id="fotos">Fotos</a>
-          </li>
-          <li>
-            <a class="button" href="#section2" id="videos">Videos</a>
-          </li>
-          <li>
-            <a class="button" href="#section3" id="presse">presse</a>
-          </li>
-        </ul>
+    <div class="media-tabs stack-l-xl">
+      <ul>
+        <li>
+          <a class="button" href="#section1" id="fotos">Fotos</a>
+        </li>
+        <li>
+          <a class="button" href="#section2" id="videos">Videos</a>
+        </li>
+        <li>
+          <a class="button" href="#section3" id="presse">presse</a>
+        </li>
+      </ul>
 
-        <section id="section1" class="media-tabs__fotos">
-          <div class="grid">
-            <div class="grid-sizer"></div>
-            {% for photo in fields.photos %}
-              <div class="grid-item">
-                {% ctflPicture
+      <section id="section1" class="media-tabs__fotos">
+        <div class="grid">
+          <div class="grid-sizer"></div>
+          {% for photo in fields.photos %}
+            <div class="grid-item">
+              {% ctflPicture
                   imgObj = photo,
                   fit = "fill",
                   imgWidth = "1720",
@@ -38,13 +38,13 @@ permalink: /media/
                   sizes = "(min-width: 72.5em) 433px, 100vw",
                   classes = "person__image"
                 %}
-              </div>
-            {% endfor %}
-          </div>
-        </section>
+            </div>
+          {% endfor %}
+        </div>
+      </section>
 
-        <section id="section2 media-tabs__videos">
-          <div class="grid-switcher" style="
+      <section id="section2 media-tabs__videos">
+        <div class="grid-switcher" style="
                 --gs-columns-small: 1;
                 --gs-bp-medium: 35rem;
                 --gs-columns-medium: 2;
@@ -53,16 +53,16 @@ permalink: /media/
                 --gs-gap: 2rem;
                 --gs-gap-vertical: 2rem;
                 ">
-            {% for id in fields.videoIds %}
-              {% set videoId = id %}
-              {% include "partials/youtube.html" %}
-            {% endfor %}
-          </div>
-        </section>
+          {% for id in fields.videoIds %}
+            {% set videoId = id %}
+            {% include "partials/youtube.html" %}
+          {% endfor %}
+        </div>
+      </section>
 
-        <section id="section3 media-tabs__presse" class="stack-2xl-3xl">
+      <section id="section3 media-tabs__presse" class="stack-2xl-3xl">
 
-          <div class="grid-switcher" style="
+        <div class="grid-switcher" style="
               --gs-bp-medium: 45rem;
               --gs-columns-medium: 1;
               --gs-bp-large: 60rem;
@@ -70,52 +70,53 @@ permalink: /media/
               --gs-gap: var(--space-2xl);
               --gs-gap-vertical: var(--space-2xl-3xl);
               ">
-            <div class="stack-m">
-              <h2 class="text-step-3">Logo-Kit</h2>
-              <div class="logo-kit text-step-0 stack-l-xl">
-                <img src="/images/logos-preview.png">
-                <div class="logo-kit__download-bar">
-                  <h4>Logo-Kit</h4>
-                  <a class="button button--small" href="#">Download</a>
-                </div>
+          <div class="stack-m">
+            <h2 class="text-step-3">Logo-Kit</h2>
+            <div class="logo-kit text-step-0 stack-l-xl">
+              <img src="/images/logos-preview.png">
+              <div class="logo-kit__download-bar">
+                <h4>Logo-Kit</h4>
+                <a class="button button--small" href="#">Download</a>
               </div>
             </div>
-            {% if fields.pressRelease.length > 0 %}
-              <div class="stack-m">
-                <h2 class="text-step-3">Pressemitteilungen</h2>
-                <div class="gradient-line-horizontal" style="--gradient-width: 11.5rem"></div>
-                <ul class="press-list | text-step-0" role="list">
-                  {% for download in fields.pressRelease %}
-                    <li>
-                      <span class="press-list__date">{{ download.fields.date | readableDate({month: "numeric", day: "numeric", year: "numeric"}) }}</span>
-                      {% set downloadTitle = download.fields.date | readableDate({month: "numeric", day: "numeric", year: "numeric"}) + "-DXM-Pressemitteilung" %}
-                      {% ctflDownload downloadObj = download.fields.file, title = downloadTitle | slugify %}
-                        {{ download.fields.title }}
-                      {% endctflDownload %}
-                    </li>
-                  {% endfor %}
-                </ul>
-              </div>
-            {% endif %}
           </div>
+          {% if fields.pressRelease.length > 0 %}
+            <div class="stack-m">
+              <h2 class="text-step-3">Pressemitteilungen</h2>
+              <div class="gradient-line-horizontal" style="--gradient-width: 11.5rem"></div>
+              <ul class="press-list | text-step-0" role="list">
+                {% for download in fields.pressRelease %}
+                  <li>
+                    <span class="press-list__date">{{ download.fields.date | readableDate({month: "numeric", day: "numeric", year: "numeric"}) }}</span>
+                    {% set downloadTitle = download.fields.date | readableDate({month: "numeric", day: "numeric", year: "numeric"}) + "-DXM-Pressemitteilung" %}
+                    {% ctflDownload downloadObj = download.fields.file,
+                    title = downloadTitle | slugify %}
+                    {{ download.fields.title }}
+                    {% endctflDownload %}
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        </div>
 
-          <div class="stack-m">
+        <div class="stack-m">
           <h2 class="text-step-3">Pressefotos</h2>
           <div class="gradient-line-horizontal" style="--gradient-width: 11.5rem"></div>
-            <p class="text-step-0">
+          <p class="text-step-0">
               Die nachfolgenden Pressebilder können ungefragt für Veröffentlichungen unter Angabe der Quelle genutzt werden. Weitere Bilder können auf Anfrage zugestellt werden.
             </p>
-            <div class="download-grid | grid-switcher" style="
+          <div class="download-grid | grid-switcher" style="
               --gs-gap: var(--space-s-m);
               --gs-bp-large: 60rem;
               --gs-columns-medium: 3;
               --gs-bp-medium: 48rem;
               --gs-columns-small: 2;
               ">
-              {% for photo in fields.photos %}
-                {% set downloadTitle = photo.fields.title %}
-                {% ctflDownload downloadObj = photo, classes="download-grid__link", title = downloadTitle | slugify %}
-                  {% ctflPicture
+            {% for photo in fields.photos %}
+              {% set downloadTitle = photo.fields.title %}
+              {% ctflDownload downloadObj = photo, classes="download-grid__link", title = downloadTitle | slugify %}
+              {% ctflPicture
                     imgObj = photo,
                     fit = "fill",
                     imgWidth = "1320",
@@ -124,51 +125,49 @@ permalink: /media/
                     sizes = "(min-width: 72.5em) 433px, 100vw",
                     classes = "download-grid__image"
                   %}
-                  <span class="download-grid__link-body">
-                    <span>{{ photo.fields.title }}</span>
-                    <span>{{ photo.fields.file.details.image }}px x 999px</span>
-                    <span class="button button--small" aria-hidden="true">Download</span>
-                  </span>
-                {% endctflDownload %}
-              {% endfor %}
-            </div>
+              <span class="download-grid__link-body">
+                <span>{{ photo.fields.title }}</span>
+                <span>{{ photo.fields.file.details.image }}px x 999px</span>
+                <span class="button button--small" aria-hidden="true">Download</span>
+              </span>
+              {% endctflDownload %}
+            {% endfor %}
           </div>
+        </div>
 
-        </section>
-      </div>
+      </section>
+    </div>
 
-      <div class="logo-grid">
-        <a href="#" alt="">
-            <img src="/images/logo-01.png">
-        </a>
-        <a href="#" alt="">
-            <img src="/images/logo-02.png">
-        </a>
-        <a href="#" alt="">
-            <img src="/images/logo-03.png">
-        </a>
-        <a href="#" alt="">
-            <img src="/images/logo-04.png">
-        </a>
-        <a href="#" alt="">
-            <img src="/images/logo-05.png">
-        </a>
-        <a href="#" alt="">
-            <img src="/images/logo-06.png">
-        </a>
-        <a href="#" alt="">
-            <img src="/images/logo-07.png">
-        </a>
-      </div>
+    <div class="logo-grid">
+      <a href="#" alt="">
+        <img src="/images/logo-01.png">
+      </a>
+      <a href="#" alt="">
+        <img src="/images/logo-02.png">
+      </a>
+      <a href="#" alt="">
+        <img src="/images/logo-03.png">
+      </a>
+      <a href="#" alt="">
+        <img src="/images/logo-04.png">
+      </a>
+      <a href="#" alt="">
+        <img src="/images/logo-05.png">
+      </a>
+      <a href="#" alt="">
+        <img src="/images/logo-06.png">
+      </a>
+      <a href="#" alt="">
+        <img src="/images/logo-07.png">
+      </a>
     </div>
   </div>
-
-
+</div>
 
 <script src="/js/msonry.pkgd.min.js"></script>
 <script src="/js/youtube.js"></script>
 <script>
-  (function() {
+  (function () {
     // Get relevant elements and collections
     const tabbed = document.querySelector('.media-tabs');
     const tablist = tabbed.querySelector('ul');
@@ -186,8 +185,14 @@ permalink: /media/
       oldTab.setAttribute('tabindex', '-1');
       // Get the indices of the new and old tabs to find the correct
       // tab panels to show and hide
-      let index = Array.prototype.indexOf.call(tabs, newTab);
-      let oldIndex = Array.prototype.indexOf.call(tabs, oldTab);
+      let index = Array
+        .prototype
+        .indexOf
+        .call(tabs, newTab);
+      let oldIndex = Array
+        .prototype
+        .indexOf
+        .call(tabs, oldTab);
       panels[oldIndex].hidden = true;
       panels[index].hidden = false;
     }
@@ -196,45 +201,66 @@ permalink: /media/
     tablist.setAttribute('role', 'tablist');
 
     // Add semantics are remove user focusability for each tab
-    Array.prototype.forEach.call(tabs, (tab, i) => {
-      tab.setAttribute('role', 'tab');
-      //tab.setAttribute('id', 'tab' + (i + 1));
-      tab.setAttribute('tabindex', '-1');
-      tab.parentNode.setAttribute('role', 'presentation');
+    Array
+      .prototype
+      .forEach
+      .call(tabs, (tab, i) => {
+        tab.setAttribute('role', 'tab');
+        //tab.setAttribute('id', 'tab' + (i + 1));
+        tab.setAttribute('tabindex', '-1');
+        tab
+          .parentNode
+          .setAttribute('role', 'presentation');
 
-      // Handle clicking of tabs for mouse users
-      tab.addEventListener('click', e => {
-        e.preventDefault();
-        let currentTab = tablist.querySelector('[aria-selected]');
-        if (e.currentTarget !== currentTab) {
-          switchTab(currentTab, e.currentTarget);
-        }
-      });
-
-      // Handle keydown events for keyboard users
-      tab.addEventListener('keydown', e => {
-        // Get the index of the current tab in the tabs node list
-        let index = Array.prototype.indexOf.call(tabs, e.currentTarget);
-        // Work out which key the user is pressing and
-        // Calculate the new tab's index where appropriate
-        let dir = e.which === 37 ? index - 1 : e.which === 39 ? index + 1 : e.which === 40 ? 'down' : null;
-        if (dir !== null) {
+        // Handle clicking of tabs for mouse users
+        tab.addEventListener('click', e => {
           e.preventDefault();
-          // If the down key is pressed, move focus to the open panel,
-          // otherwise switch to the adjacent tab
-          dir === 'down' ? panels[i].focus() : tabs[dir] ? switchTab(e.currentTarget, tabs[dir]) : void 0;
-        }
+          let currentTab = tablist.querySelector('[aria-selected]');
+          if (e.currentTarget !== currentTab) {
+            switchTab(currentTab, e.currentTarget);
+          }
+        });
+
+        // Handle keydown events for keyboard users
+        tab.addEventListener('keydown', e => {
+          // Get the index of the current tab in the tabs node list
+          let index = Array
+            .prototype
+            .indexOf
+            .call(tabs, e.currentTarget);
+          // Work out which key the user is pressing and
+          // Calculate the new tab's index where appropriate
+          let dir = e.which === 37
+            ? index - 1
+            : e.which === 39
+              ? index + 1
+              : e.which === 40
+                ? 'down'
+                : null;
+          if (dir !== null) {
+            e.preventDefault();
+            // If the down key is pressed, move focus to the open panel,
+            // otherwise switch to the adjacent tab
+            dir === 'down'
+              ? panels[i].focus()
+              : tabs[dir]
+                ? switchTab(e.currentTarget, tabs[dir])
+                : void 0;
+          }
+        });
       });
-    });
 
     // Add tab panel semantics and hide them all
-    Array.prototype.forEach.call(panels, (panel, i) => {
-      panel.setAttribute('role', 'tabpanel');
-      panel.setAttribute('tabindex', '-1');
-      let id = panel.getAttribute('id');
-      panel.setAttribute('aria-labelledby', tabs[i].id);
-      panel.hidden = true;
-    });
+    Array
+      .prototype
+      .forEach
+      .call(panels, (panel, i) => {
+        panel.setAttribute('role', 'tabpanel');
+        panel.setAttribute('tabindex', '-1');
+        let id = panel.getAttribute('id');
+        panel.setAttribute('aria-labelledby', tabs[i].id);
+        panel.hidden = true;
+      });
 
     // Initially activate the first tab and reveal the first tab panel
     tabs[0].removeAttribute('tabindex');
@@ -242,7 +268,7 @@ permalink: /media/
     panels[0].hidden = false;
 
     let grid = document.querySelector('.grid');
-    let msnry = new Masonry( grid, {
+    let msnry = new Masonry(grid, {
       itemSelector: '.grid-item',
       columnWidth: '.grid-sizer',
       percentPosition: true
@@ -260,4 +286,3 @@ permalink: /media/
     }
   })();
 </script>
-

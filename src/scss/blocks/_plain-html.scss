@@ -25,7 +25,8 @@
     }
   }
 
-  p {
+  p,
+  ul {
     @include apply-utility("text", "step-0");
 
     & + h5 {
@@ -39,6 +40,30 @@
     strong {
       @include apply-utility("weight", "bold");
       color: var(--color-blue-600);
+    }
+  }
+
+  ul {
+    list-style-type: none;
+    padding-left: var(--space-m-l);
+
+    li {
+      margin-bottom: 0.8rem;
+      position: relative;
+
+      &::before {
+        content: "";
+        width: calc(var(--space-m-l) - 1rem);
+        height: 1px;
+        background: var(--color-gradient-horizontal);
+        position: absolute;
+        top: 0.7rem;
+        left: calc(var(--space-m-l) * -1);
+      }
+    }
+
+    & + p {
+      margin-top: 2em;
     }
   }
 

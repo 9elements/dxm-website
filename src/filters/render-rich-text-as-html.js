@@ -1,4 +1,4 @@
-const { BLOCKS, MARKS } = require("@contentful/rich-text-types");
+const { BLOCKS, MARKS, INLINES } = require("@contentful/rich-text-types");
 const { documentToHtmlString } = require("@contentful/rich-text-html-renderer");
 
 // Props is an object
@@ -83,6 +83,15 @@ const richTextHtmlRendererOptions = {
         const imgUrl = entry.fields.photo.fields.file.url;
         const imgTitle = entry.fields.firstName + " " + entry.fields.lastName;
         return renderAvatar(imgUrl, imgTitle);
+      }
+    },
+
+    [INLINES.EMBEDDED_ENTRY]: (node) => {
+      const entry = node.data.target;
+      const entryId = entry.sys.contentType.sys.id;
+
+      if (entryId === "shy") {
+        return `&shy;`;
       }
     },
   },

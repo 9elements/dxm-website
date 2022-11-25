@@ -1,4 +1,4 @@
-const { BLOCKS, MARKS } = require("@contentful/rich-text-types");
+const { BLOCKS, MARKS, INLINES } = require("@contentful/rich-text-types");
 const { documentToHtmlString } = require("@contentful/rich-text-html-renderer");
 
 // Props is an object
@@ -22,52 +22,6 @@ const renderAvatar = (url, title) => {
       height: 200,
       alt: title,
     })}
-  `;
-};
-
-const renderTextImage = (bodycopy, imgUrl, imgAlt, position) => {
-  return `
-    <div class="cluster cluster--${position}">
-      <div>${documentToHtmlString(bodycopy)}</div>
-      <div>
-        ${renderImage({
-          src: `${imgUrl}?fm=webp&fit=fill&w=400&h=400&f=face&q=80"`,
-          alt: imgAlt,
-        })}
-      </div>
-    </div>
-  `;
-};
-
-const renderYoutube = (videoTitle, videoId) => {
-  return `<lite-youtube
-  videoid="${videoId}"
-  style="background-image: url('https://i.ytimg.com/vi/${videoId}/hqdefault.jpg');"
-  class="center"
->
-  <button type="button" class="lty-playbtn">
-    <span class="lyt-visually-hidden">Play Video: ${videoTitle}</span>
-  </button>
-</lite-youtube>`;
-};
-
-const renderGallery = (images) => {
-  const imgList = images
-    .map((image) => {
-      const { file } = image.fields;
-      const aspectRatio = file.details.image.width / file.details.image.height;
-      const format = aspectRatio > 1 ? "landscape" : "portrait";
-
-      return renderImage({
-        src: `https:${file.url}?fm=webp&fit=fill&w=600&f=face&q=80`,
-        alt: image.fields.title,
-        class: `gallery__image gallery__image--${format}`,
-      });
-    })
-    .join("");
-
-  return `
-    <div class="gallery">${imgList}</div>
   `;
 };
 
@@ -114,7 +68,7 @@ const richTextHtmlRendererOptions = {
           </p>
           <div class="download-item__sidebar download-item__sidebar--with-icon">
             <svg aria-hidden xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-          </div> 
+          </div>
           <a href="https:${file.url}" target="_blank" rel="noopener noreferrer" class="download-item__link">
             <span class="sr-only">Download ${fields.title}</span>
           </a>
@@ -130,30 +84,14 @@ const richTextHtmlRendererOptions = {
         const imgTitle = entry.fields.firstName + " " + entry.fields.lastName;
         return renderAvatar(imgUrl, imgTitle);
       }
+    },
 
-      if (entryId === "textImage") {
-        const bodycopy = entry.fields.bodycopy;
-        const imgUrl = entry.fields.image.fields.file.url;
-        const imgAlt = entry.fields.image.fields.title;
-        const imgPosition = entry.fields.imagePosition;
-        return renderTextImage(bodycopy, imgUrl, imgAlt, imgPosition);
-      }
+    [INLINES.EMBEDDED_ENTRY]: (node) => {
+      const entry = node.data.target;
+      const entryId = entry.sys.contentType.sys.id;
 
-      if (entryId === "gallery") {
-        const images = entry.fields.images;
-        return renderGallery(images);
-      }
-
-      if (entryId === "youtubeVideo") {
-        const videoTitle = entry.fields.videoTitle;
-        const videoId = entry.fields.videoId;
-        let posterImage = "";
-        if (entry.fields.posterImage) {
-          posterImage = entry.fields.posterImage.fields.file.url;
-        } else {
-          posterImage = "/images/event-placeholder.jpg";
-        }
-        return renderYoutube(videoTitle, videoId, posterImage);
+      if (entryId === "shy") {
+        return `&shy;`;
       }
     },
   },

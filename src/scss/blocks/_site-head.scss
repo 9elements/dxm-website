@@ -1,6 +1,6 @@
 .site-head {
   position: relative;
-  padding-block: var(--space-m);
+  padding-block: var(--space-s-m);
   z-index: 999;
   position: unset;
   display: flex;
@@ -44,7 +44,7 @@
     justify-content: center;
     gap: 1.5rem;
     transform-origin: left center;
-    transform: scale(0.7);
+    transform: scale(0.85);
     transition: 0.5s ease;
     margin-bottom: var(--space-s-m);
 

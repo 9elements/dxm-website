@@ -138,17 +138,23 @@ permalink: /media/
       </section>
     </div>
 
-      <div class="logo-grid">
-        {% for partner in ctfl.medienpartner %}
-        {% if partner.fields.externerLink %}
-          <a href="{{ partner.fields.externerLink }}" target="blank" alt="">
-            {% endif %}
-            {% ctflPicture
-                          imgObj = partner.fields.bild,
-                          alt = ""
-                        %}
-          </a>
-        {% endfor %}
+      <div class="stack-l">
+        <div class="stack-s">
+          <h2 class="text-step-3">Medienpartner</h2>
+          <div class="gradient-line-horizontal" style="--gradient-width: 200rem"></div>
+        </div>
+        <div class="logo-grid">
+          {% for partner in ctfl.medienpartner %}
+          {% if partner.fields.externerLink %}
+            <a href="{{ partner.fields.externerLink }}" target="blank" alt="">
+              {% endif %}
+              {% ctflPicture
+                            imgObj = partner.fields.bild,
+                            alt = ""
+                          %}
+            </a>
+          {% endfor %}
+        </div>
       </div>
   
     </div>

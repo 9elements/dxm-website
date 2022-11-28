@@ -28,14 +28,16 @@
     z-index: -1;
   }
 
-  &:hover {
-    color: var(--color-black);
-    background-color: transparent;
+  @media (any-pointer: fine) and (any-hover: hover) {
+    &:hover {
+      color: var(--color-black);
+      background-color: transparent;
 
-    &::before {
-      transition: 0.2s ease-out;
-      width: 100%;
-      opacity: 1;
+      &::before {
+        transition: 0.2s ease-out;
+        width: 100%;
+        opacity: 1;
+      }
     }
   }
 
@@ -49,9 +51,11 @@
     background-color: var(--color-blue-600);
     color: var(--color-black);
 
-    &:hover {
-      background-color: var(--color-blue-600);
-      color: var(--color-black);
+    @media (any-pointer: fine) and (any-hover: hover) {
+      &:hover {
+        background-color: var(--color-blue-600);
+        color: var(--color-black);
+      }
     }
   }
 }

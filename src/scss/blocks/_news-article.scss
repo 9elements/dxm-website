@@ -63,15 +63,17 @@
     inset: 0;
   }
 
-  &:hover {
-    &::before {
-      transition: background-size 0.3s ease-out;
-      background-size: 100% 100%, 180% 100%;
-      opacity: 1;
-    }
+  @media (any-pointer: fine) and (any-hover: hover) {
+    &:hover {
+      &::before {
+        transition: background-size 0.3s ease-out;
+        background-size: 100% 100%, 180% 100%;
+        opacity: 1;
+      }
 
-    .gradient-line-horizontal {
-      background: linear-gradient(white, white);
+      .gradient-line-horizontal {
+        background: linear-gradient(white, white);
+      }
     }
   }
 }

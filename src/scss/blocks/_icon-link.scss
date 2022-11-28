@@ -103,18 +103,20 @@
     inset: 0;
   }
 
-  &:hover {
-    .icon-link {
-      &__icon::before {
-        transition: background-size 0.3s ease-out;
-        background-size: 100% 100%, 180% 100%;
-        opacity: 1;
-      }
+  @media (any-pointer: fine) and (any-hover: hover) {
+    &:hover {
+      .icon-link {
+        &__icon::before {
+          transition: background-size 0.3s ease-out;
+          background-size: 100% 100%, 180% 100%;
+          opacity: 1;
+        }
 
-      &__text::before {
-        transition: background-size 0.3s ease-out;
-        background-size: 100% 100%, 180% 100%;
-        opacity: 1;
+        &__text::before {
+          transition: background-size 0.3s ease-out;
+          background-size: 100% 100%, 180% 100%;
+          opacity: 1;
+        }
       }
     }
   }

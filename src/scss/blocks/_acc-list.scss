@@ -27,9 +27,11 @@ Example Syntax
     background-repeat: no-repeat;
     transition: 0.3s ease-out;
 
-    &:hover {
-      background-size: 100% 100%;
-      color: var(--color-black);
+    @media (any-pointer: fine) and (any-hover: hover) {
+      &:hover {
+        background-size: 100% 100%;
+        color: var(--color-black);
+      }
     }
 
     &:focus-visible {

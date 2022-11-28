@@ -98,7 +98,7 @@ permalink: /leistungen/
     </div>
 
     <div class="stack-xl">
-        <div class="stack-s wrapper" style="--wrapper-max-width: 43.75rem;">
+        <div class="stack-s wrapper" style="--wrapper-max-width: 65rem;">
             <h2 id="startups" class="text-step-5 uppercase center-text" style="scroll-margin-top: var(--space-2xl);">
               Startups, Scaleups und KMU
             </h2>
@@ -125,7 +125,9 @@ permalink: /leistungen/
         ">
 
             {% for startup in ctfl.startup %}
+                {% if startup.fields.externalLink %}
                 <a class="filter-item" href="{{ startup.fields.externalLink }}" target="blank" data-filter="{{ startup.fields.funktionVonDxM }}">
+                   {% endif %}
                     {% ctflPicture
                         imgObj = startup.fields.logo,
                         fit = "fill",

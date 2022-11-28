@@ -138,30 +138,20 @@ permalink: /media/
       </section>
     </div>
 
-    <div class="logo-grid">
-      <a href="#" alt="">
-        <img src="/images/logo-01.png">
-      </a>
-      <a href="#" alt="">
-        <img src="/images/logo-02.png">
-      </a>
-      <a href="#" alt="">
-        <img src="/images/logo-03.png">
-      </a>
-      <a href="#" alt="">
-        <img src="/images/logo-04.png">
-      </a>
-      <a href="#" alt="">
-        <img src="/images/logo-05.png">
-      </a>
-      <a href="#" alt="">
-        <img src="/images/logo-06.png">
-      </a>
-      <a href="#" alt="">
-        <img src="/images/logo-07.png">
-      </a>
+      <div class="logo-grid">
+        {% for partner in ctfl.medienpartner %}
+        {% if partner.fields.externerLink %}
+          <a href="{{ partner.fields.externerLink }}" target="blank" alt="">
+            {% endif %}
+            {% ctflPicture
+                          imgObj = partner.fields.bild,
+                          alt = ""
+                        %}
+          </a>
+        {% endfor %}
+      </div>
+  
     </div>
-  </div>
 </div>
 
 <script src="/js/msonry.pkgd.min.js"></script>

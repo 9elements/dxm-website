@@ -6,9 +6,10 @@
 
   grid-template-columns:
     minmax(var(--space-m), 3fr)
-    5fr
+    //5fr
+    minmax(0, 70ch)
     min(100% - 2 * var(--space-m), 70ch)
-    minmax(var(--space-m), 2fr);
+    minmax(var(--space-m), 3fr);
   grid-template-rows: auto min(24vw, 31rem) auto;
 
   &__img {

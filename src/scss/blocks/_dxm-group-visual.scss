@@ -7,7 +7,8 @@
   grid-template-columns:
     minmax(var(--space-m), 2fr)
     min(100% - 2 * var(--space-m), 68ch)
-    4fr
+    //4fr
+    minmax(0, 68ch)
     minmax(var(--space-m), 2fr);
   grid-template-rows: auto min(11rem, 14vw) auto;
 

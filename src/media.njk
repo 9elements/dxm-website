@@ -144,13 +144,14 @@ permalink: /media/
           <div class="gradient-line-horizontal" style="--gradient-width: 200rem"></div>
         </div>
         <div class="logo-grid">
-          {% for partner in ctfl.medienpartner %}
-          {% if partner.fields.externerLink %}
-            <a href="{{ partner.fields.externerLink }}" target="blank" alt="">
+          {% for partner in fields.mediaPartner %}
+              {% if partner.fields.externerLink %}
+                <a href="{{ partner.fields.externerLink }}" target="blank">
               {% endif %}
+
               {% ctflPicture
                             imgObj = partner.fields.bild,
-                            alt = "",
+                            alt = "{{ partner.fields.name }}",
                             widths = [330, 660],
                             imgWidth = "1000"
                           %}

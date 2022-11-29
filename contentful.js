@@ -10,7 +10,6 @@ const ctflPublishers = require("./ctfl/publishers.js");
 const ctflFunktion = require("./ctfl/funktion.js");
 const ctflStartup = require("./ctfl/startup.js");
 const ctflpageUeberDavid = require("./ctfl/pageUeberDavid.js");
-const ctflMedienpartner = require("./ctfl/medienpartner.js");
 
 // Create an Object to write the json files
 // Object key will be the filename and the value will be the file's content
@@ -24,7 +23,6 @@ const ctflData = {
   funktion: ctflFunktion,
   startup: ctflStartup,
   pageUeberDavid: ctflpageUeberDavid,
-  medienpartner: ctflMedienpartner,
 };
 
 // directory path

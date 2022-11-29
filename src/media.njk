@@ -76,7 +76,7 @@ permalink: /media/
               <img src="/images/logos-preview.png">
               <div class="logo-kit__download-bar">
                 <h4>Logo-Kit</h4>
-                <a class="button button--small" href="#">Download</a>
+                <a class="button button--small" href="../downloads/DXM-Logodaten.zip" download>Download</a>
               </div>
             </div>
           </div>
@@ -150,7 +150,9 @@ permalink: /media/
               {% endif %}
               {% ctflPicture
                             imgObj = partner.fields.bild,
-                            alt = ""
+                            alt = "",
+                            widths = [330, 660],
+                            imgWidth = "1000"
                           %}
             </a>
           {% endfor %}

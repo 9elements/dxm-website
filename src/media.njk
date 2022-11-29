@@ -138,28 +138,30 @@ permalink: /media/
       </section>
     </div>
 
-      <div class="stack-l">
-        <div class="stack-s">
-          <h2 class="text-step-3">Medienpartner</h2>
-          <div class="gradient-line-horizontal" style="--gradient-width: 200rem"></div>
-        </div>
-        <div class="logo-grid">
-          {% for partner in fields.mediaPartner %}
-              {% if partner.fields.externerLink %}
-                <a href="{{ partner.fields.externerLink }}" target="blank">
-              {% endif %}
-
-              {% ctflPicture
-                            imgObj = partner.fields.bild,
-                            alt = partner.fields.name,
-                            widths = [330, 660],
-                            imgWidth = "1000"
-                          %}
-            </a>
-          {% endfor %}
-        </div>
+    <div class="stack-l">
+      <div class="stack-s">
+        <h2 class="text-step-3">Medienpartner</h2>
+        <div class="gradient-line-horizontal" style="--gradient-width: 200rem"></div>
       </div>
-  
+      <div class="logo-grid">
+        {% for partner in fields.mediaPartner %}
+            {% if partner.fields.externerLink %}
+              <a href="{{ partner.fields.externerLink }}" target="blank">
+            {% endif %}
+
+            {% ctflPicture
+              imgObj = partner.fields.bild,
+              formats = ["avif", "webp", "png", "svg"],
+              imgWidth = 660,
+              alt = partner.fields.name,
+              widths = [330, 660],
+              imgWidth = "1000"
+            %}
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+
     </div>
 </div>
 

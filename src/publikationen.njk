@@ -52,7 +52,12 @@ permalink: /publikationen/
 
               <div class="publication__description stack-xs">
                 <p class="step--1">{{ book.fields.bookDescription }}</p>
-                <h4 class="weight-bold leading-loose">{{ book.fields.numberOfPages }} Seiten <br>
+                <h4 class="weight-bold leading-loose">
+
+                  {% if book.fields.numberOfPages %}
+                    {{ book.fields.numberOfPages }} Seiten <br>
+                  {% endif %}
+
                   {{ book.fields.releaseYear }}</h4>
               </div>
             </div>
@@ -79,26 +84,26 @@ permalink: /publikationen/
     </section>
 
     <div class="wrapper">
-            <div class="grid-switcher" style="
+      <div class="grid-switcher" style="
             --gs-columns-medium: 3;
             --gs-columns-large: 3;
             --gs-bp-medium: 39rem;
             --gs-gap: var(--space-l);
             ">
-                <a href="/newsletter/" class="icon-link">
-                    <span class="icon-link__icon">
-                        {% include "svg/presse.svg" %}
-                    </span>
-                    <span class="icon-link__text | center-text text-step-1">Newsletter</span>
-                </a>
-                <a href="/publikationsliste/" class="icon-link">
-                    <span class="icon-link__icon">
-                        {% include "svg/buecher.svg" %}
-                    </span>
-                    <span class="icon-link__text | center-text text-step-1">Publikationsliste</span>
-                </a>
-            </div>
-        </div>
+        <a href="/newsletter/" class="icon-link">
+          <span class="icon-link__icon">
+            {% include "svg/presse.svg" %}
+          </span>
+          <span class="icon-link__text | center-text text-step-1">Newsletter</span>
+        </a>
+        <a href="/publikationsliste/" class="icon-link">
+          <span class="icon-link__icon">
+            {% include "svg/buecher.svg" %}
+          </span>
+          <span class="icon-link__text | center-text text-step-1">Publikationsliste</span>
+        </a>
+      </div>
+    </div>
   </div>
 </div>
 

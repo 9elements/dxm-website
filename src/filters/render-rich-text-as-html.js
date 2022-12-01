@@ -39,7 +39,7 @@ async function eleventyPicture(imgObj) {
 		urlPath: '/images/ctfl',
 		outputDir: 'dist/images/ctfl',
 		filenameFormat: function (id, src, width, format, options) {
-			return `${imgId}-embedded.${format}`;
+			return `${imgId}-${width}w-embedded.${format}`;
 		},
 	};
 
@@ -52,9 +52,6 @@ async function eleventyPicture(imgObj) {
 		sizes: '(min-width: 22em) 30vw, 100vw',
 		class: '',
 	});
-
-	console.log('FUNCTION!!!!!!!!!');
-
 	return picture;
 }
 
@@ -74,12 +71,30 @@ const richTextHtmlRendererOptions = {
 
 		[BLOCKS.EMBEDDED_ENTRY]: (node) => {
 			const entry = node.data.target;
-			const entryId = entry.sys.contentType.sys.id;
+			const entryType = entry.sys.contentType.sys.id;
 
-			if (entryId === 'person') {
+			if (entryType === 'person') {
 				const imgUrl = entry.fields.photo.fields.file.url;
 				const imgTitle = entry.fields.firstName + ' ' + entry.fields.lastName;
 				return renderAvatar(imgUrl, imgTitle);
+			}
+
+			if (entryType === 'gallery') {
+				let pictureList = [];
+				for (const image of entry.fields.images) {
+					const picture = `<div>${image}</div>`;
+					pictureList.push(picture);
+				}
+				//pictureList = pictureList.join('');
+				return `<div class="grid-switcher" style="
+          --gs-columns-small: 1;
+          --gs-bp-medium: 35rem;
+          --gs-columns-medium: 2;
+          --gs-bp-large: 65rem;
+          --gs-columns-large: 3;
+          --gs-gap: 2rem;
+          --gs-gap-vertical: 2rem;
+          ">${pictureList.join('')}</div>`;
 			}
 		},
 
@@ -94,12 +109,26 @@ const richTextHtmlRendererOptions = {
 	},
 };
 
-const awaitImages = async (value) => {
+const awaitImagesAndRender = async (value) => {
 	return Promise.all(
 		value.content.map(async (content) => {
-			if (content.nodeType === 'embedded-asset-block') {
+			if (
+				content.nodeType === 'embedded-asset-block' &&
+				content.data.target.fields.file.contentType.startsWith('image')
+			) {
 				const picture = await eleventyPicture(content.data.target);
 				content.data.target = picture;
+			}
+
+			if (
+				content.nodeType === 'embedded-entry-block' &&
+				content.data.target.sys.contentType.sys.id === 'gallery'
+			) {
+				const images = content.data.target.fields.images;
+				for (const [index, image] of images.entries()) {
+					const picture = await eleventyPicture(image);
+					images[index] = `<div class="picture">${picture}</div>`;
+				}
 			}
 		})
 	).then(() => {
@@ -107,4 +136,5 @@ const awaitImages = async (value) => {
 	});
 };
 
-module.exports = (value) => awaitImages(value, richTextHtmlRendererOptions);
+module.exports = (value) =>
+	awaitImagesAndRender(value, richTextHtmlRendererOptions);

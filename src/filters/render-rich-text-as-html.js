@@ -2,30 +2,6 @@ const { BLOCKS, MARKS, INLINES } = require('@contentful/rich-text-types');
 const { documentToHtmlString } = require('@contentful/rich-text-html-renderer');
 const eleventyImage = require('@11ty/eleventy-img');
 
-// Props is an object
-const renderImage = ({ src, alt, lazy = true, ...props }) => `
-  <img
-    src="${src}"
-    alt="${alt}"
-    ${lazy ? `loading="lazy" decoding="async"` : ''}
-    ${Object.keys(props)
-			.map((key) => `${key}="${props[key]}"`)
-			.join(' ')}
-  />
-`;
-
-const renderAvatar = (url, title) => {
-	return `
-    <h3>${title}</h3>
-    ${renderImage({
-			src: `https:${url}?fm=webp&fit=fill&w=200&h=200&f=face`,
-			width: 200,
-			height: 200,
-			alt: title,
-		})}
-  `;
-};
-
 async function eleventyPicture(imgObj) {
 	const imgId = imgObj.sys.id;
 	let imgUrl = imgObj.fields.file.url;
@@ -73,12 +49,6 @@ const richTextHtmlRendererOptions = {
 			const entry = node.data.target;
 			const entryType = entry.sys.contentType.sys.id;
 
-			if (entryType === 'person') {
-				const imgUrl = entry.fields.photo.fields.file.url;
-				const imgTitle = entry.fields.firstName + ' ' + entry.fields.lastName;
-				return renderAvatar(imgUrl, imgTitle);
-			}
-
 			if (entryType === 'gallery') {
 				let pictureList = [];
 				for (const image of entry.fields.images) {
@@ -94,6 +64,7 @@ const richTextHtmlRendererOptions = {
           --gs-columns-large: 3;
           --gs-gap: 2rem;
           --gs-gap-vertical: 2rem;
+          align-items: start;
           ">${pictureList.join('')}</div>`;
 			}
 		},

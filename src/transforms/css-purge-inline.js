@@ -1,14 +1,14 @@
-const { PurgeCSS } = require("purgecss");
-const { JSDOM } = require("jsdom");
-const CleanCSS = require("clean-css");
+const { PurgeCSS } = require('purgecss');
+const { JSDOM } = require('jsdom');
+const CleanCSS = require('clean-css');
 
 //function to insert css into the DOM
 const insertCss = (html, css) => {
   const dom = new JSDOM(html);
   const { document } = dom.window;
 
-  let head = document.getElementsByTagName("head")[0];
-  let style = document.createElement("style");
+  let head = document.getElementsByTagName('head')[0];
+  let style = document.createElement('style');
   style.innerHTML = css;
   head.appendChild(style);
 
@@ -16,9 +16,9 @@ const insertCss = (html, css) => {
 };
 
 module.exports = async (content, outputPath) => {
-  if (outputPath && outputPath.endsWith(".html")) {
+  if (outputPath && outputPath.endsWith('.html')) {
     //array of css files to combine
-    const cssFiles = ["./src/_includes/css/critical.css"];
+    const cssFiles = ['./src/_includes/css/critical.css'];
 
     // cleanCSSOptions for minification and inlining css, will fix duplicate media queries
     const cleanCSSOptions = {
@@ -29,18 +29,18 @@ module.exports = async (content, outputPath) => {
       content: [
         {
           raw: content,
-          extension: "html",
+          extension: 'html',
         },
       ],
       css: cssFiles,
       safelist: {
         standard: [/^md/, /^lg/],
-        greedy: [/role$/, /item-hovered/, /publication__item/],
+        greedy: [/role$/, /item-hovered/, /publication__item/, /lite-youtube/],
       },
       keyframes: true,
     });
 
-    let cssMerge = "";
+    let cssMerge = '';
 
     if (purgecssResult.length > 0) {
       for (let i = 0; i < purgecssResult.length; i++) {

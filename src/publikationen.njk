@@ -83,6 +83,32 @@ permalink: /publikationen/
       </div>
     </section>
 
+    {% if ctfl.pagePublikationen.fields.columns %}
+      <div class="gradient-line-vertical">
+        <h2 class="text-step-5 color-white cxt uppercase center-text leading-flat">Kolumnen</h2>
+      </div>
+      <div class="grid-switcher wrapper" style="
+        --gs-columns-large: 3;
+        --gs-columns-medium: 3;
+        --gs-columns-small: 1;
+        --gs-gap: var(--space-l);
+        ">
+          {% for logo in ctfl.pagePublikationen.fields.columns %}
+            {% ctflPicture
+              imgObj = logo,
+              formats = ["avif", "webp", "png", "svg"],
+              fit = "fill",
+              imgWidth = "600",
+              alt = "",
+              widths = [360, 720],
+              sizes = "(min-width: 72.5em) 433px, 100vw",
+              classes = "logo-size"
+            %}
+          {% endfor %}
+      </div>
+    {% endif %}
+
+
     <div class="wrapper">
       <div class="grid-switcher" style="
             --gs-columns-medium: 3;
@@ -100,7 +126,13 @@ permalink: /publikationen/
           <span class="icon-link__icon">
             {% include "svg/buecher.svg" %}
           </span>
-          <span class="icon-link__text | center-text text-step-1">Publikationsliste</span>
+          <span class="icon-link__text | center-text text-step-1">Publikations&shy;liste</span>
+        </a>
+        <a href="/media#presse" class="icon-link">
+          <span class="icon-link__icon">
+            {% include "svg/presse.svg" %}
+          </span>
+          <span class="icon-link__text | center-text text-step-1">Presse</span>
         </a>
       </div>
     </div>

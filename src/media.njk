@@ -117,17 +117,17 @@ permalink: /media/
               {% set downloadTitle = photo.fields.title %}
               {% ctflDownload downloadObj = photo, classes="download-grid__link", title = downloadTitle | slugify %}
               {% ctflPicture
-                    imgObj = photo,
-                    fit = "fill",
-                    imgWidth = "1320",
-                    alt = "",
-                    widths = [330, 660],
-                    sizes = "(min-width: 72.5em) 433px, 100vw",
-                    classes = "download-grid__image"
-                  %}
+                  imgObj = photo,
+                  fit = "fill",
+                  imgWidth = "1320",
+                  alt = "",
+                  widths = [330, 660],
+                  sizes = "(min-width: 72.5em) 433px, 100vw",
+                  classes = "download-grid__image"
+                %}
               <span class="download-grid__link-body">
                 <span>{{ photo.fields.title }}</span>
-                <span>{{ photo.fields.file.details.image }}px x 999px</span>
+                <span>{{ photo.fields.file.details.image.width }}px x {{ photo.fields.file.details.image.height }}px</span>
                 <span class="button button--small" aria-hidden="true">Download</span>
               </span>
               {% endctflDownload %}

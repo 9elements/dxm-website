@@ -98,8 +98,7 @@ permalink: /leistungen/
       ">
       {% include "svg/9elements.svg" %}
       {% include "svg/bryck.svg" %}
-      {% include
-      "svg/siemens-healthineers.svg" %}
+      {% include "svg/siemens-healthineers.svg" %}
     </div>
   </div>
 
@@ -136,9 +135,9 @@ permalink: /leistungen/
       {% for startup in ctfl.startup %}
         {% if startup.fields.externalLink %}
           <a class="filter-item" href="{{ startup.fields.externalLink }}" target="blank" data-filter="{{ startup.fields.funktionVonDxM }}">
-          {% endif %}
+        {% endif %}
 
-          {% ctflPicture
+        {% ctflPicture
           imgObj = startup.fields.logo,
           formats = ["avif", "webp", "png", "svg"],
           fit = "fill",
@@ -147,8 +146,9 @@ permalink: /leistungen/
           widths = [360, 720],
           sizes = "(min-width: 72.5em) 433px, 100vw",
           classes = "logo-size"
-          %}
-          {% if startup.fields.externalLink %}
+        %}
+
+        {% if startup.fields.externalLink %}
           </a>
         {% endif %}
       {% endfor %}

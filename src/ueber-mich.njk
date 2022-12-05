@@ -4,10 +4,11 @@ layout: "layouts/content.njk"
 permalink: /ueber-david/
 ---
 
+{% set fields = ctfl.pageUeberDavid.fields %}
 <div class="section">
   <div class="wrapper | stack-3xl-4xl">
     <div class="gradient-line-vertical center-text">
-      <h1 class="text-step-5 color-white cxt uppercase center-text leading-flat">Über David</h1>
+      <h1 class="text-step-5 color-white cxt uppercase center-text leading-flat">{{ fields.pageTitle }}</h1>
     </div>
 
     <div>
@@ -16,11 +17,13 @@ permalink: /ueber-david/
           <img src="/images/DXM_D_Visual.png">
         </div>
         <div class="stack-s content">
-          <h2 class="text-step-5 uppercase">David Matusiewicz</h2>
+          <h2 class="text-step-5 uppercase">{{ fields.dHeadline }}</h2>
           <p class="text-step-0 spaced-out opaque">
-            Prof. Dr. David Matusiewicz verfügt jeweils über jahrelange Erfahrung in einer Gesetzlichen Krankenversicherung als auch am Lehrstuhl für Medizin-management an der Universität Duisburg-Essen und hat dort mit Big Data (Routinedaten) geforscht. David ist ausgewiesener Experte, Gründer, Investor, Herausgeber, Autor, Keynote Speaker und Moderator im Gesundheitswesen.
+            {{ fields.dBodycopy }}
           </p>
-          <a href="mailto:{{ site.authorEmail }}" class="button">Buchen</a>
+          {% if fields.dLink and fields.dLinktext %}
+            <a href="{{ fields.dLink }}" class="button">{{ fields.dLinktext }}</a>
+          {% endif %}
         </div>
       </div>
 
@@ -29,11 +32,13 @@ permalink: /ueber-david/
           <img src="/images/DXM_X_Visual.png">
         </div>
         <div class="stack-s content">
-          <h2 class="text-step-5 uppercase">Keynote Speaker</h2>
+          <h2 class="text-step-5 uppercase">{{ fields.xHeadline }}</h2>
           <p class="text-step-0 spaced-out opaque">
-          David ist einer der renommiertesten Keynote Speaker im Kontext der Digitalen Transformation. Seine Themenschwerpunkte sind Digitale Gesundheit, Digitale Medizin, Digitale Arbeit und Digitale Wirtschaft. Mit über 15 Jahren auf der Bühne bei kleinen und Großveranstaltung und dem Erfahrungsmix aus Wissenschaft und Praxis. Sein Stil ist das Edutainment bzw. Sciencetainment mit einer hohen Interaktion der Zuhörer.
+            {{ fields.xBodycopy }}
           </p>
-          <a href="mailto:{{ site.authorEmail }}" class="button">Buchen</a>
+          {% if fields.xLink and fields.xLinktext %}
+            <a href="{{ fields.xLink }}" class="button">{{ fields.xLinktext }}</a>
+          {% endif %}
         </div>
       </div>
 
@@ -42,11 +47,13 @@ permalink: /ueber-david/
           <img src="/images/DXM_M_Visual.png">
         </div>
         <div class="stack-s content">
-          <h2 class="text-step-5 uppercase">Moderator</h2>
+          <h2 class="text-step-5 uppercase">{{ fields.mHeadline }}</h2>
           <p class="text-step-0 spaced-out opaque">
-          David wurde von der TU Kaiserslautern als „die Moderationsmaschine“ betitelt. Er hat in seiner Laufbahn Eröffnungen von Kongressen, Talkrunden mit dem amtierenden Bundesgesundheitsminister und internationale Veranstaltungen im In- und Ausland moderiert. Bei seiner Moderation kann man sicher sein: die zeit wird auf die Sekunde eingehalten – von allen.
+            {{ fields.mBodycopy }}
           </p>
-          <a href="mailto:{{ site.authorEmail }}" class="button">Buchen</a>
+          {% if fields.mLink and fields.mLinktext %}
+            <a href="{{ fields.mLink }}" class="button">{{ fields.mLinktext }}</a>
+          {% endif %}
         </div>
       </div>
     </div>
@@ -55,10 +62,8 @@ permalink: /ueber-david/
       <h2 class="text-step-5 uppercase">Vita</h2>
       <details-utils class="stack-2xl-3xl" close-esc animate>
 
-        {% for section in ctfl.pageUeberDavid.fields.sections %}
-
+        {% for section in ctfl.pageUeberDavid.fields.vitaSections %}
           {% if section.fields.vitaSection %}
-
             <details class="acc-list">
               <summary class="text-step-2 leading-flat">{{ section.fields.sectionTitle }}</summary>
               <dl class="bg-blue-600 text-step-0">
@@ -68,11 +73,8 @@ permalink: /ueber-david/
                   <div class="acc-list__item">
                     {% if sectionItem.fields.periodStart %}
                       <dt>{{ sectionItem.fields.periodStart | readableDate({month: "numeric", year: "numeric"}) }}
-
                         {% if sectionItem.fields.periodEnd %}
-
-                       – {{ sectionItem.fields.periodEnd | readableDate({month: "numeric", year: "numeric"}) }}</dt>
-
+                       - {{ sectionItem.fields.periodEnd | readableDate({month: "numeric", year: "numeric"}) }}</dt>
                       {% endif %}
 
                     {% elif not sectionItem.fields.periodStart %}

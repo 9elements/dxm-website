@@ -44,6 +44,9 @@ try {
 }
 
 async function writeJson(fetchData, filename) {
+  console.log(process.env.CTFL_HOST);
+  console.log(process.env.CTF_SPACE_ID);
+  console.log(process.env.CTF_CDA_ACCESS_TOKEN);
   const ctflData = await fetchData();
   fs.writeFile(
     `src/_data/ctfl/${filename}.json`,

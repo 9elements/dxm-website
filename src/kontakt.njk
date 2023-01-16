@@ -37,6 +37,9 @@ permalink: /kontakt/
             <h4 class="text-step-1 weight-light">
               {{ person.fields.jobTitle }}
             </h4>
+            <a href="mailto:{{person.fields.eMail}}" class="text-step-1 weight-light">
+              {{ person.fields.eMail }}
+            </a>
           </div>
           <a href=" {{ person.fields.linkedin }} " target="blank" class="button" style="text-transform: none;">LinkedIn</a>
         </div>
@@ -59,12 +62,12 @@ permalink: /kontakt/
     </div>
 
     <div class="contact-info | center-text">
-      <p class="text-step-1 uppercase">
+      <p class="text-step-1 uppercase stack-m">
               DXM Group GmbH<br>
               c/o BRYCK GmbH & Co. KG<br>
               Jakob-Funke-Platz 2<br>
               45127 Essen<br>
-        <a href="mailto:{{ site.authorEmail }}">{{ site.authorEmail }}</a>
+        <a class="button" href="mailto:{{ site.authorEmail }}">{{ site.authorEmail }}</a>
       </p>
     </div>
   </div>

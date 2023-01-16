@@ -12,11 +12,18 @@ permalink: /publikationen/
 
     <section class="publication stack-xl">
       <div class="filter" style="max-width: 60rem;">
-
         {% for publisher in ctfl.publishers %}
-          <button class="button filter-button" data-filter="{{ publisher }}">
-            {{ publisher }}
-          </button>
+
+          {% if publisher %}
+            <button class="button filter-button" data-filter="{{ publisher }}">
+              {{ publisher }}
+            </button>
+          {% else %}
+            <button class="button filter-button" data-filter="{{ publisher }}">
+              sonstige
+            </button>
+          {% endif %}
+
         {% endfor %}
       </div>
       <div class="grid-switcher" id="books" style="
@@ -93,8 +100,8 @@ permalink: /publikationen/
         --gs-columns-small: 1;
         --gs-gap: var(--space-l);
         ">
-          {% for logo in ctfl.pagePublikationen.fields.columns %}
-            {% ctflPicture
+        {% for logo in ctfl.pagePublikationen.fields.columns %}
+          {% ctflPicture
               imgObj = logo,
               formats = ["avif", "webp", "png", "svg"],
               fit = "fill",
@@ -104,10 +111,9 @@ permalink: /publikationen/
               sizes = "(min-width: 72.5em) 433px, 100vw",
               classes = "logo-size"
             %}
-          {% endfor %}
+        {% endfor %}
       </div>
     {% endif %}
-
 
     <div class="wrapper">
       <div class="grid-switcher" style="

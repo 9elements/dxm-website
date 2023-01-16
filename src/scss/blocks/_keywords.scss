@@ -5,8 +5,8 @@
     position: relative;
     line-height: 1.2;
 
-    &::after {
-      content: "";
+    &:not(:last-child)::after {
+      content: '';
       width: 2rem;
       height: 2px;
       background-color: var(--color-white);
@@ -16,17 +16,17 @@
       transform: translateX(-50%);
     }
 
-    @include media-query("md") {
+    @include media-query('md') {
       display: inline;
       line-height: unset;
 
-      &::after {
+      &:not(:last-child)::after {
         background-color: unset;
         transform: unset;
         width: unset;
         height: unset;
         position: unset;
-        content: " | ";
+        content: ' | ';
       }
     }
 
@@ -34,7 +34,7 @@
       font-size: 1rem;
       margin-block: 2rem;
 
-      &::after {
+      &:not(:last-child)::after {
         top: calc(100% + 2rem / 2);
       }
     }

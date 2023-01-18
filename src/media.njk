@@ -113,7 +113,7 @@ permalink: /media/
               --gs-bp-medium: 48rem;
               --gs-columns-small: 2;
               ">
-            {% for photo in fields.photos %}
+            {% for photo in fields.pressePhotoDownloads %}
               {% set downloadTitle = photo.fields.title %}
               {% ctflDownload downloadObj = photo, classes="download-grid__link", title = downloadTitle | slugify %}
               {% ctflPicture

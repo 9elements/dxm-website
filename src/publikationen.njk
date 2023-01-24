@@ -35,7 +35,7 @@ permalink: /publikationen/
               --gs-gap: 0.5rem;
               --gs-gap: var(--space-l-xl);
         ">
-        {% for book in ctfl.publikation %}
+        {% for book in ctfl.publikation | reverse %}
 
           <article data-filter="{{ book.fields.publisher }}" class="publication__item filter-item stack-s-m">
             <div class="publication__info">

@@ -134,7 +134,13 @@ permalink: /leistungen/
       ">
       {% for startup in ctfl.startup %}
         {% if startup.fields.externalLink %}
+
           <a class="filter-item" href="{{ startup.fields.externalLink }}" target="blank" data-filter="{{ startup.fields.funktionVonDxM }}">
+
+        {% else %}
+
+          <span class="filter-item" target="blank" data-filter="{{ startup.fields.funktionVonDxM }}">
+
         {% endif %}
 
         {% ctflPicture
@@ -150,6 +156,8 @@ permalink: /leistungen/
 
         {% if startup.fields.externalLink %}
           </a>
+        {% else %}
+          </span>
         {% endif %}
       {% endfor %}
     </div>

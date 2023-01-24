@@ -2,17 +2,21 @@
   max-width: 60rem;
   margin-inline: auto;
 
+  img {
+    height: auto;
+  }
+
   h2 {
-    @include apply-utility("text", "step-3");
+    @include apply-utility('text', 'step-3');
     text-transform: uppercase;
   }
 
   h3 {
-    @include apply-utility("text", "step-2");
+    @include apply-utility('text', 'step-2');
   }
 
   h4 {
-    @include apply-utility("text", "step-1");
+    @include apply-utility('text', 'step-1');
     text-transform: uppercase;
   }
 
@@ -27,7 +31,7 @@
 
   p,
   ul {
-    @include apply-utility("text", "step-0");
+    @include apply-utility('text', 'step-0');
 
     & + h5 {
       margin-top: 0.2em;
@@ -38,7 +42,7 @@
     }
 
     strong {
-      @include apply-utility("weight", "bold");
+      @include apply-utility('weight', 'bold');
       color: var(--color-blue-600);
     }
   }
@@ -52,7 +56,7 @@
       position: relative;
 
       &::before {
-        content: "";
+        content: '';
         width: calc(var(--space-m-l) - 1rem);
         height: 1px;
         background: var(--color-gradient-horizontal);

@@ -39,109 +39,109 @@ Thumbnail example:
 const eleventyImage = require('@11ty/eleventy-img');
 
 async function ctflPictureShortcode(ctflImage) {
-	if (!ctflImage.imgObj) {
-		return 'Contentful image-object must be provided';
-	}
+  if (!ctflImage.imgObj) {
+    return 'Contentful image-object must be provided';
+  }
 
-	if (
-		ctflImage.imgObj.fields == undefined ||
-		ctflImage.imgObj.fields.file == undefined ||
-		ctflImage.imgObj.fields.file.contentType == undefined ||
-		ctflImage.imgObj.fields.file.contentType.startsWith('image') == false
-	) {
-		return 'imgObj must be a valid contentful image object';
-	}
+  if (
+    ctflImage.imgObj.fields == undefined ||
+    ctflImage.imgObj.fields.file == undefined ||
+    ctflImage.imgObj.fields.file.contentType == undefined ||
+    ctflImage.imgObj.fields.file.contentType.startsWith('image') == false
+  ) {
+    return 'imgObj must be a valid contentful image object';
+  }
 
-	const { imgObj } = ctflImage;
-	let imgUrl = imgObj.fields.file.url;
-	const imgId = imgObj.sys.id;
-	const originSizes = imgObj.fields.file.details.image;
-	const ratio = originSizes.width / originSizes.height;
-	let alt = '';
-	if (ctflImage.alt == undefined) {
-		alt = imgObj.fields.title;
-	} else {
-		alt = ctflImage.alt;
-	}
-	const formats = ctflImage.formats || ['avif', 'webp', 'jpg'];
-	const widths = ctflImage.widths || [400, 800];
-	const sizes = ctflImage.sizes || '(min-width: 22em) 30vw, 100vw';
-	const classes = ctflImage.classes || '';
-	const fit = ctflImage.fit || 'fill';
-	const focus = ctflImage.focus || 'center';
+  const { imgObj } = ctflImage;
+  let imgUrl = imgObj.fields.file.url;
+  const imgId = imgObj.sys.id;
+  const originSizes = imgObj.fields.file.details.image;
+  const ratio = originSizes.width / originSizes.height;
+  let alt = '';
+  if (ctflImage.alt == undefined) {
+    alt = imgObj.fields.title;
+  } else {
+    alt = ctflImage.alt;
+  }
+  const formats = ctflImage.formats || ['avif', 'webp', 'jpg'];
+  const widths = ctflImage.widths || [400, 800];
+  const sizes = ctflImage.sizes || '(min-width: 22em) 30vw, 100vw';
+  const classes = ctflImage.classes || '';
+  const fit = ctflImage.fit || 'fill';
+  const focus = ctflImage.focus || 'center';
 
-	let imgWidth = 800;
-	let imgHeight = 600;
+  let imgWidth = 800;
+  let imgHeight = 600;
 
-	if (ctflImage.imgWidth && ctflImage.imgHeight) {
-		imgWidth = ctflImage.imgWidth;
-		imgHeight = ctflImage.imgHeight;
-	}
+  if (ctflImage.imgWidth && ctflImage.imgHeight) {
+    imgWidth = ctflImage.imgWidth;
+    imgHeight = ctflImage.imgHeight;
+  }
 
-	if (ctflImage.imgWidth && !ctflImage.imgHeight) {
-		let calculatedHeight = Math.floor(ctflImage.imgWidth / ratio);
-		imgWidth = ctflImage.imgWidth;
-		imgHeight = calculatedHeight;
-	}
+  if (ctflImage.imgWidth && !ctflImage.imgHeight) {
+    let calculatedHeight = Math.floor(ctflImage.imgWidth / ratio);
+    imgWidth = ctflImage.imgWidth;
+    imgHeight = calculatedHeight;
+  }
 
-	if (!ctflImage.imgWidth && ctflImage.imgHeight) {
-		let calculatedWidth = Math.floor(ctflImage.imgHeight * ratio);
-		imgHeight = ctflImage.imgHeight;
-		imgWidth = calculatedWidth;
-	}
+  if (!ctflImage.imgWidth && ctflImage.imgHeight) {
+    let calculatedWidth = Math.floor(ctflImage.imgHeight * ratio);
+    imgHeight = ctflImage.imgHeight;
+    imgWidth = calculatedWidth;
+  }
 
-	if (imgUrl.startsWith('//')) {
-		imgUrl = 'https:' + imgUrl;
-	}
+  if (imgUrl.startsWith('//')) {
+    imgUrl = 'https:' + imgUrl;
+  }
 
-	imgUrl =
-		imgUrl +
-		'?f=' +
-		focus +
-		'&fit=' +
-		fit +
-		'&w=' +
-		imgWidth +
-		'&h=' +
-		imgHeight;
+  imgUrl =
+    imgUrl +
+    '?f=' +
+    focus +
+    '&fit=' +
+    fit +
+    '&w=' +
+    imgWidth +
+    '&h=' +
+    imgHeight;
 
-	console.log(imgUrl);
+  console.log(imgUrl);
 
-	let options;
+  let options;
 
-	options = {
-		formats: formats,
-		widths: widths,
-		urlPath: '/images/ctfl',
-		outputDir: 'dist/images/ctfl',
-		filenameFormat: function (id, src, width, format, options) {
-			// Log files saved to dist
-			// console.log(
-			//   `${imgId}-${imgWidth}x${imgHeight}-${width}w-${fit}-${focus}.${format}`
-			// );
-			return `${imgId}-${imgWidth}x${imgHeight}-${width}w-${fit}-${focus}.${format}`;
-		},
-	};
+  options = {
+    formats: formats,
+    widths: widths,
+    urlPath: '/images/ctfl',
+    outputDir: 'dist/images/ctfl',
+    filenameFormat: function (id, src, width, format, options) {
+      // Log files saved to dist
+      // console.log(
+      //   `${imgId}-${imgWidth}x${imgHeight}-${width}w-${fit}-${focus}.${format}`
+      // );
+      return `${imgId}-${imgWidth}x${imgHeight}-${width}w-${fit}-${focus}.${format}`;
+    },
+  };
 
-	let stats;
-	if (process.env.ELEVENTY_SERVERLESS) {
-		stats = eleventyImage.statsByDimensionsSync(
-			imgUrl,
-			imgWidth,
-			imgHeight,
-			options
-		);
-	} else {
-		stats = await eleventyImage(imgUrl, options);
-	}
+  let stats;
+  if (process.env.ELEVENTY_SERVERLESS) {
+    stats = eleventyImage.statsByDimensionsSync(
+      imgUrl,
+      imgWidth,
+      imgHeight,
+      options
+    );
+  } else {
+    stats = await eleventyImage(imgUrl, options);
+  }
 
-	return eleventyImage.generateHTML(stats, {
-		alt,
-		loading: 'lazy',
-		decoding: 'async',
-		sizes: sizes,
-		class: classes,
-	});
+  return eleventyImage.generateHTML(stats, {
+    alt,
+    loading: 'lazy',
+    decoding: 'async',
+    sizes: sizes,
+    class: classes,
+  });
 }
 
 module.exports = ctflPictureShortcode;

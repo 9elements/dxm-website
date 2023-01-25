@@ -21,13 +21,13 @@ permalink: /shop/
               --gs-gap: var(--space-l-xl);
               --gs-gap-vertical: var(--space-xl);
                 ">
-        {% for i in range(0, 4) %}
+        {% for merch in fields.merchandise %}
           <article class="stack-s">
             <div class="shop__slider">
               {# insert btn #}
               <div class="shop__slides" data-slides>
                 {% ctflPicture
-                imgObj = fields.merchandise.fields.imageFront,
+                imgObj = merch.fields.imageFront,
                 fit = "fill",
                 imgWidth = "720",
                 imgHeight = "1000",
@@ -37,7 +37,7 @@ permalink: /shop/
                 sizes = "(min-width: 72.5em) 433px, 100vw"
               %}
                 {% ctflPicture
-                imgObj = fields.merchandise.fields.imageBack,
+                imgObj = merch.fields.imageBack,
                 fit = "fill",
                 imgWidth = "720",
                 imgHeight = "1000",
@@ -49,11 +49,11 @@ permalink: /shop/
               </div>
             </div>
             <div>
-              <h2>{{ fields.merchandise.fields.name }}</h2>
-              <p class="shop__merch--description">{{ fields.merchandise.fields.description }}</p>
-              <p>{{ fields.merchandise.fields.price }}€</p>
+              <h2>{{ merch.fields.name }}</h2>
+              <p class="shop__merch--description">{{ merch.fields.description }}</p>
+              <p>{{ merch.fields.price }}€</p>
             </div>
-            <a href="mailto:{{ fields.email }}?subject={{ fields.merchandise.fields.name }}" class="button button--small">Bestellen</a>
+            <a href="mailto:{{ fields.email }}?subject={{ merch.fields.name }}" class="button button--small">Bestellen</a>
           </article>
         {% endfor %}
       </div>

@@ -1,0 +1,64 @@
+---
+title: "Shop"
+layout: "layouts/content.njk"
+permalink: /shop/
+---
+
+{% set fields = ctfl.pageShop.fields %}
+
+<div class="section">
+  <div class="wrapper | stack-3xl-4xl">
+    <div class="gradient-line-vertical">
+      <h1 class="text-step-5 color-white cxt uppercase center-text leading-flat">{{ fields.title }}</h1>
+    </div>
+    <section class="publication stack-xl">
+      <div class="grid-switcher" id="books" style="
+              --gs-columns-small: 1;
+              --gs-bp-medium: 42rem;
+              --gs-columns-medium: 2;
+              --gs-bp-large: 70rem;
+              --gs-columns-large: 3;
+              --gs-gap: 0.5rem;
+              --gs-gap: var(--space-l-xl);
+                ">
+        {% for i in range(0, 7) %}
+          <article class="stack-s">
+            <div class="shop__slider">
+              {# insert btn #}
+              <div class="shop__slides" data-slides>
+                {% ctflPicture
+                imgObj = fields.merchandise.fields.imageFront,
+                fit = "fill",
+                imgWidth = "720",
+                imgHeight = "1000",
+                classes = "shop__slide",
+                alt = "",
+                widths = [360, 720],
+                sizes = "(min-width: 72.5em) 433px, 100vw"
+              %}
+                {% ctflPicture
+                imgObj = fields.merchandise.fields.imageBack,
+                fit = "fill",
+                imgWidth = "720",
+                imgHeight = "1000",
+                classes = "shop__slide",
+                alt = "",
+                widths = [360, 720],
+                sizes = "(min-width: 72.5em) 433px, 100vw"
+              %}
+              </div>
+            </div>
+            <div>
+              <h2>{{ fields.merchandise.fields.name }}</h2>
+              <p class="shop__merch--description">{{ fields.merchandise.fields.description }}</p>
+              <p>{{ fields.merchandise.fields.price }}€</p>
+            </div>
+            <a href="mailto:123@test.de" class="button button--small">Bestellen</a>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+</div>
+
+<script defer="defer" src="/js/slider.js"></script>

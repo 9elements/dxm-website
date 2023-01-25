@@ -38,7 +38,17 @@
     },
     {
       "text": "Leistungen",
-      "url": "/leistungen/"
+      "url": "/leistungen/",
+      "children": [
+        {
+          "text": "Shop",
+          "url": "/shop/"
+        },
+        {
+          "text": "Club",
+          "url": "/club/"
+        }
+      ]
     },
     {
       "text": "Newsletter",

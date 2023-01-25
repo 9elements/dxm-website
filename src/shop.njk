@@ -53,7 +53,7 @@ permalink: /shop/
               <p class="shop__merch--description">{{ fields.merchandise.fields.description }}</p>
               <p>{{ fields.merchandise.fields.price }}€</p>
             </div>
-            <a href="mailto:123@test.de" class="button button--small">Bestellen</a>
+            <a href="mailto:{{ fields.email }}?subject={{ fields.merchandise.fields.name }}" class="button button--small">Bestellen</a>
           </article>
         {% endfor %}
       </div>

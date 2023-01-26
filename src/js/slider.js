@@ -33,8 +33,6 @@ sliders.forEach((slider) => {
         ? scrollLeft - clientWidth
         : scrollLeft + clientWidth;
 
-    console.log(left);
-
     slider.scroll({
       left,
       behavior: 'smooth',
@@ -47,6 +45,22 @@ sliders.forEach((slider) => {
       prevButton.disabled = false;
       nextButton.disabled = true;
     }
+  }
+
+  function scroll() {
+    const { scrollLeft, clientWidth } = slider;
+
+    if (scrollLeft <= clientWidth / 2) {
+      prevButton.disabled = true;
+      nextButton.disabled = false;
+    } else {
+      prevButton.disabled = false;
+      nextButton.disabled = true;
+    }
+  }
+
+  if (slider) {
+    slider.addEventListener('scroll', (event) => scroll());
   }
 
   if (slider && prevButton && nextButton) {

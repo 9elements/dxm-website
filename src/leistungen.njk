@@ -79,6 +79,28 @@ permalink: /leistungen/
     </li>
   </ul>
 
+  <div class="wrapper" style="--wrapper-max-width: 70rem;">
+    <div class="grid-switcher" style="
+            --gs-columns-medium: 2;
+            --gs-columns-large: 2;
+            --gs-bp-medium: 39rem;
+            --gs-gap: var(--space-l);
+            ">
+      <a href="/club/" class="icon-link">
+        <span class="icon-link__icon">
+          {% include "svg/club.svg" %}
+        </span>
+        <span class="icon-link__text | center-text text-step-1">Club</span>
+      </a>
+      <a href="/shop/" class="icon-link">
+        <span class="icon-link__icon">
+          {% include "svg/shop.svg" %}
+        </span>
+        <span class="icon-link__text | center-text text-step-1">Shop</span>
+      </a>
+    </div>
+  </div>
+
   <div class="stack-xl">
     <div class="stack-s wrapper" style="--wrapper-max-width: 43.75rem">
       <h2 id="partner" class="text-step-5 uppercase center-text" style="scroll-margin-top: var(--space-2xl)">
@@ -137,13 +159,13 @@ permalink: /leistungen/
 
           <a class="filter-item" href="{{ startup.fields.externalLink }}" target="blank" data-filter="{{ startup.fields.funktionVonDxM }}">
 
-        {% else %}
+          {% else %}
 
-          <span class="filter-item" target="blank" data-filter="{{ startup.fields.funktionVonDxM }}">
+            <span class="filter-item" target="blank" data-filter="{{ startup.fields.funktionVonDxM }}">
 
-        {% endif %}
+            {% endif %}
 
-        {% ctflPicture
+            {% ctflPicture
           imgObj = startup.fields.logo,
           formats = ["avif", "webp", "png", "svg"],
           fit = "fill",
@@ -154,9 +176,9 @@ permalink: /leistungen/
           classes = "logo-size"
         %}
 
-        {% if startup.fields.externalLink %}
-          </a>
-        {% else %}
+            {% if startup.fields.externalLink %}
+            </a>
+          {% else %}
           </span>
         {% endif %}
       {% endfor %}

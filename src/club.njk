@@ -6,15 +6,17 @@ permalink: /club/
 
 {% set fields = ctfl.pageClub.fields %}
 <div class="section">
-  <div class="wrapper | stack-3xl-4xl">
-    <div class="gradient-line-vertical">
-      <h1 class="text-step-5 color-white cxt uppercase center-text leading-flat">{{ fields.title }}</h1>
+  <div class="wrapper | stack-xl">
+    <div class="circle">
+      <div class="circle__shadow"></div>
+      {% include "svg/circle-club.svg" %}
+      <h1 class="circle__headline | text-step-5 color-white uppercase leading-flat">{{ fields.title }}</h1>
     </div>
-    <p class="text-step-1 center-text wrapper leading-loose" style="--wrapper-max-width: 48rem; padding: 0;">
-      {{ fields.description }}
-    </p>
-  </div>
-  <div style="margin-block-start: var(--space-l); text-align: center;">
-    <a href=" mailto:{{ fields.email }} " target="blank" class="button" style="text-transform: none;">{{ fields.button }}</a>
+    <div class="center-text stack-l">
+      <p class="text-step-1 center-text wrapper leading-loose" style="--wrapper-max-width: 48rem; padding: 0;">
+        {{ fields.description }}
+      </p>
+      <a href=" mailto:{{ fields.email }} " target="blank" class="button" style="text-transform: none;">{{ fields.button }}</a>
+    </div>
   </div>
 </div>

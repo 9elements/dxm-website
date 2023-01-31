@@ -10,7 +10,10 @@ permalink: /club/
     <div class="circle">
       <div class="circle__shadow"></div>
       {% include "svg/circle-club.svg" %}
-      <h1 class="circle__headline | text-step-5 color-white uppercase leading-flat">{{ fields.title }}</h1>
+      <h1 class="sr-only">{{ fields.title }}</h1>
+      <div class="circle__headline">
+        {% include "svg/visionh.svg" %}
+      </div>
     </div>
     <div class="center-text stack-l">
       <p class="text-step-1 center-text wrapper leading-loose" style="--wrapper-max-width: 48rem; padding: 0;">

@@ -1,6 +1,6 @@
 .dxm-group-visual {
   display: grid;
-  margin-block: var(--space-3xl-4xl);
+  margin-block: var(--space-up, var(--space-3xl-4xl));
   margin-inline: auto;
   max-width: 180rem;
 

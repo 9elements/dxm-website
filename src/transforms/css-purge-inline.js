@@ -35,7 +35,13 @@ module.exports = async (content, outputPath) => {
       css: cssFiles,
       safelist: {
         standard: [/^md/, /^lg/],
-        greedy: [/role$/, /item-hovered/, /publication__item/, /lite-youtube/],
+        greedy: [
+          /role$/,
+          /item-hovered/,
+          /publication__item/,
+          /lite-youtube/,
+          /shop__slider/,
+        ],
       },
       keyframes: true,
     });

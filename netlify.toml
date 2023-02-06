@@ -16,3 +16,9 @@ from = "https://www.dxmg.io/*"
 to = "https://dxmg.de/:splat"
 status = 301
 force = true
+
+[[plugins]]
+package = "netlify-plugin-cache"
+
+  [plugins.inputs]
+  paths = [ ".cache" ]

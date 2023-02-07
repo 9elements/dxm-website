@@ -101,6 +101,14 @@ permalink: /media/
         </div>
 
         <div class="stack-m">
+          <h2 class="text-step-3">{{ fields.cvTitle }}</h2>
+          <div class="gradient-line-horizontal" style="--gradient-width: 11.5rem"></div>
+          <p class="text-step-0">
+            {{ fields.cvText }}
+          </p>
+        </div>
+
+        <div class="stack-m">
           <h2 class="text-step-3">Pressefotos</h2>
           <div class="gradient-line-horizontal" style="--gradient-width: 11.5rem"></div>
           <p class="text-step-0">
@@ -145,24 +153,28 @@ permalink: /media/
       </div>
       <div class="logo-grid">
         {% for partner in fields.mediaPartner %}
-            {% if partner.fields.externerLink %}
-              <a href="{{ partner.fields.externerLink }}" target="blank">
+          {% if partner.fields.externerLink %}
+            <a href="{{ partner.fields.externerLink }}" target="blank">
             {% endif %}
 
             {% ctflPicture
-              imgObj = partner.fields.bild,
-              formats = ["avif", "webp", "png", "svg"],
-              imgWidth = 660,
-              alt = partner.fields.name,
-              widths = [330, 660],
-              imgWidth = "1000"
-            %}
+            imgObj = partner.fields.bild,
+            formats = [
+              "avif", "webp", "png", "svg"
+            ],
+            imgWidth = 660,
+            alt = partner.fields.name,
+            widths = [
+              330, 660
+            ],
+            imgWidth = "1000"
+ %}
           </a>
         {% endfor %}
       </div>
     </div>
 
-    </div>
+  </div>
 </div>
 
 <script src="/js/msonry.pkgd.min.js"></script>

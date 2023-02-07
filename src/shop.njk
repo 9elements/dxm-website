@@ -77,7 +77,18 @@ permalink: /shop/
         {% endfor %}
       </div>
     </section>
+    <div class="grid-switcher" style="
+              --gs-columns-medium: 1;
+              --gs-columns-large: 1;
+              --gs-bp-medium: 39rem;
+              ">
+      <a href="/publikationen/" class="icon-link" >
+        <span class="icon-link__icon">
+          {% include "svg/buecher.svg" %}
+        </span>
+        <span class="icon-link__text | center-text text-step-1">Bücher</span>
+      </a>
+    </div>
   </div>
-</div>
 
-<script defer="defer" src="/js/slider.js"></script>
+  <script defer="defer" src="/js/slider.js"></script>

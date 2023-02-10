@@ -10,6 +10,10 @@ Example Syntax
 </details>
 */
 
+details summary::-webkit-details-marker {
+  display: none;
+}
+
 .acc-list {
   border: 2px solid var(--color-blue-600);
   //border-image: linear-gradient(var(--color-white), var(--color-blue-600)) 1;
@@ -27,6 +31,10 @@ Example Syntax
     background-repeat: no-repeat;
     transition: 0.3s ease-out;
 
+    &::-webkit-details-marker {
+      display: none;
+    }
+
     @media (any-pointer: fine) and (any-hover: hover) {
       &:hover {
         background-size: 100% 100%;
@@ -41,7 +49,7 @@ Example Syntax
 
     &::before {
       --icon-size: clamp(2.5rem, 1.818rem + 3.41vw, 4.375rem);
-      content: "";
+      content: '';
       position: absolute;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 71 71'%3E%3Cpath stroke='%230092FF' stroke-width='2' d='M36.5 0v71M71 36.5H0'/%3E%3C/svg%3E");
       width: var(--icon-size);
@@ -76,10 +84,10 @@ Example Syntax
 
     dt {
       flex-basis: 14rem;
-      @include apply-utility("weight", "bold");
+      @include apply-utility('weight', 'bold');
 
       @media only screen and (min-width: 59.5em) {
-        @include apply-utility("weight", "regular");
+        @include apply-utility('weight', 'regular');
       }
     }
 

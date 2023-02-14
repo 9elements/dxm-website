@@ -17,6 +17,18 @@ to = "https://dxmg.de/:splat"
 status = 301
 force = true
 
+[[redirects]]
+from = "https://david-matusiewicz.com/*"
+to = "https://dxmg.de/:splat"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://www.david-matusiewicz.com/*"
+to = "https://dxmg.de/:splat"
+status = 301
+force = true
+
 [[plugins]]
 package = "netlify-plugin-cache"
 

@@ -88,13 +88,13 @@ permalink: /leistungen/
             ">
       <a href="/club/" class="icon-link">
         <span class="icon-link__icon">
-          {% include "svg/club.svg" %}
+          {% icon icon = "club" %}
         </span>
         <span class="icon-link__text | center-text text-step-1">Club</span>
       </a>
       <a href="/shop/" class="icon-link">
         <span class="icon-link__icon">
-          {% include "svg/shop.svg" %}
+          {% icon icon = "shop" %}
         </span>
         <span class="icon-link__text | center-text text-step-1">Shop</span>
       </a>
@@ -118,9 +118,9 @@ permalink: /leistungen/
         --gs-columns-small: 1;
         --gs-gap: var(--space-l);
       ">
-      {% include "svg/9elements.svg" %}
-      {% include "svg/bryck.svg" %}
-      {% include "svg/siemens-healthineers.svg" %}
+      {% icon icon = "9elements", class = "logo-size" %}
+      {% icon icon = "bryck", class = "logo-size" %}
+      {% icon icon = "siemens-healthineers", class = "logo-size" %}
     </div>
   </div>
 

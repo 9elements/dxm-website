@@ -44,9 +44,7 @@ module.exports = (ctflImage) => {
   }
 
   if (
-    ctflImage.imgObj.fields == undefined ||
-    ctflImage.imgObj.fields.file == undefined ||
-    ctflImage.imgObj.fields.file.contentType == undefined ||
+    ctflImage.imgObj?.fields?.file?.contentType == undefined ||
     ctflImage.imgObj.fields.file.contentType.startsWith('image') == false
   ) {
     return 'imgObj must be a valid contentful image object';

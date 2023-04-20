@@ -38,7 +38,7 @@ Thumbnail example:
 
 const eleventyImage = require('@11ty/eleventy-img');
 
-async function ctflPictureShortcode(ctflImage) {
+module.exports = (ctflImage) => {
   if (!ctflImage.imgObj) {
     return 'Contentful image-object must be provided';
   }
@@ -67,9 +67,9 @@ async function ctflPictureShortcode(ctflImage) {
   const widths = ctflImage.widths || [400, 800];
   const sizes = ctflImage.sizes || '(min-width: 22em) 30vw, 100vw';
   const classes = ctflImage.classes || '';
+
   const fit = ctflImage.fit || 'fill';
   const focus = ctflImage.focus || 'center';
-
   let imgWidth = 800;
   let imgHeight = 600;
 
@@ -105,8 +105,6 @@ async function ctflPictureShortcode(ctflImage) {
     '&h=' +
     imgHeight;
 
-  console.log(imgUrl);
-
   let options;
 
   options = {
@@ -124,24 +122,33 @@ async function ctflPictureShortcode(ctflImage) {
   };
 
   let stats;
-  if (process.env.ELEVENTY_SERVERLESS) {
+  let imageAttributes;
+  if (!process.env.ELEVENTY_SERVERLESS) {
+    // generate images, while this is async we don’t wait
+    eleventyImage(imgUrl, options);
+
     stats = eleventyImage.statsByDimensionsSync(
       imgUrl,
       imgWidth,
       imgHeight,
       options
     );
-  } else {
-    stats = await eleventyImage(imgUrl, options);
+
+    imageAttributes = {
+      alt: alt,
+      loading: 'lazy',
+      decoding: 'async',
+      sizes: sizes,
+      class: classes,
+    };
   }
 
-  return eleventyImage.generateHTML(stats, {
-    alt,
-    loading: 'lazy',
-    decoding: 'async',
-    sizes: sizes,
-    class: classes,
-  });
-}
+  let generatedPicture;
 
-module.exports = ctflPictureShortcode;
+  if (process.env.ELEVENTY_SERVERLESS) {
+    generatedPicture = `<picture><img src="${imgUrl}" class="${classes}" alt=""></picture>`;
+  } else {
+    generatedPicture = eleventyImage.generateHTML(stats, imageAttributes);
+  }
+  return generatedPicture;
+};

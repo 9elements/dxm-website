@@ -43,7 +43,7 @@ module.exports = (config) => {
 
   // Add Shortcodes
   config.addShortcode('icon', require('./src/shortcodes/icon.js'));
-  config.addNunjucksAsyncShortcode(
+  config.addNunjucksShortcode(
     'ctflPicture',
     require('./src/shortcodes/ctflPicture.js')
   );

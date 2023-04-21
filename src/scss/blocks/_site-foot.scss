@@ -1,7 +1,14 @@
 footer {
   margin-block: var(--space-xl-2xl) var(--space-l);
 
-  ul {
+  .site-foot__social {
+    svg {
+      max-width: 3.5rem;
+      height: auto;
+    }
+  }
+
+  .site-foot__nav {
     --cluster-justification: center;
     --cluster-gap: var(--space-3xs-2xs);
     flex-direction: row;

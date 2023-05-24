@@ -1,0 +1,72 @@
+---
+title: "Vision H"
+layout: "layouts/content.njk"
+permalink: /vision-h/
+socialImage: "/images/meta/social-share-club.png"
+---
+
+{% set fields = ctfl.clubUpcomingEvent.fields %}
+<div class="section">
+  <div class="wrapper | stack-xl">
+    <div class="circle">
+      <div class="circle__shadow"></div>
+      {% include "svg/circle-club.svg" %}
+      <div class="circle__headline | stack-l-xl" aria-hidden="true">
+        <h1 class="text-step-4 center-text">{{ fields.eventName }}</h1>
+        <div style="width: clamp(6em, 12vw, 10em); margin-inline: auto;">
+          {% include "svg/visionh.svg" %}
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper | stack-3xl-4xl" style="padding: 0;">
+      <div class="gradient-line-vertical">
+        <p class="text-step-1 center-text leading-loose wrapper" style="--wrapper-max-width: 48rem; padding: 0">
+          {{ fields.eventDescription }}
+        </p>
+      </div>
+      <div class="photos | cluster">
+        {% for image in fields.images %}
+          {% ctflPicture
+                  imgObj = image,
+                  fit = "fill",
+                  imgWidth = "1720",
+                  alt = "",
+                  widths = [430, 860],
+                  sizes = "(min-width: 72.5em) 433px, 100vw",
+                  classes = "person__image"
+                %}
+        {% endfor %}
+      </div>
+      <div class="stack-m wrapper" style="--wrapper-max-width: 48rem; padding: 0;">
+        {% for upload in fields.pdfDownloads %}
+          <h2 class="text-step-3">Downloads</h2>
+          <div class="download text-step-0 stack-l-xl">
+            <div class="download__infos">
+              <h4>{{ upload.fields.title }}</h4>
+              <a target="blank" class="button button--small" href="{{ upload.fields.file.url }}" download>Download</a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  (function () {
+    var isAuthenticated = localStorage.getItem("clubMember");
+
+    if (!isAuthenticated) {
+      var enteredPassword = prompt("Club Member Code eingeben:");
+
+      if (enteredPassword === "DXMj9LhqAsx") {
+        localStorage.setItem("clubMember", "true");
+      } else {
+        alert("Falscher Code – erneut eingeben oder Membership beantragen.");
+        window.location.href = "/club";
+      }
+    }
+  })();
+</script>

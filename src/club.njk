@@ -20,7 +20,35 @@ socialImage: "/images/meta/social-share-club.png"
       <p class="text-step-1 center-text wrapper leading-loose" style="--wrapper-max-width: 48rem; padding: 0;">
         {{ fields.description }}
       </p>
-      <a href=" mailto:{{ fields.email }} " target="blank" class="button" style="text-transform: none;">{{ fields.button }}</a>
+      <div class="cluster" style="display: flex; justify-content: center;">
+        <button id="club" class="button" style="text-transform: none;">Upcoming Event</button>
+        <a href=" mailto:{{ fields.email }} " target="blank" class="button" style="text-transform: none;">{{ fields.button }}</a>
+      </div>
     </div>
   </div>
 </div>
+
+<script>
+  var clubMemberButton = document.getElementById("club");
+
+  function checkPassword() {
+    var isAuthenticated = localStorage.getItem("clubMember");
+
+    if (isAuthenticated === "true") {
+      window.location.href = "/vision-h";
+    } else {
+      var enteredPassword = prompt("Club Member Code eingeben:");
+
+      if (enteredPassword === "DXMj9LhqAsx") {
+        localStorage.setItem("clubMember", "true");
+        window.location.href = "/vision-h";
+      } else {
+        alert("Falscher Code – erneut eingeben oder Membership beantragen.");
+      }
+    }
+  }
+
+  if (clubMemberButton) {
+    clubMemberButton.addEventListener("click", checkPassword);
+  }
+</script>

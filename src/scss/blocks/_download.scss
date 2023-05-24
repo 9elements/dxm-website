@@ -1,4 +1,4 @@
-.logo-kit {
+.download {
   padding: var(--space-m);
   border: 2px solid transparent;
   background-image: linear-gradient(var(--color-black), var(--color-black)),
@@ -7,9 +7,8 @@
   background-repeat: no-repeat, no-repeat;
   background-size: 100% 100%, 180% 100%;
   transition: opacity 0.3s ease-out, background-size 0.1s 0.4s ease-out;
-  max-width: 40rem;
 
-  &__download-bar {
+  &__infos {
     display: flex;
     justify-content: space-between;
     align-items: center;

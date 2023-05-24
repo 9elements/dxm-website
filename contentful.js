@@ -12,6 +12,7 @@ const ctflStartup = require('./ctfl/startup.js');
 const ctflpageUeberDavid = require('./ctfl/pageUeberDavid.js');
 const ctflpagePublikationen = require('./ctfl/pagePublikationen.js');
 const ctflpageClub = require('./ctfl/pageClub.js');
+const ctflclubUpcomingEvent = require('./ctfl/clubUpcomingEvent.js');
 const ctflpageShop = require('./ctfl/pageShop.js');
 
 // Create an Object to write the json files
@@ -21,6 +22,7 @@ const ctflData = {
   newsletterArticle: ctflNewsletterArticle,
   pageMedia: ctflPageMedia,
   pageClub: ctflpageClub,
+  clubUpcomingEvent: ctflclubUpcomingEvent,
   pageShop: ctflpageShop,
   textPages: ctflTextPages,
   publikation: ctflPublikationen,

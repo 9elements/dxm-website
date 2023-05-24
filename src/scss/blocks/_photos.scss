@@ -1,0 +1,23 @@
+.photos {
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 42em) {
+    flex-direction: column;
+  }
+
+  picture {
+    width: 40%;
+    height: auto;
+
+    @media (max-width: 42em) {
+      width: 100%;
+    }
+
+    img {
+      aspect-ratio: 3/2;
+      object-fit: cover;
+      height: auto;
+    }
+  }
+}

@@ -21,9 +21,9 @@ socialImage: "/images/meta/social-share-club.png"
 
     <div class="wrapper | stack-3xl-4xl" style="padding: 0;">
       <div class="gradient-line-vertical">
-        <p class="text-step-1 center-text leading-loose wrapper" style="--wrapper-max-width: 48rem; padding: 0">
-          {{ fields.eventDescription }}
-        </p>
+        <div class="center-text wrapper plain-html" style="--wrapper-max-width: 48rem; padding: 0">
+          {{ fields.eventDescription | renderRichTextAsHtml | safe }}
+        </div>
       </div>
       <div class="photos | cluster">
         {% for image in fields.images %}
@@ -38,17 +38,19 @@ socialImage: "/images/meta/social-share-club.png"
                 %}
         {% endfor %}
       </div>
-      <div class="stack-m wrapper" style="--wrapper-max-width: 48rem; padding: 0;">
-        <h2 class="text-step-3">Downloads</h2>
-        {% for upload in fields.pdfDownloads %}
-          <div class="download text-step-0 stack-l-xl">
-            <div class="download__infos">
-              <h4>{{ upload.fields.title }}</h4>
-              <a target="blank" class="button button--small" href="{{ upload.fields.file.url }}" download>Download</a>
+      {% if fields.pdfDownloads %}
+        <div class="stack-m wrapper" style="--wrapper-max-width: 48rem; padding: 0;">
+          <h2 class="text-step-3">Downloads</h2>
+          {% for upload in fields.pdfDownloads %}
+            <div class="download text-step-0 stack-l-xl">
+              <div class="download__infos">
+                <h4>{{ upload.fields.title }}</h4>
+                <a target="blank" class="button button--small" href="{{ upload.fields.file.url }}" download>Download</a>
+              </div>
             </div>
-          </div>
-        {% endfor %}
-      </div>
+          {% endfor %}
+        </div>
+      {% endif %}
     </div>
 
   </div>

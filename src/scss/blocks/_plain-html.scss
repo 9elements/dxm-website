@@ -77,8 +77,10 @@
     text-decoration-color: var(--color-blue-600);
     transition: outline-offset 0.2s ease-out;
 
-    &:hover {
-      color: var(--color-blue-600);
+    &:not(.button) {
+      &:hover {
+        color: var(--color-blue-600);
+      }
     }
   }
 }

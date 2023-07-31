@@ -1,6 +1,6 @@
 .button {
-  @include apply-utility("weight", "bold");
-  @include apply-utility("leading", "flat");
+  @include apply-utility('weight', 'bold');
+  @include apply-utility('leading', 'flat');
   text-decoration: none;
   display: inline-block;
   font-size: var(--text-step-0);
@@ -14,8 +14,13 @@
   background-color: var(--color-black);
   cursor: pointer;
 
+  &[aria-disabled] {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     width: 0;
     height: 100%;
@@ -42,7 +47,7 @@
   }
 
   &--small {
-    @include apply-utility("weight", "regular");
+    @include apply-utility('weight', 'regular');
     padding-inline: var(--space-2xs);
     padding-block: var(--space-3xs);
   }

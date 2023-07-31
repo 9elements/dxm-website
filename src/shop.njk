@@ -73,9 +73,11 @@ socialImage: "/images/meta/social-share-shop.png"
               <p class="shop__merch--description">{{ merch.fields.description }}</p>
               <p>{{ merch.fields.price }}€</p>
             </div>
-            <a href="mailto:{{ fields.email }}?subject={{ merch.fields.name }}" class="button button--small">Bestellen</a>
           </article>
         {% endfor %}
+      </div>
+      <div class="center-text">
+        <a href="/shop/bestellung/" class="button">Jetzt Bestellen</a>
       </div>
     </section>
     <div class="grid-switcher" style="

@@ -1,0 +1,32 @@
+.language-sticky {
+  position: fixed;
+  top: 2rem;
+  right: var(--space-2xl);
+  background: var(--color-white);
+  padding: 3px;
+  border-radius: 3px;
+  width: var(--space-l);
+  height: auto;
+  transition: transform 0.2s ease;
+  will-change: transform;
+  z-index: 2000;
+
+  @include media-query('md') {
+    left: 1rem;
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 79/42;
+  }
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  &:focus-visible {
+    outline: 1px solid var(--color-brightTurquoise);
+    outline-offset: var(--space-3xs);
+  }
+}

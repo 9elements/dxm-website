@@ -1,23 +1,9 @@
 .filter {
   display: flex;
+  flex-direction: column;
   gap: var(--space-2xs-xs);
   width: 100%;
-  overflow-x: auto;
   padding-block-end: var(--space-s);
-  scrollbar-color: var(--color-blue-600) rgba(255, 255, 255, 0.1);
-
-  &::-webkit-scrollbar {
-    height: 10px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-
-  /* Handle */
-  &::-webkit-scrollbar-thumb {
-    background-color: var(--color-blue-600);
-  }
 
   button.active {
     background-color: var(--color-blue-600);
@@ -36,7 +22,7 @@
     white-space: nowrap;
 
     &::after {
-      content: "";
+      content: '';
       background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='12.728' width='4' height='18' transform='rotate(45 12.728 0)' fill='%230A101C'/%3E%3Crect y='2.82837' width='4' height='18' transform='rotate(-45 0 2.82837)' fill='%230A101C'/%3E%3C/svg%3E%0A");
       background-size: 50%;
       background-repeat: no-repeat;
@@ -56,8 +42,9 @@
   }
 }
 
-@include media-query("md") {
+@include media-query('md') {
   .filter {
+    flex-direction: row;
     justify-content: center;
     width: unset;
     flex-wrap: wrap;

@@ -1,17 +1,17 @@
 ---
-title: "Über David"
+title: "Keynote Speaker"
 layout: "layouts/content.njk"
-permalink: /ueber-david/
+permalink: /keynote-speaker/
 ---
 
-{% set fields = ctfl.pageUeberDavid.fields %}
+{% set fields = ctfl.pageKeynoteSpeaker.fields %}
 <div class="section">
   <div class="wrapper | stack-3xl-4xl">
     <div class="gradient-line-vertical center-text">
       <h1 class="text-step-5 color-white cxt uppercase center-text leading-flat">{{ fields.pageTitle }}</h1>
     </div>
 
-    <div>
+    <div class="gradient-line-vertical">
       <div class="image-text-teaser">
         <div class="image">
           <img src="/images/DXM_D_Visual.png">
@@ -58,41 +58,64 @@ permalink: /ueber-david/
       </div>
     </div>
 
-    <div class="stack-2xl-3xl">
-      <h2 class="text-step-5 uppercase">Vita</h2>
-      <details-utils class="stack-2xl-3xl" close-esc animate>
+    <section class="stack-3xl">
+      <h2 class="text-step-5 uppercase center-text">Themen</h2>
+      {% for topic in fields.keynoteTopics %}
+        <div class="image-with-text">
+          {% ctflPicture
+            imgObj = topic.fields.image,
+            fit = "fill",
+            focus = "faces",
+            imgWidth = "1400",
+            alt = "",
+            widths = [670, 1400],
+            sizes = "(min-width: 72.5em) 433px, 100vw",
+            classes = "image-with-text__image"
+          %}
 
-        {% for section in ctfl.pageUeberDavid.fields.vitaSections %}
-          {% if section.fields.vitaSection %}
-            <details class="acc-list">
-              <summary class="text-step-2 leading-flat">{{ section.fields.sectionTitle }}</summary>
-              <dl class="bg-blue-600 text-step-0">
+          <div class="image-with-text__content | stack-l">
+            <div class="stack-xs">
+              <h2 class="weight-bold text-step-2 uppercase">{{ topic.fields.topic }}</h2>
+              <div class="gradient-line-horizontal"></div>
+              <h3 class="weight-regular text-step-2">{{ topic.fields.headline }}</h3>
+            </div>
+            {{ topic.fields.text | renderRichTextAsHtml | safe }}
+          </div>
+        </div>
+      {% endfor %}
+    </section>
 
-                {% for sectionItem in section.fields.vitaSection %}
+    <div class="stack-l">
+      <div class="stack-s">
+        <h2 class="text-step-3">Medienecho</h2>
+        <div class="gradient-line-horizontal" style="--gradient-width: 200rem"></div>
+      </div>
+      <div class="logo-grid">
+        {% for partner in fields.mediaPartner %}
+          {% if partner.fields.externerLink %}
+            <a href="{{ partner.fields.externerLink }}" target="blank">
+            {% endif %}
 
-                  <div class="acc-list__item">
-                    {% if sectionItem.fields.periodStart %}
-                      <dt>{{ sectionItem.fields.periodStart | readableDate({month: "numeric", year: "numeric"}) }}
-                        {% if sectionItem.fields.periodEnd %}
-                       - {{ sectionItem.fields.periodEnd | readableDate({month: "numeric", year: "numeric"}) }}</dt>
-                      {% endif %}
-
-                    {% elif not sectionItem.fields.periodStart %}
-
-                      <dt>{{ sectionItem.fields.title }}</dt>
-
-                    {% endif %}
-                    <dd>{{ sectionItem.fields.description }}</dd>
-                  </div>
-
-                {% endfor %}
-
-              </dl>
-            </details>
-
-          {% endif %}
-
+            {% ctflPicture
+            imgObj = partner.fields.bild,
+            formats = [
+              "avif", "webp", "png", "svg"
+            ],
+            imgWidth = 660,
+            alt = partner.fields.name,
+            widths = [
+              330, 660
+            ],
+            imgWidth = "1000"
+ %}
+          </a>
         {% endfor %}
+      </div>
+    </div>
+
+    <div class="stack-2xl-3xl">
+
+      <details-utils class="stack-2xl-3xl" close-esc animate>
 
         <div class="wrapper">
           <div class="grid-switcher" style="
@@ -113,7 +136,7 @@ permalink: /ueber-david/
               </span>
               <span class="icon-link__text | center-text text-step-1">Buchung</span>
             </a>
-            <a href="/media/#presse" class="icon-link">
+            <a href="/presse/" class="icon-link">
               <span class="icon-link__icon">
                 {% include "svg/presse.svg" %}
               </span>
@@ -130,9 +153,9 @@ permalink: /ueber-david/
               <input class="text-step-1" type="text" id="eventText" name="eventText" value="Keynote | Prof. Dr. David Matusiewicz">
             </div>
             <div class="event-form__checkbox">
-                <input class="text-step-0" type="checkbox" id="reducedMotion" name="reducedMotion">
-                <label class="text-step-0 weight-bold" for="reducedMotion">reduced motion</label>
-              </div>
+              <input class="text-step-0" type="checkbox" id="reducedMotion" name="reducedMotion">
+              <label class="text-step-0 weight-bold" for="reducedMotion">reduced motion</label>
+            </div>
             <input type="submit" value="Slide anzeigen" class="button">
           </form>
         </div>

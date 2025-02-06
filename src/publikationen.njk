@@ -50,7 +50,7 @@ socialImage: "/images/meta/social-share-books.png"
                         imgObj = book.fields.bookCover,
                         fit = "fill",
                         imgWidth = "720",
-                        imgHeight = "1000",
+                        imgHeight = "1150",
                         alt = "",
                         widths = [360, 720],
                         sizes = "(min-width: 72.5em) 433px, 100vw"
@@ -116,10 +116,10 @@ socialImage: "/images/meta/social-share-books.png"
       </div>
     {% endif %}
 
-    <div class="wrapper">
+    <div class="wrapper" style="--wrapper-max-width: 70rem;">
       <div class="grid-switcher" style="
-            --gs-columns-medium: 3;
-            --gs-columns-large: 3;
+            --gs-columns-medium: 2;
+            --gs-columns-large: 2;
             --gs-bp-medium: 39rem;
             --gs-gap: var(--space-l);
             ">
@@ -134,12 +134,6 @@ socialImage: "/images/meta/social-share-books.png"
             {% include "svg/buecher.svg" %}
           </span>
           <span class="icon-link__text | center-text text-step-1">Publikations&shy;liste</span>
-        </a>
-        <a href="/media#presse" class="icon-link">
-          <span class="icon-link__icon">
-            {% include "svg/presse.svg" %}
-          </span>
-          <span class="icon-link__text | center-text text-step-1">Presse</span>
         </a>
       </div>
     </div>

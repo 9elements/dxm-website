@@ -19,9 +19,6 @@ permalink: /media/
         <li>
           <a class="button" href="#section2" id="videos">Videos</a>
         </li>
-        <li>
-          <a class="button" href="#section3" id="presse">presse</a>
-        </li>
       </ul>
 
       <section id="section1" class="media-tabs__fotos">
@@ -59,121 +56,23 @@ permalink: /media/
           {% endfor %}
         </div>
       </section>
-
-      <section id="section3 media-tabs__presse" class="stack-2xl-3xl">
-
-        <div class="grid-switcher" style="
-              --gs-bp-medium: 45rem;
-              --gs-columns-medium: 1;
-              --gs-bp-large: 60rem;
-              --gs-columns-large: 2;
-              --gs-gap: var(--space-2xl);
-              --gs-gap-vertical: var(--space-2xl-3xl);
-              ">
-          <div class="stack-m">
-            <h2 class="text-step-3">Logo-Kit</h2>
-            <div class="download text-step-0 stack-l-xl">
-              <img src="/images/logos-preview.png">
-              <div class="download__infos">
-                <h4>Logo-Kit</h4>
-                <a class="button button--small" href="../downloads/DXM-Logodaten.zip" download>Download</a>
-              </div>
-            </div>
-          </div>
-          {% if fields.pressRelease.length > 0 %}
-            <div class="stack-m">
-              <h2 class="text-step-3">Pressemitteilungen</h2>
-              <div class="gradient-line-horizontal" style="--gradient-width: 11.5rem"></div>
-              <ul class="press-list | text-step-0" role="list">
-                {% for download in fields.pressRelease | reverse %}
-                  <li>
-                    <span class="press-list__date">{{ download.fields.date | readableDate({month: "numeric", day: "numeric", year: "numeric"}) }}</span>
-                    {% set downloadTitle = download.fields.date | readableDate({month: "numeric", day: "numeric", year: "numeric"}) + "-DXM-Pressemitteilung" %}
-                    {% ctflDownload downloadObj = download.fields.file,
-                    title = downloadTitle | slugify %}
-                    {{ download.fields.title }}
-                    {% endctflDownload %}
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
-          {% endif %}
-        </div>
-
-        <div class="stack-m">
-          <h2 class="text-step-3">{{ fields.cvTitle }}</h2>
-          <div class="gradient-line-horizontal" style="--gradient-width: 11.5rem"></div>
-          <p class="text-step-0">
-            {{ fields.cvText }}
-          </p>
-        </div>
-
-        <div class="stack-m">
-          <h2 class="text-step-3">Pressefotos</h2>
-          <div class="gradient-line-horizontal" style="--gradient-width: 11.5rem"></div>
-          <p class="text-step-0">
-              Die nachfolgenden Pressebilder können ungefragt für Veröffentlichungen unter Angabe der Quelle genutzt werden. Weitere Bilder können auf Anfrage zugestellt werden.
-            </p>
-          <div class="download-grid | grid-switcher" style="
-              --gs-gap: var(--space-s-m);
-              --gs-bp-large: 60rem;
-              --gs-columns-medium: 3;
-              --gs-bp-medium: 48rem;
-              --gs-columns-small: 2;
-              ">
-            {% for photo in fields.pressePhotoDownloads %}
-              {% set downloadTitle = photo.fields.title %}
-              {% ctflDownload downloadObj = photo, classes="download-grid__link", title = downloadTitle | slugify %}
-              {% ctflPicture
-                  imgObj = photo,
-                  fit = "fill",
-                  imgWidth = "1320",
-                  alt = "",
-                  widths = [330, 660],
-                  sizes = "(min-width: 72.5em) 433px, 100vw",
-                  classes = "download-grid__image"
-                %}
-              <span class="download-grid__link-body">
-                <span>{{ photo.fields.title }}</span>
-                <span>{{ photo.fields.file.details.image.width }}px x {{ photo.fields.file.details.image.height }}px</span>
-                <span class="button button--small" aria-hidden="true">Download</span>
-              </span>
-              {% endctflDownload %}
-            {% endfor %}
-          </div>
-        </div>
-
-      </section>
     </div>
 
-    <div class="stack-l">
-      <div class="stack-s">
-        <h2 class="text-step-3">Medienpartner</h2>
-        <div class="gradient-line-horizontal" style="--gradient-width: 200rem"></div>
-      </div>
-      <div class="logo-grid">
-        {% for partner in fields.mediaPartner %}
-          {% if partner.fields.externerLink %}
-            <a href="{{ partner.fields.externerLink }}" target="blank">
-            {% endif %}
-
-            {% ctflPicture
-            imgObj = partner.fields.bild,
-            formats = [
-              "avif", "webp", "png", "svg"
-            ],
-            imgWidth = 660,
-            alt = partner.fields.name,
-            widths = [
-              330, 660
-            ],
-            imgWidth = "1000"
- %}
-          </a>
-        {% endfor %}
+    <div class="wrapper" style="--wrapper-max-width: 70rem;">
+      <div class="grid-switcher" style="
+            --gs-columns-medium: 1;
+            --gs-columns-large: 1;
+            --gs-bp-medium: 39rem;
+            --gs-gap: var(--space-l);
+            ">
+        <a href="/presse/" class="icon-link">
+          <span class="icon-link__icon">
+            {% include "svg/presse.svg" %}
+          </span>
+          <span class="icon-link__text | center-text text-step-1">Presse</span>
+        </a>
       </div>
     </div>
-
   </div>
 </div>
 

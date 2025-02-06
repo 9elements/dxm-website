@@ -9,23 +9,17 @@
     flex-shrink: 0;
     width: 100%;
     height: auto;
-    max-width: 8rem;
-    max-height: 8rem;
+    max-width: clamp(8rem, 20vw, 12rem);
+    max-height: clamp(4rem, 20vw, 12rem);
     object-fit: contain;
 
-    @media (min-width: 500px) {
-      max-width: 10rem;
-      max-height: 10rem;
-    }
+    @media (any-pointer: fine) and (any-hover: hover) {
+      transition: opacity 0.3s ease;
+      opacity: 0.4;
 
-    @include media-query("md") {
-      max-width: 18rem;
-      max-height: 18rem;
-    }
-
-    @include media-query("lg") {
-      max-width: 32rem;
-      max-height: 8rem;
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 }

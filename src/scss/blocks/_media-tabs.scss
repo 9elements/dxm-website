@@ -1,21 +1,21 @@
 .media-tabs {
-  [role="tablist"] {
+  [role='tablist'] {
     padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
-    @include media-query("md") {
+    @include media-query('md') {
       flex-direction: row;
     }
   }
 
-  [role="tablist"] li,
-  [role="tablist"] a {
+  [role='tablist'] li,
+  [role='tablist'] a {
     display: block;
   }
 
-  [role="tablist"] li {
+  [role='tablist'] li {
     width: 100%;
 
     a {
@@ -24,40 +24,40 @@
       display: flex;
       justify-content: center;
 
-      @include media-query("md") {
+      @include media-query('md') {
         justify-content: center;
       }
     }
   }
 
-  [role="tablist"] li + li a {
+  [role='tablist'] li + li a {
     border-top: 0;
   }
 
-  [role="tablist"] [aria-selected] {
+  [role='tablist'] [aria-selected] {
     background-color: var(--color-blue-600);
     color: var(--color-black);
   }
 
-  @include media-query("md") {
-    [role="tablist"] li,
-    [role="tablist"] a {
+  @include media-query('md') {
+    [role='tablist'] li,
+    [role='tablist'] a {
       display: inline-block;
     }
 
-    [role="tablist"] li + li a {
+    [role='tablist'] li + li a {
       border-top: 1px solid var(--color-blue-600);
     }
 
-    [role="tablist"] li {
-      width: 31%;
+    [role='tablist'] li {
+      width: 48%;
 
       a {
         text-align: center;
       }
     }
 
-    [role="tablist"] [aria-selected] {
+    [role='tablist'] [aria-selected] {
       position: relative;
 
       &::after {
@@ -86,7 +86,7 @@
       }
     }
 
-    @include media-query("md") {
+    @include media-query('md') {
       .grid {
         width: calc(100% + 2 * var(--space-s));
         margin-left: calc(var(--space-s) * -1);

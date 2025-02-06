@@ -19,10 +19,6 @@
       ]
     },
     {
-      "text": "Presse",
-      "url": "/presse/"
-    },
-    {
       "text": "Media",
       "url": "/media/",
       "children": [
@@ -33,10 +29,6 @@
         {
           "text": "Videos",
           "url": "/media#videos"
-        },
-        {
-          "text": "Presse",
-          "url": "/media#presse"
         }
       ]
     },
@@ -53,6 +45,10 @@
     {
       "text": "Newsletter",
       "url": "/newsletter/"
+    },
+    {
+      "text": "Presse",
+      "url": "/presse/"
     },
     {
       "text": "Kontakt",

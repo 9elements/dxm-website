@@ -9,12 +9,14 @@ const ctflPublikationen = require('./ctfl/publikation.js');
 const ctflPublishers = require('./ctfl/publishers.js');
 const ctflFunktion = require('./ctfl/funktion.js');
 const ctflStartup = require('./ctfl/startup.js');
-const ctflpageUeberDavid = require('./ctfl/pageUeberDavid.js');
+const ctflpageKeynoteSpeaker = require('./ctfl/pageKeynoteSpeaker.js');
 const ctflpagePublikationen = require('./ctfl/pagePublikationen.js');
 const ctflpageClub = require('./ctfl/pageClub.js');
 const ctflclubUpcomingEvent = require('./ctfl/clubUpcomingEvent.js');
-const ctflpageShop = require('./ctfl/pageShop.js');
-const ctflpageShopBestellung = require('./ctfl/pageShopBestellung.js');
+const ctflpagePress = require('./ctfl/pagePress.js');
+const ctflpageHome = require('./ctfl/pageHome.js');
+const ctflpageKontakt = require('./ctfl/pageKontakt.js');
+const ctflpageEnglish = require('./ctfl/pageEnglish.js');
 
 // Create an Object to write the json files
 // Object key will be the filename and the value will be the file's content
@@ -24,15 +26,17 @@ const ctflData = {
   pageMedia: ctflPageMedia,
   pageClub: ctflpageClub,
   clubUpcomingEvent: ctflclubUpcomingEvent,
-  pageShop: ctflpageShop,
+  pagePress: ctflpagePress,
+  pageHome: ctflpageHome,
   textPages: ctflTextPages,
   publikation: ctflPublikationen,
   publishers: ctflPublishers,
   funktion: ctflFunktion,
   startup: ctflStartup,
-  pageUeberDavid: ctflpageUeberDavid,
+  pageKeynoteSpeaker: ctflpageKeynoteSpeaker,
   pagePublikationen: ctflpagePublikationen,
-  pageShopBestellung: ctflpageShopBestellung,
+  pageKontakt: ctflpageKontakt,
+  pageEnglish: ctflpageEnglish,
 };
 
 // directory path

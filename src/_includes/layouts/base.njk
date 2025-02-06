@@ -51,6 +51,9 @@
     {% if not(hideChrome == "true") %}
       {% include "partials/site-head.html" %}
     {% endif %}
+    <a href="/{{ ctfl.pageEnglish.fields.title | slug }}/" class="language-sticky">
+      {% icon icon = "flag" %}
+    </a>
     <main tabindex="-1" id="main-content">
       {% block content %}{% endblock %}
     </main>

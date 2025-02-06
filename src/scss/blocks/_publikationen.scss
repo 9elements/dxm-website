@@ -66,7 +66,7 @@
   }
 
   &__info {
-    aspect-ratio: 36/50;
+    aspect-ratio: 32/50;
     z-index: 2;
     perspective: 800px;
     perspective-origin: left 50%;
@@ -80,7 +80,7 @@
 
   .flip {
     z-index: 2;
-    aspect-ratio: 36/50;
+    aspect-ratio: 32/50;
     position: absolute;
     width: 100%;
     transform-origin: left top;
@@ -108,6 +108,8 @@
     span {
       display: block;
       transform: rotate(180deg);
+      overflow: hidden;
+      max-height: 95%;
     }
 
     &::after {
@@ -137,7 +139,7 @@
   &__cover {
     height: auto;
     position: relative;
-    aspect-ratio: 36/50;
+    aspect-ratio: 32/50;
     transform-origin: left top;
     transition: transform 0.3s ease-out;
     width: 100%;
@@ -146,7 +148,7 @@
       width: 100%;
       display: block;
       object-fit: cover;
-      aspect-ratio: 36/50;
+      aspect-ratio: 32/50;
 
       img {
         width: 100%;

@@ -5,8 +5,8 @@
       "url": "/"
     },
     {
-      "text": "Über David",
-      "url": "/ueber-david/"
+      "text": "Keynote Speaker",
+      "url": "/keynote-speaker/"
     },
     {
       "text": "Publikationen",
@@ -17,6 +17,10 @@
           "url": "/publikationsliste/"
         }
       ]
+    },
+    {
+      "text": "Presse",
+      "url": "/presse/"
     },
     {
       "text": "Media",
@@ -37,13 +41,9 @@
       ]
     },
     {
-      "text": "Leistungen",
-      "url": "/leistungen/",
+      "text": "Ökosystem",
+      "url": "/oekosystem/",
       "children": [
-        {
-          "text": "Shop",
-          "url": "/shop/"
-        },
         {
           "text": "Club",
           "url": "/club/"

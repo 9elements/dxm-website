@@ -3,16 +3,16 @@ title: "Kontakt"
 layout: "layouts/content.njk"
 permalink: /kontakt/
 ---
+{% set fields = ctfl.pageKontakt.fields %}
 
 <div class="section">
   <div class="wrapper | stack-3xl-4xl">
     <div class="gradient-line-vertical">
       <h1 class="text-step-5 color-white cxt uppercase center-text leading-flat">Kontakt</h1>
     </div>
-
-    <p class="text-step-1 center-text wrapper leading-loose" style="--wrapper-max-width: 48rem; padding: 0;">
-      <span class="text-highlight">Geschwindigkeit</span> liegt in der <span class="text-highlight">DNA der DXM Group</span>. Wir werden Deine Anfrage asap beantworten.
-      </p>
+    <div class="section__intro | center-text text-step-1">
+      {{ fields.intro | renderRichTextAsHtml | safe  }}
+    </div>
 
     <!-- CHANGE COLUMNS LARGE TO 2 AS SOON AS NEXT CONTACT PERSON APPEARS -->
     <div class="grid-switcher" style="
@@ -23,7 +23,7 @@ permalink: /kontakt/
             --gs-gap: var(--space-xl);
         ">
       <!-- REMOVE INLINE STYLES AS SOON AS NEXT CONTACT PERSON APPEARS -->
-      {% for person in ctfl.contactPerson %}
+      {% for person in fields.contactPerson %}
 
         <div class="contact-person stack-m" style="max-width: 40rem; margin-inline: auto;">
           <img alt="" src="{{ person.fields.image.fields.file.url }}" style="
@@ -34,12 +34,9 @@ permalink: /kontakt/
             <h3 class="text-step-2 weight-bold">
               {{ person.fields.name }}
             </h3>
-            <h4 class="text-step-1 weight-light">
-              {{ person.fields.jobTitle }}
-            </h4>
-            <a href="mailto:{{person.fields.eMail}}" class="text-step-1 weight-light">
-              {{ person.fields.eMail }}
-            </a>
+            <div class="text-step-0 | stack-m">
+              {{ person.fields.content | renderRichTextAsHtml | safe  }}
+            </div>
           </div>
           <a href=" {{ person.fields.linkedin }} " target="blank" class="button" style="text-transform: none;">LinkedIn</a>
         </div>

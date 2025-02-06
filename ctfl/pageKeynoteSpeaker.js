@@ -1,10 +1,10 @@
 // import the client
-const client = require("../src/utils/contentfulClient.js");
+const client = require('../src/utils/contentfulClient.js');
 
 module.exports = async () => {
-  const pageUeberDavid = await client
+  const pageKeynoteSpeaker = await client
     .getEntries({
-      content_type: "pageUeberDavid",
+      content_type: 'pageUeberDavid',
       include: 5,
     })
     .then(function (response) {
@@ -15,5 +15,5 @@ module.exports = async () => {
     })
     .catch(console.error);
 
-  return pageUeberDavid[0];
+  return pageKeynoteSpeaker[0];
 };

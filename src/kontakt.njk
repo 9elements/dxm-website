@@ -38,34 +38,11 @@ permalink: /kontakt/
               {{ person.fields.content | renderRichTextAsHtml | safe  }}
             </div>
           </div>
+          <a class="button" href="mailto:{{ site.authorEmail }}">{{ site.authorEmail }}</a>
           <a href=" {{ person.fields.linkedin }} " target="blank" class="button" style="text-transform: none;">LinkedIn</a>
         </div>
 
       {% endfor %}
-
-      <!--
-            <div class="contact-person stack-m">
-              <img alt="" src="/images/contact-02.png" style="
-                  width: 100%;
-                  height: auto;
-              ">
-              <div class="content stack-2xs">
-                  <h3 class="text-step-2 weight-bold">Alexandra Schilcher</h3>
-                  <h4 class="text-step-1 weight-light">Marketing & Kommunikation</h4>
-              </div>
-              <a href="#" class="button" style="text-transform: none;">LinkedIn</a>
-          </div>
-          -->
-    </div>
-
-    <div class="contact-info | center-text">
-      <p class="text-step-1 uppercase stack-m">
-              DXM Group GmbH<br>
-              c/o BRYCK GmbH & Co. KG<br>
-              Jakob-Funke-Platz 2<br>
-              45127 Essen<br>
-        <a class="button" href="mailto:{{ site.authorEmail }}">{{ site.authorEmail }}</a>
-      </p>
     </div>
   </div>
 </div>

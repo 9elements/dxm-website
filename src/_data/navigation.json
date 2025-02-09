@@ -27,6 +27,10 @@
           "url": "/media#fotos"
         },
         {
+          "text": "Foto-Download",
+          "url": "/presse"
+        },
+        {
           "text": "Videos",
           "url": "/media#videos"
         }

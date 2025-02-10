@@ -17,6 +17,7 @@ const ctflpagePress = require('./ctfl/pagePress.js');
 const ctflpageHome = require('./ctfl/pageHome.js');
 const ctflpageKontakt = require('./ctfl/pageKontakt.js');
 const ctflpageEnglish = require('./ctfl/pageEnglish.js');
+const ctflpageOekosystem = require('./ctfl/pageOekosystem.js');
 
 // Create an Object to write the json files
 // Object key will be the filename and the value will be the file's content
@@ -37,6 +38,7 @@ const ctflData = {
   pagePublikationen: ctflpagePublikationen,
   pageKontakt: ctflpageKontakt,
   pageEnglish: ctflpageEnglish,
+  pageOekosystem: ctflpageOekosystem,
 };
 
 // directory path

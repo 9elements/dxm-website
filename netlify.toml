@@ -1,11 +1,4 @@
 [[redirects]]
-from = "/slides/"
-to = "/.netlify/functions/serverless"
-status = 200
-force = true
-_generated_by_eleventy_serverless = "serverless"
-
-[[redirects]]
 from = "https://dxmg.io/*"
 to = "https://dxmg.de/:splat"
 status = 301

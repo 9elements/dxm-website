@@ -1,8 +1,7 @@
 ---
 title: "Slides"
 layout: "layouts/home.njk"
-permalink: 
-    serverless: /slides/
+permalink: /slides/
 hideChrome: "true"
 ---
 
@@ -23,7 +22,25 @@ hideChrome: "true"
             </filter>
         </defs>
     </svg>
-    <h1 class="slides__title | weight-regular uppercase">{{ eleventy.serverless.query.eventText }}</h1>
+    <h1 class="slides__title | weight-regular uppercase" id="headline">DXM-Präsentationsfolie</h1>
 </div>
 
 <script defer="defer" src="/js/reduced-motion.js"></script>
+<script>
+    // Funktion zum Auslesen von URL-Parametern
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        let value = urlParams.get(param);
+        return value
+            ? value.replace(/\+/g, ' ')
+            : null;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const headline = document.getElementById("headline");
+        const text = getQueryParam("eventText"); // Holt 'eventText' aus der URL
+        if (text) {
+            headline.textContent = text;
+        }
+    });
+</script>

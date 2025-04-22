@@ -58,7 +58,7 @@
   border: 1px solid var(--color-blue-600);
   flex-basis: 27rem;
 
-  label {
+  & label {
     padding: var(--space-xs) var(--space-s-m);
     border: none;
     color: var(--color-black);
@@ -70,11 +70,11 @@
   }
 }
 
-.event-form {
+.event-form__checkbox {
   position: absolute;
   top: calc(100% + var(--space-m));
 
-  input {
+  & input {
     position: absolute;
     width: 1.25rem;
     height: 1.25rem;

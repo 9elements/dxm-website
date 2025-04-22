@@ -1,0 +1,25 @@
+.main-visual {
+  display: grid;
+  margin-block: var(--space-3xl-4xl);
+  margin-inline: auto;
+  max-width: 180rem;
+
+  grid-template-columns:
+    minmax(var(--space-m), 3fr)
+    /* 5fr */
+    minmax(0, 70ch)
+    min(100% - 2 * var(--space-m), 70ch)
+    minmax(var(--space-m), 3fr);
+  grid-template-rows: auto min(24vw, 31rem) auto;
+}
+
+.main-visual__img {
+  grid-column: 2/4;
+  grid-row: 1/3;
+  width: min(100%, 75rem);
+}
+
+.main-visual__text {
+  grid-column: 3/4;
+  grid-row: 2/4;
+}

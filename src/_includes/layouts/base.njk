@@ -1,31 +1,16 @@
-{% set assetHash = global.random() %}
 <!DOCTYPE html>
-<html lang="de" class="no-js">
+<html lang="de" >
   <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    {% include "partials/meta-info.html" %}
-
-    <script>
-      document
-        .documentElement
-        .classList
-        .remove("no-js");
-      document
-        .documentElement
-        .classList
-        .add("js-active");
-    </script>
-
-    <link rel="stylesheet" media="all" href="/fonts/fonts.css?{{ assetHash }}"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    {% include "partials/meta-info.njk" %}
 
     {% if env.nodeenv !== 'production' %}
       <!-- We're not in production mode -->
-      <style>
-        {% include "css/critical.css" %}
-      </style>
+      <link rel="stylesheet" href="/assets/css/global.css" />
     {% endif %}
+
     <style>
       #canvas-container {
         height: 100vh;
@@ -49,7 +34,7 @@
       <canvas id="canvas"></canvas>
     </div>
     {% if not(hideChrome == "true") %}
-      {% include "partials/site-head.html" %}
+      {% include "partials/site-head.njk" %}
     {% endif %}
     <a href="/{{ ctfl.pageEnglish.fields.title | slug }}/" class="language-sticky">
       {% icon icon = "flag" %}
@@ -58,29 +43,10 @@
       {% block content %}{% endblock %}
     </main>
     {% if not(hideChrome == "true") %}
-      {% include "partials/site-foot.html" %}
+      {% include "partials/site-foot.njk" %}
     {% endif %}
 
-    <script src="/js/gsap.min.js"></script>
-    <script src="/js/ScrollTrigger.min.js"></script>
-    <script src="/js/stars.js"></script>
-    <script src="/js/nav.js"></script>
-    <script>
-      gsap.registerPlugin(ScrollTrigger);
-      gsap.set(".stars", {opacity: 0.6})
-
-      gsap.to(".stars", {
-        scrollTrigger: {
-          trigger: "body",
-          start: "top top",
-          end: "top -75%",
-          toggleActions: "restart pause reverse pause",
-          scrub: true
-        },
-        opacity: 0.3
-      });
-    </script>
-    <script src="/js/details-utils.min.js"></script>
+    {% script src = "global.js" %}
 
   </body>
 </html>

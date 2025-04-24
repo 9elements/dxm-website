@@ -15,7 +15,7 @@ const spaceScale = calculateSpaceScale({
   maxWidth: 1240,
   minSize: 16,
   maxSize: 20,
-  positiveSteps: [1.5, 2, 3, 4, 6, 10],
+  positiveSteps: [1.5, 2, 4, 6, 8, 10, 20],
   negativeSteps: [0.75, 0.5, 0.25],
   prefix: "space",
   relativeTo: "viewport-width",

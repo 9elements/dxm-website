@@ -1,0 +1,79 @@
+---
+title: "Media"
+layout: "layouts/content.njk"
+permalink: /media/
+---
+
+{% set fields = ctfl.pageMedia.fields %}
+<div class="section">
+  <div class="wrapper | stack-3xl-4xl">
+    <div class="gradient-line-vertical">
+      <h1 class="text-center text-white uppercase text-step-5 cxt leading-flat">{{ fields.title }}</h1>
+    </div>
+
+    <div class="media-tabs stack-l-xl">
+      <ul>
+        <li>
+          <a class="button" href="#section1" id="fotos">Fotos</a>
+        </li>
+        <li>
+          <a class="button" href="#section2" id="videos">Videos</a>
+        </li>
+      </ul>
+
+      <section id="section1" class="media-tabs__photos">
+        <div class="grid">
+          <div class="grid-sizer"></div>
+          {% for photo in fields.photos %}
+            <div class="grid-item">
+              {% ctflPicture
+                  imgObj = photo,
+                  fit = "fill",
+                  imgWidth = "1720",
+                  alt = "",
+                  widths = [430, 860],
+                  sizes = "(min-width: 72.5em) 433px, 100vw",
+                  classes = "person__image"
+                %}
+            </div>
+          {% endfor %}
+        </div>
+      </section>
+
+      <section id="section2 media-tabs__videos">
+        <div class="grid-switcher" style="
+                --gs-columns-small: 1;
+                --gs-bp-medium: 35rem;
+                --gs-columns-medium: 2;
+                --gs-bp-large: 65rem;
+                --gs-columns-large: 3;
+                --gs-gap: 2rem;
+                --gs-gap-vertical: 2rem;
+                ">
+          {% for id in fields.videoIds %}
+            {% set videoId = id %}
+            {% include "partials/youtube.njk" %}
+          {% endfor %}
+        </div>
+      </section>
+    </div>
+
+    <div class="wrapper" style="--wrapper-max: 70rem;">
+      <div class="grid-switcher" style="
+            --gs-columns-medium: 1;
+            --gs-columns-large: 1;
+            --gs-bp-medium: 39rem;
+            --gs-gap: var(--space-l);
+            ">
+        <a href="/presse/" class="icon-link">
+          <span class="icon-link__icon">
+            {% icon icon = "presse" %}
+          </span>
+          <span class="icon-link__text | text-center text-step-1">Presse</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% script src = "media.js" %}

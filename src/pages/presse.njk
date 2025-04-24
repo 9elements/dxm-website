@@ -1,0 +1,87 @@
+---
+title: "Presse"
+layout: "layouts/content.njk"
+permalink: /presse/
+---
+
+{% set fields = ctfl.pagePress.fields %}
+<div class="section">
+  <div class="wrapper | stack-3xl-4xl">
+    <div class="gradient-line-vertical">
+      <h1 class="uppercase text-step-5 text-white cxt text-center leading-flat">{{ fields.title }}</h1>
+    </div>
+
+    <div class="stack-m">
+      <h2 class="text-step-3">Pressefotos</h2>
+      <div class="gradient-line-horizontal" style="--gradient-width: 11.5rem"></div>
+      <p class="text-step-0">
+              Die nachfolgenden Pressebilder können ungefragt für Veröffentlichungen unter Angabe der Quelle genutzt werden. Weitere Bilder können auf Anfrage zugestellt werden.
+            </p>
+      <div class="download-grid | grid-switcher" style="
+              --gs-gap: var(--space-s-m);
+              --gs-bp-large: 60rem;
+              --gs-columns-medium: 3;
+              --gs-bp-medium: 48rem;
+              --gs-columns-small: 2;
+              ">
+        {% for photo in fields.pressePhotoDownloads %}
+          {% set downloadTitle = photo.fields.title %}
+          {% ctflDownload downloadObj = photo, classes="download-grid__link", title = downloadTitle | slugify %}
+          {% ctflPicture
+                  imgObj = photo,
+                  fit = "fill",
+                  imgWidth = "1320",
+                  alt = "",
+                  widths = [330, 660],
+                  sizes = "(min-width: 72.5em) 433px, 100vw",
+                  classes = "download-grid__image"
+                %}
+          <span class="download-grid__link-body">
+            <span>{{ photo.fields.title }}</span>
+            <span>{{ photo.fields.file.details.image.width }}px x {{ photo.fields.file.details.image.height }}px</span>
+            <span class="button button--small" aria-hidden="true">Download</span>
+          </span>
+          {% endctflDownload %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="grid-switcher" style="
+              --gs-bp-medium: 45rem;
+              --gs-columns-medium: 1;
+              --gs-bp-large: 60rem;
+              --gs-columns-large: 2;
+              --gs-gap: var(--space-2xl);
+              --gs-gap-vertical: var(--space-2xl-3xl);
+              ">
+      <div class="stack-m">
+        <h2 class="text-step-3">Logo-Kit</h2>
+        <div class="download text-step-0 stack-l-xl">
+          <img src="/assets/images/logos-preview.png">
+          <div class="download__infos">
+            <h4>Logo-Kit</h4>
+            <a class="button button--small" href="/downloads/DXM-Logodaten.zip" download>Download</a>
+          </div>
+        </div>
+      </div>
+      {% if fields.pressRelease.length > 0 %}
+        <div class="stack-m">
+          <h2 class="text-step-3">Download</h2>
+          <div class="gradient-line-horizontal" style="--gradient-width: 11.5rem"></div>
+          <ul class="press-list | text-step-0" role="list">
+            {% for download in fields.pressRelease | reverse %}
+              <li>
+                <span class="press-list__date">{{ download.fields.date | readableDate({month: "numeric", day: "numeric", year: "numeric"}) }}</span>
+                {% set downloadTitle = download.fields.date | readableDate({month: "numeric", day: "numeric", year: "numeric"}) + "-DXM-Pressemitteilung" %}
+                {% ctflDownload downloadObj = download.fields.file,
+                title = downloadTitle | slugify %}
+                {{ download.fields.title }}
+                {% endctflDownload %}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

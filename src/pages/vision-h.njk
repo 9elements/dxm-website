@@ -1,0 +1,59 @@
+---
+title: "Vision H"
+layout: "layouts/content.njk"
+permalink: /vision-h/
+socialImage: "/assets/images/meta/social-share-club.png"
+---
+
+{% set fields = ctfl.clubUpcomingEvent.fields %}
+<div class="section">
+  <div class="wrapper | stack-xl">
+    <div class="circle">
+      <div class="circle__shadow"></div>
+      {% icon icon = "circle-club" %}
+      <div class="circle__headline | stack-l-xl" aria-hidden="true">
+        <h1 class="text-center text-step-4">{{ fields.eventName }}</h1>
+        <div style="width: clamp(6em, 12vw, 10em); margin-inline: auto;">
+          {% include "svg/visionh.svg" %}
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper | stack-3xl-4xl" style="padding: 0;">
+      <div class="gradient-line-vertical">
+        <div class="wrapper plain-html" style="--wrapper-max: 48rem; padding: 0">
+          {{ fields.eventDescription | renderRichTextAsHtml | safe }}
+        </div>
+      </div>
+      <div class="photos | cluster">
+        {% for image in fields.images %}
+          {% ctflPicture
+                  imgObj = image,
+                  fit = "fill",
+                  imgWidth = "1720",
+                  alt = "",
+                  widths = [430, 860],
+                  sizes = "(min-width: 72.5em) 433px, 100vw",
+                  classes = "person__image"
+                %}
+        {% endfor %}
+      </div>
+      {% if fields.pdfDownloads %}
+        <div class="stack-m wrapper" style="--wrapper-max: 48rem; padding: 0;">
+          <h2 class="text-step-3">Downloads</h2>
+          {% for upload in fields.pdfDownloads %}
+            <div class="download text-step-0 stack-l-xl">
+              <div class="download__infos">
+                <h4>{{ upload.fields.title }}</h4>
+                <a target="blank" class="button button--small" href="{{ upload.fields.file.url }}" download>Download</a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+  </div>
+</div>
+
+{% script src = "vision.js" %}

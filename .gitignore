@@ -5,7 +5,6 @@ npm-debug.*
 *.swp
 .DS_Store
 Thumbs.db
-.sass-cache
 .env
 .cache
 
@@ -13,8 +12,5 @@ Thumbs.db
 node_modules
 dist
 src/_includes/css
-src/_data/ctfl
 
-#Serverless function
-netlify/functions/serverless/**
-!netlify/functions/serverless/index.js
+src/_data/ctfl

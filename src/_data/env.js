@@ -1,5 +1,5 @@
-require("dotenv").config();
+import "dotenv/config";
 
-module.exports = {
+export default {
   nodeenv: process.env.NODE_ENV || "development",
 };

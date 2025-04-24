@@ -1,0 +1,47 @@
+@layer fonts, reset, layout, utils, blocks;
+
+@import "./_media.css";
+@import "./_fonts.css" layer(fonts);
+@import "./_reset.css" layer(reset);
+
+@import-glob "./blocks/**/_*.css" layer(blocks);
+@import-glob "./layout/**/_*.css" layer(layout);
+@import-glob "./utilities/**/_*.css" layer(utils);
+
+@import "tailwindcss/base" layer(reset);
+@import "tailwindcss/components" layer(layout);
+@import "tailwindcss/utilities" layer(utils);
+
+@layer base {
+  body {
+    font-family: "Montserrat", sans-serif;
+    background: var(--color-black);
+    color: var(--color-white);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: var(--leading-flat);
+    font-weight: var(--weight-medium);
+  }
+
+  #main-content {
+    margin-block-start: var(--space-xl-2xl);
+  }
+
+  :focus-visible {
+    outline: 2px dashed #ff006a;
+    outline-offset: 4px;
+  }
+
+  ::selection {
+    color: var(--color-black);
+    background-color: color-mix(in srgb, var(--color-pink) 99%, transparent);
+  }
+
+  details-utils {
+    display: block;
+  }
+}

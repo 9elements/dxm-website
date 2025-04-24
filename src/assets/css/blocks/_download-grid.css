@@ -1,0 +1,71 @@
+.download-grid {
+  img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: contain;
+  }
+
+  .button {
+    z-index: 20;
+  }
+}
+
+.download-grid__link {
+  position: relative;
+
+  @media (any-pointer: fine) and (any-hover: hover) {
+    &:hover .download-grid__link-body {
+      opacity: 1;
+
+      &::before {
+        transition: background-size 0.3s ease-out;
+        background-size: 100% 100%, 180% 100%;
+        opacity: 1;
+      }
+
+      span {
+        opacity: 1;
+        transform: translate(0);
+        transition: opacity 0.4s ease-out, transform 0.7s ease-out;
+      }
+    }
+  }
+}
+
+.download-grid__link-body {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: var(--space-m);
+  text-align: center;
+
+  span {
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    transform: translateX(-1rem);
+    transition: opacity 0.3s ease-out, transform 0s 0.4s;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 2px solid transparent;
+    background-image: linear-gradient(var(--color-black), var(--color-black)),
+      var(--color-gradient);
+    background-origin: padding-box, border-box;
+    background-repeat: no-repeat, no-repeat;
+    background-size: 0 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease-out, background-size 0.1s 0.4s ease-out;
+  }
+}

@@ -1,0 +1,30 @@
+---
+title: "Club"
+layout: "layouts/content.njk"
+permalink: /club/
+socialImage: "/assets/images/meta/social-share-club.png"
+---
+
+{% set fields = ctfl.pageClub.fields %}
+<div class="section">
+  <div class="wrapper | stack-xl">
+    <div class="circle">
+      <div class="circle__shadow"></div>
+      {% icon icon = "circle-club" %}
+      <h1 class="sr-only">{{ fields.title }}</h1>
+      <div class="circle__headline" aria-hidden="true">
+        {% include "svg/visionh.svg" %}
+      </div>
+    </div>
+    <div class="text-center stack-l">
+      <p class="leading-loose text-center text-step-1 wrapper" style="--wrapper-max: 48rem; padding: 0;">
+        {{ fields.description }}
+      </p>
+      <div class="cluster" style="display: flex; justify-content: center;">
+        <button id="club" class="button" style="text-transform: none;">Club Intern</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% script src = "club.js" %}

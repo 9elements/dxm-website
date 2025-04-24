@@ -1,0 +1,163 @@
+---
+title: "Keynote Speaker"
+layout: "layouts/content.njk"
+permalink: /keynote-speaker/
+---
+
+{% set fields = ctfl.pageKeynoteSpeaker.fields %}
+<div class="section">
+  <div class="wrapper | stack-3xl-4xl">
+    <div class="text-center gradient-line-vertical">
+      <h1 class="text-center text-white uppercase text-step-5 cxt leading-flat">{{ fields.pageTitle }}</h1>
+    </div>
+
+    <div class="gradient-line-vertical">
+      <div class="image-text-teaser">
+        <div class="image">
+          <img src="/assets/images/DXM_D_Visual.png">
+        </div>
+        <div class="stack-s content">
+          <h2 class="uppercase text-step-5">{{ fields.dHeadline }}</h2>
+          <p class="text-step-0 spaced-out opaque">
+            {{ fields.dBodycopy }}
+          </p>
+          {% if fields.dLink and fields.dLinktext %}
+            <a href="{{ fields.dLink }}" class="button">{{ fields.dLinktext }}</a>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="image-text-teaser">
+        <div class="image">
+          <img src="/assets/images/DXM_X_Visual.png">
+        </div>
+        <div class="stack-s content">
+          <h2 class="uppercase text-step-5">{{ fields.xHeadline }}</h2>
+          <p class="text-step-0 spaced-out opaque">
+            {{ fields.xBodycopy }}
+          </p>
+          {% if fields.xLink and fields.xLinktext %}
+            <a href="{{ fields.xLink }}" class="button">{{ fields.xLinktext }}</a>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="image-text-teaser">
+        <div class="image">
+          <img src="/assets/images/DXM_M_Visual.png">
+        </div>
+        <div class="stack-s content">
+          <h2 class="uppercase text-step-5">{{ fields.mHeadline }}</h2>
+          <p class="text-step-0 spaced-out opaque">
+            {{ fields.mBodycopy }}
+          </p>
+          {% if fields.mLink and fields.mLinktext %}
+            <a href="{{ fields.mLink }}" class="button">{{ fields.mLinktext }}</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <section class="stack-3xl">
+      <h2 class="text-center uppercase text-step-5">Themen</h2>
+      {% for topic in fields.keynoteTopics %}
+        <div class="image-with-text">
+          {% ctflPicture
+            imgObj = topic.fields.image,
+            fit = "fill",
+            focus = "faces",
+            imgWidth = "1400",
+            alt = "",
+            widths = [670, 1400],
+            sizes = "(min-width: 72.5em) 433px, 100vw",
+            classes = "image-with-text__image"
+          %}
+
+          <div class="image-with-text__content | stack-l">
+            <div class="stack-xs">
+              <h2 class="uppercase weight-bold text-step-2">{{ topic.fields.topic }}</h2>
+              <div class="gradient-line-horizontal"></div>
+              <h3 class="weight-regular text-step-2">{{ topic.fields.headline }}</h3>
+            </div>
+            {{ topic.fields.text | renderRichTextAsHtml | safe }}
+          </div>
+        </div>
+      {% endfor %}
+    </section>
+
+    <div class="stack-l">
+      <div class="stack-s">
+        <h2 class="text-step-3">Medienecho</h2>
+        <div class="gradient-line-horizontal" style="--gradient-width: 200rem"></div>
+      </div>
+      <div class="logo-grid">
+        {% for partner in fields.mediaPartner %}
+          {% if partner.fields.externerLink %}
+            <a href="{{ partner.fields.externerLink }}" target="blank">
+            {% endif %}
+
+            {% ctflPicture
+            imgObj = partner.fields.bild,
+            formats = [
+              "avif", "webp", "png", "svg"
+            ],
+            imgWidth = 660,
+            alt = partner.fields.name,
+            widths = [
+              330, 660
+            ],
+            imgWidth = "1000"
+ %}
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="stack-2xl-3xl">
+
+      <details-utils class="stack-2xl-3xl" close-esc animate>
+
+        <div class="wrapper">
+          <div class="grid-switcher" style="
+            --gs-columns-medium: 3;
+              --gs-columns-large: 3;
+              --gs-bp-medium: 39rem;
+              --gs-gap: var(--space-l);
+            ">
+            <a href="/agb-fur-referentenvertrag/" class="icon-link">
+              <span class="icon-link__icon">
+                {% icon icon = "agb" %}
+              </span>
+              <span class="icon-link__text | text-center text-step-1">AGB</span>
+            </a>
+            <a href="/kontakt/" class="icon-link">
+              <span class="icon-link__icon">
+                {% icon icon = "buchung" %}
+              </span>
+              <span class="icon-link__text | text-center text-step-1">Buchung</span>
+            </a>
+            <a href="/presse/" class="icon-link">
+              <span class="icon-link__icon">
+                {% icon icon = "presse" %}
+              </span>
+              <span class="icon-link__text | text-center text-step-1">Presse</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="text-center stack-m">
+          <h2 class="uppercase text-step-5" >Slides</h2>
+          <form class="event-form" action="/slides/" target="_blank">
+            <div class="event-form__inputgroup">
+              <label class="text-step-1 weight-bold" for="eventText">Slide Text:</label>
+              <input class="text-step-1" type="text" id="eventText" name="eventText" value="Keynote | Prof. Dr. David Matusiewicz">
+            </div>
+            <div class="event-form__checkbox">
+              <input class="text-step-0" type="checkbox" id="reducedMotion" name="reducedMotion">
+              <label class="text-step-0 weight-bold" for="reducedMotion">reduced motion</label>
+            </div>
+            <input type="submit" value="Slide anzeigen" class="button">
+          </form>
+        </div>
+      </div>
+    </div>

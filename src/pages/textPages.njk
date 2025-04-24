@@ -1,0 +1,22 @@
+---
+pagination:
+  data: ctfl.textPages
+  size: 1
+  alias: data
+eleventyComputed:
+  title: "{{ data.fields.title }}"
+layout: "layouts/content.njk"
+permalink: "{{ data.fields.title | slug }}/index.html"
+---
+
+<div class="section">
+  <div class="wrapper | stack-3xl-4xl">
+    <div class="gradient-line-vertical">
+      <h1 class="uppercase text-step-5 text-white cxt text-center leading-flat word-break">{{data.fields.title}}</h1>
+    </div>
+
+    <div class="plain-html">
+      {{data.fields.description | renderRichTextAsHtml | safe }}
+    </div>
+  </div>
+</div>

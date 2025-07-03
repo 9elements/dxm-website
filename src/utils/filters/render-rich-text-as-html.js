@@ -91,9 +91,9 @@ const richTextHtmlRendererOptions = {
         ? `
           <figure class="stack-3xs">
             <picture>
-              <source srcset="https:${file.url}?fm=avif&w=1000" media="(min-width: 600px)" type="image/avif">
-              <source srcset="https:${file.url}?fm=webp&w=1000" media="(min-width: 600px)" type="image/webp">
-              <source srcset="https:${file.url}?fm=jpg&w=1000" media="(min-width: 600px)" type="image/jpeg">
+              <source srcset="https:${file.url}?fm=avif&w=1000" type="image/avif">
+              <source srcset="https:${file.url}?fm=webp&w=1000" type="image/webp">
+              <source srcset="https:${file.url}?fm=jpg&w=1000" type="image/jpeg">
               <img loading="lazy" decoding="async" alt="${fields.description}" src="https:${file.url}?fm=jpg&w=1000">
             </picture>
             <figcaption class="text-300">

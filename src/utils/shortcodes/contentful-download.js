@@ -24,6 +24,11 @@ export async function ctflDownloadShortcode(content, ctflDownload) {
   let data = await EleventyFetch(url, {
     duration: "1d",
     directory: ".cache",
+    fetchOptions: {
+      headers: {
+        Connection: "keep-alive",
+      },
+    },
   });
 
   const dir = "dist/downloads";

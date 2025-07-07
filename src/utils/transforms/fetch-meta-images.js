@@ -83,6 +83,11 @@ export const fetchMetaImages = async (content, outputPath) => {
       const imageBuffer = await EleventyFetch(imageUrl, {
         duration: "1d", // Cache the image for 1 day
         type: "buffer",
+        fetchOptions: {
+          headers: {
+            Connection: "keep-alive",
+          },
+        },
       });
 
       // Create the output directory if it doesn't exist

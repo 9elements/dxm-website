@@ -1,0 +1,16 @@
+[[redirects]]
+  from = "https://www.david-matusiewicz.com/*"
+  to = "https://david-matusiewicz.com/:splat"
+  status = 301
+  force = true
+[[redirects]]
+  from = "https://dxmg.de/*"
+  to = "https://david-matusiewicz.com/:splat"
+  status = 301
+  force = true
+[[redirects]]
+  from = "https://www.dxmg.de/*"
+  to = "https://david-matusiewicz.com/:splat"
+  status = 301
+  force = true
+

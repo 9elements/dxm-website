@@ -14,3 +14,6 @@ dist
 src/_includes/css
 
 src/_data/ctfl
+
+# Local Netlify folder
+.netlify
